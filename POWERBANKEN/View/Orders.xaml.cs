@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Orders.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Orders : Window
     {
-        Window w;
-        public MainWindow()
+        public Orders()
         {
-            w = new Window();
             InitializeComponent();
-        }
-
-        private void Btn_Order_Click(object sender, RoutedEventArgs e)
-        {
-            Orders orders = new Orders();
-            orders.Show();
         }
     }
 }
