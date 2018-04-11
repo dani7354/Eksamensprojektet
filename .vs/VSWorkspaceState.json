@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\POWERBANKEN",
+    "\\POWERBANKEN\\View"
   ],
-  "SelectedNode": "\\Kode",
+  "SelectedNode": "\\POWERBANKEN\\POWERBANKEN.sln",
   "PreviewInSolutionExplorer": false
 }
