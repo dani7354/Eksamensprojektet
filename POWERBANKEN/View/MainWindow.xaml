@@ -8,7 +8,9 @@
         Title="MainWindow" Height="600" Width="900">
     <Grid x:Name="GridMainWindow" HorizontalAlignment="Right" Width="892">
         <Calendar x:Name="Calender_cld" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="579,337,0,0" Height="190" Width="283" RenderTransformOrigin="0.394,-0.624"/>
-        <Button x:Name="Btn_Statestic" Content="'Vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="322,40,0,0" Height="42" FontSize="20"/>
+        <Button x:Name="Btn_Statestic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="322,40,0,0" Height="42" FontSize="20">
+            <ComboBox Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        </Button>
         <Button x:Name="Btn_Order" Content="'Vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="322,127,0,0" Height="42" FontSize="20" Click="Btn_Order_Click"/>
         <Label x:Name="Lbl_Statestic" Content="Varestatistik" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="254" Margin="20,40,0,0" FontSize="20"/>
         <Label x:Name="Lbl_Orders" Content="Bestilling" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="254" Margin="20,130,0,0" FontSize="20"/>

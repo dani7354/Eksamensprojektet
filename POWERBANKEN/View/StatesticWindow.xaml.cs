@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StatesticWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StatesticWindow : Window
     {
-        Window w;
-        public MainWindow()
+        public StatesticWindow()
         {
-            w = new Window();
             InitializeComponent();
-        }
-
-        private void Btn_Order_Click(object sender, RoutedEventArgs e)
-        {
-            Orders orders = new Orders();
-            orders.Show();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
