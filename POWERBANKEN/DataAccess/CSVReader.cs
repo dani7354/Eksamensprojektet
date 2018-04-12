@@ -9,7 +9,7 @@ namespace DataAccess
 
         public CSVReader()
         {
-            _readerEncoding = Encoding.GetEncoding("iso-8859-1");
+            _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
 
         public string GetProductsFromCSV(string pFilePath)
