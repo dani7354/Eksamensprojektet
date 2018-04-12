@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="StatesticWindow" Height="600" Width="900">
     <Grid>
-        <TextBlock x:Name="Tb_Statestic" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Statistik:" VerticalAlignment="Top" Margin="26,36,0,0" Height="32" Width="216" FontSize="20"/>
+        <TextBlock x:Name="Tb_Statestic" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="26,36,0,0" Height="32" Width="216" FontSize="20"><Run Text="Statistik:"/></TextBlock>
+        <TextBox x:Name="Tbx_SearchboxStatestic" HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" Text="Søg produkt..." VerticalAlignment="Top" Width="324" Margin="473,45,0,0" TextChanged="TextBox_TextChanged" FontSize="20" FontStyle="Italic"/>
+        <Label x:Name="Lbl_NameStatestic" Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,486,0,0" Height="38" Width="158" FontSize="20"/>
+        <Label x:Name="Lbl__InNumbers" Content="%-vis:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,486,0,0" Height="38" Width="158" FontSize="20"/>
+        <Label x:Name="Lbl_PeriodFrom" Content="Periode fra:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,486,0,0" Height="38" Width="158" FontSize="20"/>
+        <Label x:Name="Lbl_PeriodTo" Content="Periode til:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,486,0,0" Height="38" Width="158" FontSize="20"/>
 
     </Grid>
 </Window>

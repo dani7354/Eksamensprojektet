@@ -31,11 +31,14 @@ namespace View
         {
             Orders orders = new Orders();
             orders.Show();
+            w.Close();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Btn_Statestic_Click(object sender, RoutedEventArgs e)
         {
-
+            StatesticWindow statesticWindow = new StatesticWindow();
+            statesticWindow.Show();
+            w.Close();
         }
     }
 }
