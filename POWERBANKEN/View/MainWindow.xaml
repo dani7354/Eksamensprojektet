@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="600" Width="900">
+    <Grid x:Name="GridMainWindow" HorizontalAlignment="Right" Width="892">
+        <Calendar x:Name="Calender_cld" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="579,319,0,0" Height="208" Width="283" RenderTransformOrigin="0.394,-0.624"/>
+        <Button x:Name="Btn_Statestic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="238,37,0,0" Height="42" FontSize="20" Content="'Vis'" Click="Btn_Statestic_Click"/>
+        <Button x:Name="Btn_Order" Content="'Vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="238,100,0,0" Height="42" FontSize="20" Click="Btn_Order_Click"/>
+        <Label x:Name="Lbl_Statestic" Content="Varestatistik:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="254" Margin="20,40,0,0" FontSize="20"/>
+        <Label x:Name="Lbl_Orders" Content="Varebestilling:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="254" Margin="20,100,0,0" FontSize="20"/>
+        <Label x:Name="Lbl_Amount" Content="Mængde:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,364,0,0" Height="50" Width="136" FontSize="20"/>
+        <Label x:Name="Lbl_Price" Content="Pris:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,414,0,0" Height="38" Width="136" FontSize="20"/>
+        <Label x:Name="Lbl_ProductID" Content="Produkt ID:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,319,0,0" Height="40" Width="136" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName" Content="Produktnavn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,272,0,0" Height="42" Width="136" FontSize="20"/>
+        <Label x:Name="Lbl_OrderDate" Content="Bestillingsdato:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,457,0,0" Height="38" Width="164" FontSize="20"/>
+        <Label x:Name="Lbl_LastDateOfOrder" Content="Sidste tidsfrist: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,500,0,0" Height="38" Width="164" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="258,322,0,0" Height="42" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy1" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="259,364,0,0" Height="42" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy2" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="258,414,0,0" Height="42" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy3" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="258,456,0,0" Height="42" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy4" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="258,280,0,0" Height="42" FontSize="20"/>
+        <Label x:Name="Lbl_ProductName1_Copy5" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="259,496,0,0" Height="42" FontSize="20"/>
+        <GridSplitter HorizontalAlignment="Left" Height="2" VerticalAlignment="Top" Width="911" Margin="-19,256,0,0" Background="Black"/>
+        <Button x:Name="Btn_EditProduct" Content="'Rediger vare'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="182" Margin="628,180,0,0" Height="36" FontSize="20"/>
     </Grid>
 </Window>
