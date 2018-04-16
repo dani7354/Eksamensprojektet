@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\POWERBANKEN",
-    "\\POWERBANKEN\\View",
-    "\\POWERBANKEN\\ViewModels"
+    "\\POWERBANKEN"
   ],
-  "SelectedNode": "\\POWERBANKEN\\ViewModels\\Base.cs",
+  "SelectedNode": "\\POWERBANKEN\\POWERBANKEN.sln",
   "PreviewInSolutionExplorer": false
 }
