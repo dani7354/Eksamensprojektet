@@ -1,6 +1,9 @@
-﻿using System;
+
 using System.Text;
 using System.Collections.Generic;
+using System;
+using System.Linq;
+using Domain;
 using System.IO;
 namespace DataAccess
 {
@@ -11,17 +14,18 @@ namespace DataAccess
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-        public List<string> ReadProductsFromCSV(string pFilePath)
+        public List<SalesPeriodInfo> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
         {
-            List<string> productinfo = new List<string>(); //Udskiftes med en liste af en custom type. evt. på.
-            using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
-            {
-                while (reader.EndOfStream == false)
+            List<SalesPeriodInfo> salesPeriodInfo = File.ReadAllLines(pFilePath, _readerEncoding)
+                .Skip(1)
+                .Select(a => a.Split(';'))
+                .Select(a => new SalesPeriodInfo()
                 {
-                    productinfo.Add(reader.ReadLine());
-                }
-            }
-            return productinfo;
+                    Start = periodStart,
+                    End = periodEnd,
+                    QuantiySold = int.Parse(a[1]),
+                }).ToList();
+            return salesPeriodInfo;
         }
     }
 }
