@@ -20,10 +20,6 @@ namespace Domain
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
 
-       
-
-      
-
-
+ 
     }
 }
