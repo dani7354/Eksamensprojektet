@@ -15,7 +15,7 @@ namespace DataAccess
         public string GetProductsFromCSV(string pFilePath)
         {
             
-            return string.Empty;
+            File.ReadAllLines(pFilePath, _readerEncoding)
             
         }
     }
