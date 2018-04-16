@@ -1,22 +1,29 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
+using System.Collections.Generic;
+using System;
+using Domain;
+using System.IO;
 namespace DataAccess
 {
     public class CSVReader
     {
         private Encoding _readerEncoding;
-
-
         public CSVReader()
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-
-        public string GetProductsFromCSV(string pFilePath)
+        public List<Product> ReadProductsSalesInfoFromCSV(string pFilePath)
         {
-            
-            return string.Empty;
-            
+            List<Product> products = new List<Product>();
+            using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
+            {
+
+                while (reader.EndOfStream == false)
+                {
+                    
+                }
+            }
+            return null;
         }
     }
 }
