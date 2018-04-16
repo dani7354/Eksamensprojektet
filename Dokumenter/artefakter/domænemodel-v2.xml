@@ -1,0 +1,54 @@
+<diagram program="umletino" version="14.2"><zoom_level>10</zoom_level><element><id>Relation</id><coordinates><x>180</x><y>550</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+indeholder salgsinfo om  &gt;</panel_attributes><additional_attributes>180;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>520</y><w>160</w><h>100</h></coordinates><panel_attributes>Salgsperiodeinfo
+--
+Starttidspunkt
+Sluttidspunkt
+SolgtAntal
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>530</y><w>170</w><h>110</h></coordinates><panel_attributes>Leverandør/Brand
+--
+Navn
+Produktionstid
+Leveringstid</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>520</y><w>190</w><h>130</h></coordinates><panel_attributes>Produkt
+--
+SKU
+Navn
+Produktkategori
+Beskrivelse
+Lagerbeholdning
+Lagerkostpris
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>560</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1..*
+leverers af &gt;</panel_attributes><additional_attributes>10;20;140;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>310</y><w>170</w><h>110</h></coordinates><panel_attributes>Salgsprognose
+--
+Starttidspunkt
+Sluttidspunkt
+ForventetVækstPrct
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>100</x><y>410</y><w>120</w><h>130</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..*
+beregnes vha. v</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>310</y><w>180</w><h>110</h></coordinates><panel_attributes>FremtidigBestilling
+--
+Bestillingsdato
+ForventetLeveringsdato
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>340</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+&lt; oprettes på baggrund af</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>410</y><w>160</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1..*
+lægges hos &gt;</panel_attributes><additional_attributes>10;10;140;120</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>410</y><w>100</w><h>130</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..*
+indeholder v</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLNote</id><coordinates><x>860</x><y>270</y><w>290</w><h>90</h></coordinates><panel_attributes>For at forenkle opgaven en smule, vedtager vi,
+at en leverandør har samme leverings- og
+produktionstid, uanset hvilke produkter, der er 
+bestilt.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>350</y><w>270</w><h>250</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>250;10;230;80;160;170;100;230;10;230</additional_attributes></element></diagram>
