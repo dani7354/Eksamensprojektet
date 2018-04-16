@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewModels
+namespace Domain
 {
-    public class Class1
+    public class Product
     {
     }
 }
