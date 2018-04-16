@@ -12,12 +12,11 @@ namespace DataAccess
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-        public List<Product> ReadProductsSalesInfoFromCSV(string pFilePath)
+        public List<Product> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
         {
-            List<Product> products = new List<Product>();
+            List<SalesPeriodInfo> products = new List<SalesPeriodInfo>();
             using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
             {
-
                 while (reader.EndOfStream == false)
                 {
                     
