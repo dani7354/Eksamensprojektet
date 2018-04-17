@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using Domain;
 using System.IO;
+
 namespace DataAccess
 {
     public class CSVReader
@@ -19,21 +20,17 @@ namespace DataAccess
             List<Statistic> productSalesStaticstic = new List<Statistic>();
             using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
             {
-         
                 reader.ReadLine(); // Skipping the first line. 
                 while (reader.EndOfStream == false)
                 {
                     string[] tuple = reader.ReadLine().Split(',');
-
                     Statistic prodStat = new Statistic();
                     prodStat.Start = periodStart;
                     prodStat.End = periodEnd;
-
                     bool quantityFound = false;
                     int counter = 0;
                     while (!quantityFound || counter < 3)
-                    {
-                        
+                    {      
                         if (IsNumber(tuple[counter]))
                         {
                             prodStat.QuantiySold = Convert.ToInt32(tuple[counter]);
