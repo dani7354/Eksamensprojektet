@@ -35,8 +35,8 @@ namespace DataAccess
                     int minStock = (int)reader[5];
                     int maxStock = (int)reader[6];
                     double productionInHours = (double)reader[7];
-                    string productType = reader[8].ToString();
-                    string brandName = reader[9].ToString();
+                    ProductType productType = (ProductType)reader[8];
+                    Brand brandName = (Brand)reader[9];
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
                         productionInHours, productType, brandName);

@@ -8,5 +8,6 @@ namespace Domain
 {
     public class ProductType
     {
+        string TypeName { get; set; }
     }
 }

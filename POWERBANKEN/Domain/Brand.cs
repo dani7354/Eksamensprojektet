@@ -8,5 +8,6 @@ namespace Domain
 {
     public class Brand
     {
+        string BrandName { get; set; }
     }
 }
