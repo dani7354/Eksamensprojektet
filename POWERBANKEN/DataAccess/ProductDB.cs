@@ -14,6 +14,7 @@ namespace DataAccess
         public static List<Product> GetAllProducts()
         {
             List<Product> ProductList = new List<Product>();
+            List<Product> InactiveProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
 
@@ -23,65 +24,34 @@ namespace DataAccess
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
-
                 while (reader.Read())
                 {
-                    int productID = (int)reader[0];
-                    string productName = (string)reader[1];
-                    string sku = reader[2].ToString();
-                    double purchasePrice = (double)reader[3];
-                    int amount = (int)reader[4];
-                    int minStock = (int)reader[5];
-                    int maxStock = (int)reader[6];
-                    double productionInHours = (double)reader[7];
-                    ProductType productType = new ProductType((string)reader[8]);
-                    Brand brandName = new Brand((string)reader[9]);
+                        int productID = (int)reader[0];
+                        string productName = (string)reader[1];
+                        string sku = reader[2].ToString();
+                        double purchasePrice = (double)reader[3];
+                        int amount = (int)reader[4];
+                        int minStock = (int)reader[5];
+                        int maxStock = (int)reader[6];
+                        double productionInHours = (double)reader[7];
+                        ProductType productType = (ProductType)reader[8];
+                        Brand brandName = (Brand)reader[9];
 
-                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, productType, brandName);
+                        Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
+                            productionInHours, productType, brandName);
+                    if ((bool)reader[10] == false)
+                    {
 
-                    ProductList.Add(product);
+                        InactiveProductList.Add(product);
+                    }
 
+                    else if ((bool)reader[10] == true)
+                    {
+                        ProductList.Add(product);
+                    }
                 }
-
+                return ProductList;
             }
-            return ProductList;
-        }
-        public static List<Product> GetBrand()
-        {
-            List<Product> ProductList = new List<Product>();
-            using (SqlConnection con = DBConnection.Connect)
-            {
-
-                con.Open();
-                SqlCommand cmd1 = new SqlCommand("See_Stock_By_Brand", con);
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-
-                SqlDataReader reader = cmd1.ExecuteReader();
-
-
-                while (reader.Read())
-                {
-                    int productID = (int)reader[0];
-                    string productName = (string)reader[1];
-                    string sku = reader[2].ToString();
-                    double purchasePrice = (double)reader[3];
-                    int amount = (int)reader[4];
-                    int minStock = (int)reader[5];
-                    int maxStock = (int)reader[6];
-                    double productionInHours = (double)reader[7];
-                    ProductType productType = new ProductType((string)reader[8]);
-                    Brand brandName = new Brand((string)reader[9]);
-
-                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, productType, brandName);
-
-                    ProductList.Add(product);
-
-                }
-
-            }
-            return ProductList;
         }
     }
 }

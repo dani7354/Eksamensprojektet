@@ -17,7 +17,6 @@
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>
             </Menu>
-
         </StackPanel>
         <Calendar x:Name="Calender_cld" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="579,319,0,0" Height="208" Width="283" RenderTransformOrigin="0.394,-0.624"/>
         <Button x:Name="Btn_Statestic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="238,37,0,0" Height="42" FontSize="20" Content="'Vis'" Click="Btn_Statestic_Click"/>
