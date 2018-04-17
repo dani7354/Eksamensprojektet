@@ -59,7 +59,6 @@ namespace ViewModels
         }
         public void ShowDeactivatedProducts()
         {
-            //UpdateProducts();
             if (!_deaktivatedProductsShown)
             {
                 SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
