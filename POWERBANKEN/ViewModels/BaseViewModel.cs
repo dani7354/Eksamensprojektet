@@ -20,7 +20,5 @@ namespace ViewModels
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
-
     }
 }

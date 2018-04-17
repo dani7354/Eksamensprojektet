@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="StockWindow" Height="450" Width="800">
+
     <Grid>
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="20">
+                <MenuItem Header="_Filer">
+                    <MenuItem x:Name="AddItem" Header="Slet produkt" HorizontalAlignment="Left" Width="150" Click="AddItem_Click"/>
+                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150" Click="AppExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Hjælp">
+                    <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+            </Menu>
+
+        </StackPanel>
         <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="772" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" />
