@@ -27,10 +27,12 @@ namespace UnitTestProject1
 
         public void DBConnectionWorks()
         {
+            int totalProducts = 33;
             List<Product> product = ProductDB.GetAllProducts();
 
             //Assert.AreEqual(3, product.Count);
-            Assert.AreEqual(5, product[0].ID);
+            Assert.AreEqual(totalProducts, product.Count);
+           // Assert.AreEqual(5, product[0].ID);
         }
     }
 }
