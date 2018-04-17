@@ -27,7 +27,7 @@ namespace UnitTestProject1
 
         public void DBConnectionWorks()
         {
-            List<Product> product = ProductDB.GetAllProducts("Trixline LED G9 6W");
+            List<Product> product = ProductDB.GetAllProducts();
 
             //Assert.AreEqual(3, product.Count);
             Assert.AreEqual(5, product[0].ID);
