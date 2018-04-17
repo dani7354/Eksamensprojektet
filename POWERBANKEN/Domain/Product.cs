@@ -36,6 +36,10 @@ namespace Domain
         public Brand Brand { get; set; }
         public bool IsActive { get; set; }
 
- 
+
+        public override string ToString()
+        {
+            return string.Format($"{Name};{SKU};{Brand.Name};{Type.TypeName}");
+        }
     }
 }

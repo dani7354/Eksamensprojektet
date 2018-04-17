@@ -11,40 +11,63 @@ namespace ViewModels
 {
     public class StockViewModel : BaseViewModel
     {
-        private List<Product> _products;
+        private List<Product> _allProducts;
+        private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
+        private string _searchText;
 
-        public StockViewModel()
-        {
-            Products = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
-        }
-        public List<Product> Products
+        public List<Product> SelectedProducts
         {
             get
             {
-                return _products;
+                return _selectedProducts;
             }
             set
             {
-                _products = value;
-                NotifyPropertyChanged("Products");
+                _selectedProducts = value;
+                NotifyPropertyChanged("SelectedProducts");
             }
+        }
+        public string SearchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                if (!value.Equals(_searchText))
+                {
+                    _searchText = value;
+                    NotifyPropertyChanged("SearchText");
+                    Search();
+                }
+            }
+        }
+        public StockViewModel()
+        {
+            _allProducts = ProductDB.GetAllProducts();
+            SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+        }
+        private void Search()
+        {
+            SelectedProducts = _allProducts.Where(p => p.ToString().ToLower().Contains(SearchText.ToLower())).ToList<Product>();
         }
         public void UpdateProducts()
         {
-            ProductDB.UpdateProducts(Products);
+            ProductDB.UpdateProducts(_allProducts);
         }
         public void ShowDeactivatedProducts()
         {
-            UpdateProducts();
+            //UpdateProducts();
             if (!_deaktivatedProductsShown)
             {
-                Products = ProductDB.GetAllProducts().Where(p => p.IsActive == false).ToList<Product>();
+                SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
                 _deaktivatedProductsShown = true;
             }
             else
             {
-                Products = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
+                SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
                 _deaktivatedProductsShown = false;
             }
          
