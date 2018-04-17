@@ -18,15 +18,16 @@ namespace DataAccess
             {
 
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("", con);
+                SqlCommand cmd1 = new SqlCommand("See_Stock", con);
                 cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd1.Parameters.Add(new SqlParameter("@ItemName", searchText));
+                cmd1.Parameters.Add(new SqlParameter("@PRODUCTNAME", searchText));
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
 
                 while (reader.Read())
-                { }
+                {
+                }
             }
             return null;
         }
