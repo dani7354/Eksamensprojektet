@@ -13,8 +13,8 @@ namespace DataAccess
     {
         public static List<Product> GetAllProducts()
         {
-            List<Product> ProductList = new List<Product>();
             List<Product> InactiveProductList = new List<Product>();
+            List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
 
@@ -26,31 +26,24 @@ namespace DataAccess
 
                 while (reader.Read())
                 {
-                        int productID = (int)reader[0];
-                        string productName = (string)reader[1];
-                        string sku = reader[2].ToString();
-                        double purchasePrice = (double)reader[3];
-                        int amount = (int)reader[4];
-                        int minStock = (int)reader[5];
-                        int maxStock = (int)reader[6];
-                        double productionInHours = (double)reader[7];
+                    int productID = (int)reader[0];
+                    string productName = (string)reader[1];
+                    string sku = reader[2].ToString();
+                    double purchasePrice = (double)reader[3];
+                    int amount = (int)reader[4];
+                    int minStock = (int)reader[5];
+                    int maxStock = (int)reader[6];
+                    double productionInHours = (double)reader[7];
                     ProductType productType = new ProductType((string)reader[8]);
                     Brand brand = new Brand((string)reader[9]);
+                    bool isActive = (bool)reader[10];
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                            productionInHours, productType, brand);
-                    if ((bool)reader[10] == false)
-                    {
-
-                        InactiveProductList.Add(product);
-                    }
-
-                    else if ((bool)reader[10] == true)
-                    {
+                            productionInHours, productType, brand, isActive);
                         ProductList.Add(product);
-                    }
+                    
                 }
-                return ProductList;
+              return ProductList;
             }
         }
     }

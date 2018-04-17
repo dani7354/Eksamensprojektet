@@ -3,6 +3,7 @@ using DataAccess;
 using Domain;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 
 namespace UnitTestProject1
@@ -29,9 +30,9 @@ namespace UnitTestProject1
         {
             int totalProducts = 33;
             List<Product> product = ProductDB.GetAllProducts();
-
             //Assert.AreEqual(3, product.Count);
             Assert.AreEqual(totalProducts, product.Count);
+            Assert.AreEqual(product.)
            // Assert.AreEqual(5, product[0].ID);
         }
     }
