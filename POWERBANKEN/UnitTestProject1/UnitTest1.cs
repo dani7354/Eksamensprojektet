@@ -4,6 +4,7 @@ using Domain;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace UnitTestProject1
 {
     [TestClass]
@@ -20,6 +21,16 @@ namespace UnitTestProject1
             Assert.AreEqual(totalProducts, info.Count);
 
             
+        }
+
+        [TestMethod]
+
+        public void DBConnectionWorks()
+        {
+            List<Product> product = ProductDB.GetAllProducts();
+
+            //Assert.AreEqual(3, product.Count);
+            Assert.AreEqual(5, product[0].ID);
         }
     }
 }

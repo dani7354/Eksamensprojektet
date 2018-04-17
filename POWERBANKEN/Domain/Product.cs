@@ -11,16 +11,16 @@ namespace Domain
         public Product(int productID, string productName, string sku, double purchasePrice, int stockAmount, int minStock,
             int maxStock,double productionTimeInHours, ProductType type, Brand brand)
         {
-            this.ID = productID;
-            this.Name = productName;
-            this.SKU = sku;
-            this.PurchasePrice = purchasePrice;
-            this.StockAmount = stockAmount;
-            this.MinStock = minStock;
-            this.MaxStock = maxStock;
-            this.ProductionTimeInHours = productionTimeInHours;
-            this.Type = type;
-            this.Brand = brand;
+            ID = productID;
+            Name = productName;
+            SKU = sku;
+            PurchasePrice = purchasePrice;
+            StockAmount = stockAmount;
+            MinStock = minStock;
+            MaxStock = maxStock;
+            ProductionTimeInHours = productionTimeInHours;
+            Type = type;
+            Brand = brand;
 
         }
         public int ID { get; set; }
