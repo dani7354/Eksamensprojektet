@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Order
+    public class Order
     {
+        public Order(DateTime orderDate, DateTime expectedDeliveryDate,
+            DateTime actualDeliveryDate, int amount, double totalOrderPrice)
+        {
+            OrderDate = orderDate;
+            ExpectedDeliveryDate = expectedDeliveryDate;
+            ActualDeliveryDate = actualDeliveryDate;
+            Amount = amount;
+            TotalOrderPrice = totalOrderPrice;
+        }
         public DateTime OrderDate { get; set; }
         public DateTime ExpectedDeliveryDate { get; set; }
         public DateTime ActualDeliveryDate { get; set; }
