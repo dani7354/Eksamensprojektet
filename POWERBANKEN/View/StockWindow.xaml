@@ -5,35 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="StockWindow" Height="auto" Width="1000">
+        Title="StockWindow" Height="700" Width="1000">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Top">
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
-                    <MenuItem x:Name="AddItem" Header="Slet produkt" HorizontalAlignment="Left" Width="150"/>
-                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150"/>
+                    <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="150" Click="btn_SaveAndClose_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Hjælp">
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" />
+                <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto" />
-                <DataGridTextColumn Binding="{Binding Type}" Header="Produktkategori"  Width="auto" />
-                <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" />
-                <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto" />
+                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding MaxStock}" Header="Max beholdning (stk)"  Width="auto"/>
+
+                <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btn_SaveAndClose" Content="Gem og luk"  HorizontalAlignment="Left" Margin="834,617,0,0" VerticalAlignment="Top" Width="75" Click="btn_SaveAndClose_Click"   />
+        <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="674,613,0,0" VerticalAlignment="Top" Width="155" Height="24" Click="btn_ChangeGridSource_Click"   />
     </Grid>
+
 </Window>

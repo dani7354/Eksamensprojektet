@@ -20,10 +20,37 @@ namespace View
     /// </summary>
     public partial class StockWindow : Window
     {
+        StockViewModel _viewModel = null;
         public StockWindow()
         {
+            _viewModel = new StockViewModel();
             InitializeComponent();
-            DataContext = new StockViewModel();
+            DataContext = _viewModel;
+        }
+
+        private void btn_SaveAndClose_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _viewModel.UpdateProducts();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_ChangeGridSource_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _viewModel.ShowDeactivatedProducts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

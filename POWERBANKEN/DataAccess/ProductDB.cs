@@ -46,5 +46,27 @@ namespace DataAccess
               return ProductList;
             }
         }
+        public static void UpdateProducts(List<Product> products)
+        {
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                foreach (Product p in products)
+                {
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con);
+                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@id", p.ID));
+                    cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
+                    cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
+                    cmd1.Parameters.Add(new SqlParameter("@price", p.PurchasePrice));
+                    cmd1.Parameters.Add(new SqlParameter("@stockamount", p.StockAmount));
+                    cmd1.Parameters.Add(new SqlParameter("@minstock", p.MinStock));
+                    cmd1.Parameters.Add(new SqlParameter("@maxstock", p.MaxStock));
+                    cmd1.Parameters.Add(new SqlParameter("@productionhours", p.ProductionTimeInHours));
+                    cmd1.Parameters.Add(new SqlParameter("@isactive", p.IsActive));
+                    cmd1.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
