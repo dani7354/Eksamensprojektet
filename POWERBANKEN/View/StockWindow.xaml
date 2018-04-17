@@ -27,13 +27,14 @@
             
 
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="900" AutoGenerateColumns="False" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto" />
                 <DataGridTextColumn Binding="{Binding ProductType}" Header="Produktkategori"  Width="auto" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto" />
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
