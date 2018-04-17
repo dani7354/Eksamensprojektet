@@ -28,10 +28,23 @@ namespace DataAccess
                 while (reader.Read())
                 {
                     int productID = (int)reader[0];
-                    string productName
+                    string productName = (string)reader[1];
+                    string sku = reader[2].ToString();
+                    double purchasePrice = (double)reader[3];
+                    int amount = (int)reader[4];
+                    int minStock = (int)reader[5];
+                    int maxStock = (int)reader[6];
+                    double productionInHours = (double)reader[7];
+                    string productType = reader[8].ToString();
+                    string brandName = reader[9].ToString();
+
+                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
+                        productionInHours, productType, brandName);
+
                 }
+
             }
-            return null;
+            return ProductList;
         }
     }
 }
