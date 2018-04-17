@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class SalesPeriodInfo
+    public class Statistic
     {
         public int QuantiySold { get; set; }
         public Product Product { get; set; }

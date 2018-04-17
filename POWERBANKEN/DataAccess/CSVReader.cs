@@ -14,18 +14,44 @@ namespace DataAccess
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-        public List<SalesPeriodInfo> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
+        public List<Statistic> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
         {
-            List<SalesPeriodInfo> salesPeriodInfo = File.ReadAllLines(pFilePath, _readerEncoding)
-                .Skip(1)
-                .Select(a => a.Split(';'))
-                .Select(a => new SalesPeriodInfo()
+            List<Statistic> productSalesStaticstic = new List<Statistic>();
+            using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
+            {
+         
+                reader.ReadLine(); // Skipping the first line. 
+                while (reader.EndOfStream == false)
                 {
-                    Start = periodStart,
-                    End = periodEnd,
-                    QuantiySold = int.Parse(a[1]),
-                }).ToList();
-            return salesPeriodInfo;
+                    string[] tuple = reader.ReadLine().Split(',');
+
+                    Statistic prodStat = new Statistic();
+                    prodStat.Start = periodStart;
+                    prodStat.End = periodEnd;
+
+                    bool quantityFound = false;
+                    int counter = 0;
+                    while (!quantityFound || counter < 3)
+                    {
+                        
+                        if (IsNumber(tuple[counter]))
+                        {
+                            prodStat.QuantiySold = Convert.ToInt32(tuple[counter]);
+                            quantityFound = true;
+                        }
+                        counter++;
+                    }
+                    productSalesStaticstic.Add(prodStat);
+                }
+
+            }
+            return productSalesStaticstic;
         }
+        private bool IsNumber(string value)
+        {
+            int n;
+            return int.TryParse(value, out n);
+        }
+
     }
 }
