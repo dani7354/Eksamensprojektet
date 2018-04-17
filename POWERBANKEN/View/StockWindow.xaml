@@ -32,8 +32,10 @@
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto" />
-                <DataGridTextColumn Binding="{Binding ProductType}" Header="Produktkategori"  Width="auto" />
+                <DataGridTextColumn Binding="{Binding Type}" Header="Produktkategori"  Width="auto" />
+                <DataGridTextColumn Binding="{Binding Brand}" Header="Brand"  Width="auto" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto" />
+                
                 
             </DataGrid.Columns>
         </DataGrid>
