@@ -40,5 +40,11 @@ namespace View
             statesticWindow.Show();
             w.Close();
         }
+
+        private void StockView_Click(object sender, RoutedEventArgs e)
+        {
+            StockWindow swindow = new StockWindow();
+            swindow.Show();
+        }
     }
 }

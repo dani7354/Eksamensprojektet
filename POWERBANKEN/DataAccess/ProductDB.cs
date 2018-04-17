@@ -11,7 +11,7 @@ namespace DataAccess
 {
     public static class ProductDB
     {
-        public static List<Product> GetAllProducts(string searchText)
+        public static List<Product> GetAllProducts()
         {
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect())
@@ -20,7 +20,6 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("See_Stock", con);
                 cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-                //cmd1.Parameters.Add(new SqlParameter("@ItemName", searchText));
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
@@ -35,11 +34,11 @@ namespace DataAccess
                     int minStock = (int)reader[5];
                     int maxStock = (int)reader[6];
                     double productionInHours = (double)reader[7];
-                    ProductType productType = (ProductType)reader[8];
-                    Brand brandName = (Brand)reader[9];
+                    //ProductType productType = (ProductType)reader[8];
+                  //  Brand brandName = (Brand)reader[9];
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, productType, brandName);
+                        productionInHours, null, null);
 
                 }
 

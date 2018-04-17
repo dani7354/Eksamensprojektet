@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900">
     <Grid x:Name="GridMainWindow" HorizontalAlignment="Right" Width="892">
+        <StackPanel VerticalAlignment="Top">
+            <Menu Width="Auto" Height="20">
+                <MenuItem Header="_Filer">
+                    <MenuItem x:Name="AddItem" Header="Vis produktoversigt" HorizontalAlignment="Left" Width="200" Click="StockView_Click"/>
+                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150" />
+                </MenuItem>
+                <MenuItem Header="_Hjælp">
+                    <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+            </Menu>
+
+        </StackPanel>
         <Calendar x:Name="Calender_cld" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="579,319,0,0" Height="208" Width="283" RenderTransformOrigin="0.394,-0.624"/>
         <Button x:Name="Btn_Statestic" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="238,37,0,0" Height="42" FontSize="20" Content="'Vis'" Click="Btn_Statestic_Click"/>
         <Button x:Name="Btn_Order" Content="'Vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Margin="238,100,0,0" Height="42" FontSize="20" Click="Btn_Order_Click"/>

@@ -11,8 +11,8 @@
         <StackPanel VerticalAlignment="Top">
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
-                    <MenuItem x:Name="AddItem" Header="Slet produkt" HorizontalAlignment="Left" Width="150" Click="AddItem_Click"/>
-                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150" Click="AppExit_Click"/>
+                    <MenuItem x:Name="AddItem" Header="Slet produkt" HorizontalAlignment="Left" Width="150"/>
+                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150" />
                 </MenuItem>
                 <MenuItem Header="_Hjælp">
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
