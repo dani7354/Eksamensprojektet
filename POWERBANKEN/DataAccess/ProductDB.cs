@@ -11,14 +11,14 @@ namespace DataAccess
 {
     public static class ProductDB
     {
-        public static List<Product> SearchItemName(string searchText)
+        public static List<Product> GetAllProducts(string searchText)
         {
-            List<Product> ListOfItems = new List<Product>();
+            List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect())
             {
 
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("Search_ItemName", con);
+                SqlCommand cmd1 = new SqlCommand("", con);
                 cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd1.Parameters.Add(new SqlParameter("@ItemName", searchText));
 
