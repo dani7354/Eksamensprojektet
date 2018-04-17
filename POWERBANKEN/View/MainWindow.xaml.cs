@@ -20,9 +20,25 @@ namespace View
     /// </summary>
     public partial class MainWindow : Window
     {
+        Window w;
         public MainWindow()
         {
+            w = new Window();
             InitializeComponent();
+        }
+
+        private void Btn_Order_Click(object sender, RoutedEventArgs e)
+        {
+            Orders orders = new Orders();
+            orders.Show();
+            w.Close();
+        }
+
+        private void Btn_Statestic_Click(object sender, RoutedEventArgs e)
+        {
+            StatesticWindow statesticWindow = new StatesticWindow();
+            statesticWindow.Show();
+            w.Close();
         }
     }
 }
