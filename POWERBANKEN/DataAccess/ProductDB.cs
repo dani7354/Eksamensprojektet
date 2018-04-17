@@ -20,13 +20,15 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("See_Stock", con);
                 cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd1.Parameters.Add(new SqlParameter("@PRODUCTNAME", searchText));
+                //cmd1.Parameters.Add(new SqlParameter("@ItemName", searchText));
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
 
                 while (reader.Read())
                 {
+                    int productID = (int)reader[0];
+                    string productName
                 }
             }
             return null;
