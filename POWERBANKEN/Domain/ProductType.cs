@@ -12,12 +12,7 @@ namespace Domain
         {
             this.TypeName = typeName;
         }
-
         string TypeName { get; set; }
-
-
-
-
         public override string ToString() => TypeName;
     }
 }
