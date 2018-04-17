@@ -26,13 +26,27 @@ namespace UnitTestProject1
 
         [TestMethod]
 
-        public void DBConnectionWorks()
+        public void GetActiveProducts()
         {
-            int totalProducts = 33;
-            List<Product> product = ProductDB.GetAllProducts();
+            int totalActiveProducts = 33;
+            List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
+
             //Assert.AreEqual(3, product.Count);
-            Assert.AreEqual(totalProducts, product.Count);
-           // Assert.AreEqual(5, product[0].ID);
+            
+            Assert.AreEqual(totalActiveProducts, product.Count);
+           // Assert.AreEqual(5, product0].ID);
         }
+        [TestMethod]
+        public void GetInactiveProducts()
+        {
+            int totalInActiveProducts = 1;
+            List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == false).ToList<Product>();
+
+            //Assert.AreEqual(3, product.Count);
+
+            Assert.AreEqual(totalInActiveProducts, product.Count);
+            // Assert.AreEqual(5, product0].ID);
+        }
+
     }
 }

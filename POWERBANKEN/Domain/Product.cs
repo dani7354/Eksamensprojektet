@@ -9,7 +9,7 @@ namespace Domain
     public class Product
     {
         public Product(int productID, string productName, string sku, double purchasePrice, int stockAmount, int minStock,
-            int maxStock,double productionTimeInHours, ProductType type, Brand brand)
+            int maxStock,double productionTimeInHours, ProductType type, Brand brand, bool isActive)
         {
             ID = productID;
             Name = productName;
@@ -21,7 +21,7 @@ namespace Domain
             ProductionTimeInHours = productionTimeInHours;
             Type = type;
             Brand = brand;
-
+            IsActive = isActive;
         }
         public int ID { get; set; }
         public string Name { get; set; }
@@ -34,6 +34,7 @@ namespace Domain
 
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
+        public bool IsActive { get; private set; }
 
  
     }
