@@ -44,10 +44,10 @@ namespace DataAccess
             }
             return productSalesStaticstic;
         }
-        private bool IsNumber(string value)
+        private bool IsNumber(string s)
         {
             int n;
-            return int.TryParse(value, out n);
+            return int.TryParse(s, out n);
         }
 
     }
