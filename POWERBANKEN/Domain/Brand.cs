@@ -8,6 +8,12 @@ namespace Domain
 {
     public class Brand
     {
+        public Brand(string brandName)
+        {
+            this.BrandName = brandName;
+        }
         string BrandName { get; set; }
+
+        public override string ToString() => BrandName;
     }
 }

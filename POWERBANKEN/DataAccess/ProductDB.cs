@@ -35,11 +35,10 @@ namespace DataAccess
                     int maxStock = (int)reader[6];
                     double productionInHours = (double)reader[7];
                     ProductType productType = new ProductType((string)reader[8]);
-
-                    //Brand brandName = (Brand)reader[9];
+                    Brand brandName = new Brand((string)reader[9]);
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, productType, null);
+                        productionInHours, productType, brandName);
 
                     ProductList.Add(product);
 
@@ -72,10 +71,10 @@ namespace DataAccess
                     int maxStock = (int)reader[6];
                     double productionInHours = (double)reader[7];
                     ProductType productType = new ProductType((string)reader[8]);
-                    Brand brandName = (Brand)reader[9];
+                    Brand brandName = new Brand((string)reader[9]);
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, productType, null);
+                        productionInHours, productType, brandName);
 
                     ProductList.Add(product);
 
