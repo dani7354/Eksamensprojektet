@@ -14,6 +14,7 @@ namespace DataAccess
         public static List<Product> GetAllProducts()
         {
             List<Product> ProductList = new List<Product>();
+            List<Product> InactiveProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
 
@@ -23,29 +24,34 @@ namespace DataAccess
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
-
                 while (reader.Read())
                 {
-                    int productID = (int)reader[0];
-                    string productName = (string)reader[1];
-                    string sku = reader[2].ToString();
-                    double purchasePrice = (double)reader[3];
-                    int amount = (int)reader[4];
-                    int minStock = (int)reader[5];
-                    int maxStock = (int)reader[6];
-                    double productionInHours = (double)reader[7];
-                    //ProductType productType = (ProductType)reader[8];
-                    //Brand brandName = (Brand)reader[9];
+                        int productID = (int)reader[0];
+                        string productName = (string)reader[1];
+                        string sku = reader[2].ToString();
+                        double purchasePrice = (double)reader[3];
+                        int amount = (int)reader[4];
+                        int minStock = (int)reader[5];
+                        int maxStock = (int)reader[6];
+                        double productionInHours = (double)reader[7];
+                        ProductType productType = (ProductType)reader[8];
+                        Brand brandName = (Brand)reader[9];
 
-                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                        productionInHours, null, null);
+                        Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
+                            productionInHours, productType, brandName);
+                    if ((bool)reader[10] == false)
+                    {
 
-                    ProductList.Add(product);
+                        InactiveProductList.Add(product);
+                    }
 
+                    else if ((bool)reader[10] == true)
+                    {
+                        ProductList.Add(product);
+                    }
                 }
-
+                return ProductList;
             }
-            return ProductList;
         }
     }
 }
