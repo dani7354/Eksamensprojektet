@@ -8,6 +8,10 @@ namespace Domain
 {
     public class Brand
     {
-        string BrandName { get; set; }
+        public Brand(string brandName)
+        {
+            this.Name = brandName;
+        }
+        public string Name { get; set; }
     }
 }

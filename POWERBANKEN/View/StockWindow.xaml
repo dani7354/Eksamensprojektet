@@ -24,15 +24,14 @@
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>
             </Menu>
-            
-
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="900" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid HorizontalAlignment="Left" Height="378" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Products, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto" />
-                <DataGridTextColumn Binding="{Binding ProductType}" Header="Produktkategori"  Width="auto" />
+                <DataGridTextColumn Binding="{Binding Type}" Header="Produktkategori"  Width="auto" />
+                <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto" />
             </DataGrid.Columns>
         </DataGrid>

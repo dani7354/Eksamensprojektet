@@ -8,6 +8,11 @@ namespace Domain
 {
     public class ProductType
     {
+        public ProductType(string typeName)
+        {
+            this.TypeName = typeName;
+        }
         string TypeName { get; set; }
+        public override string ToString() => TypeName;
     }
 }
