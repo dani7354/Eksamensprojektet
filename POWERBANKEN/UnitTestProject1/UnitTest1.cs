@@ -37,14 +37,14 @@ namespace UnitTestProject1
         [TestMethod]
         public void GetActiveProducts()
         {
-            int totalActiveProducts = 33;
+            int totalActiveProducts = 31;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
             Assert.AreEqual(totalActiveProducts, product.Count);
         }
         [TestMethod]
         public void GetInactiveProducts()
         {
-            int totalInActiveProducts = 1;
+            int totalInActiveProducts = 3;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == false).ToList<Product>();
             Assert.AreEqual(totalInActiveProducts, product.Count);
         }
