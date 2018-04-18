@@ -15,16 +15,16 @@ namespace DataAccess
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-        public List<Statistic> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
+        public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
         {
-            List<Statistic> productSalesStaticstic = new List<Statistic>();
+            List<SalesStatistics> productSalesStaticstic = new List<SalesStatistics>();
             using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
             {
                 reader.ReadLine(); // Skipping the first line. 
                 while (reader.EndOfStream == false)
                 {
                     string[] tuple = reader.ReadLine().Split(',');
-                    Statistic prodStat = new Statistic();
+                    SalesStatistics prodStat = new SalesStatistics();
                     prodStat.Start = periodStart;
                     prodStat.End = periodEnd;
                     bool quantityFound = false;

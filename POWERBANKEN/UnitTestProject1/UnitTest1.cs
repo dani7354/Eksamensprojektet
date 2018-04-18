@@ -28,7 +28,7 @@ namespace UnitTestProject1
             CSVReader reader = new CSVReader();
             DateTime start = new DateTime(2018, 1, 1);
             DateTime end = new DateTime(2018, 4, 9);
-            List<Statistic> info =  reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
+            List<SalesStatistics> info =  reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
             Assert.AreEqual(totalProducts, info.Count);
 
             
