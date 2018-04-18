@@ -11,6 +11,13 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
+        [TestCleanup]
+        public void CleanUp()
+        {
+
+        }
+
+
         [TestMethod]
         public void ReadFromCSVWorks() //opdateres, når læser-metoden er færdiglavet. 
         {
@@ -25,7 +32,6 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-
         public void GetActiveProducts()
         {
             int totalActiveProducts = 33;
