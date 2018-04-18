@@ -40,7 +40,6 @@ namespace ViewModels
                 {
                     _searchText = value;
                     NotifyPropertyChanged("SearchText");
-                    Search();
                 }
             }
         }
@@ -49,9 +48,9 @@ namespace ViewModels
             _allProducts = ProductDB.GetAllProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
-        private void Search()
+        public void Search()
         {
-            SelectedProducts = _allProducts.Where(p => p.ToString().ToLower().Contains(SearchText.ToLower())).ToList<Product>();
+          
         }
         public void UpdateProducts()
         {
