@@ -38,6 +38,14 @@ namespace DataAccess
                         }
                         counter++;
                     }
+                    foreach (var item in tuple)
+                    {
+                        if(ProductDB.GetAllProducts().Exists(x => x.SKU == item))
+                        {
+                            prodStat.Product = ProductDB.GetAllProducts().Where(p => p.SKU == item).Single();
+                            break;
+                        }
+                    }
                     productSalesStaticstic.Add(prodStat);
                 }
 
