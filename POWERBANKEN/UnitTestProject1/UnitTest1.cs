@@ -55,7 +55,7 @@ namespace UnitTestProject1
             Assert.AreEqual(true, _stockViewModel.SelectedProducts.Last().IsActive);
             Assert.AreEqual(true, _stockViewModel.SelectedProducts.First().IsActive);
 
-            //Vi beder om at få vist de inaktive varer
+            // Vi beder om at få vist de inaktive varer
             _stockViewModel.ShowDeactivatedProducts();
 
             // Skulle nu være false.
