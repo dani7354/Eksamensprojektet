@@ -20,7 +20,7 @@
         <Label x:Name="Lbl_ProductName1_Copy3" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="261,326,0,0" Height="45" FontSize="20"/>
         <Label x:Name="Lbl_ProductName1_Copy4" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="261,140,0,0" Height="45" FontSize="20"/>
         <Label x:Name="Lbl_ProductName1_Copy5" Content="EmptyName.." HorizontalAlignment="Left" VerticalAlignment="Top" Width="231" Margin="262,369,0,0" Height="44" FontSize="20"/>
-        <Button x:Name="Btn_OrderToCalender" Content="'Bestil vare'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Margin="674,494,0,0" Height="46" FontSize="20" Click="Btn_AddNewProduct_Click"/>
-        <TextBox x:Name="Tbx_SearchboxOrders" HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" Text="Søg produkt..." VerticalAlignment="Top" Width="324" Margin="473,45,0,0" TextChanged="TextBox_TextChanged" FontSize="20" FontStyle="Italic"/>
+        <Button x:Name="Btn_OrderToCalender" Content="'Bestil vare'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Margin="674,494,0,0" Height="46" FontSize="20"/>
+        <TextBox x:Name="Tbx_SearchboxOrders" HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" Text="Søg produkt..." VerticalAlignment="Top" Width="324" Margin="473,45,0,0" FontSize="20" FontStyle="Italic"/>
     </Grid>
 </Window>
