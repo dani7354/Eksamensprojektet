@@ -19,8 +19,6 @@ namespace UnitTestProject1
         {
             _stockViewModel = new StockViewModel();
         }
-
-
         [TestMethod]
         public void ReadFromCSVWorks() //opdateres, når læser-metoden er færdiglavet. 
         {
@@ -30,8 +28,6 @@ namespace UnitTestProject1
             DateTime end = new DateTime(2018, 4, 9);
             List<SalesStatistics> info =  reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
             Assert.AreEqual(totalProducts, info.Count);
-
-            
         }
 
         [TestMethod]
