@@ -35,16 +35,16 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void GetActiveProducts()
+        public void GetActiveProductsFromDB()
         {
-            int totalActiveProducts = 31;
+            int totalActiveProducts = 33;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
             Assert.AreEqual(totalActiveProducts, product.Count);
         }
         [TestMethod]
-        public void GetInactiveProducts()
+        public void GetInactiveProductsFromDB()
         {
-            int totalInActiveProducts = 3;
+            int totalInActiveProducts = 1;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == false).ToList<Product>();
             Assert.AreEqual(totalInActiveProducts, product.Count);
         }
