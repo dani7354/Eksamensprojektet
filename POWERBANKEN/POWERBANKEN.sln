@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{C8C7B910
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModel", "ViewModel", "{AD18B37E-0F27-496F-AC25-C27F9ABE3102}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{1DDC69BE-1B97-4B3E-9737-BB8D75D5A1B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C3975F01-B345-495D-BB7D-14AE09E830BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3975F01-B345-495D-BB7D-14AE09E830BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3975F01-B345-495D-BB7D-14AE09E830BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDC69BE-1B97-4B3E-9737-BB8D75D5A1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDC69BE-1B97-4B3E-9737-BB8D75D5A1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDC69BE-1B97-4B3E-9737-BB8D75D5A1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDC69BE-1B97-4B3E-9737-BB8D75D5A1B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
