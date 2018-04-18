@@ -1,8 +1,10 @@
 ﻿using System;
 using DataAccess;
+using ViewModels;
 using Domain;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 using System.Linq;
 
 
@@ -11,10 +13,11 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
-        [TestCleanup]
-        public void CleanUp()
+        StockViewModel _stockViewModel;
+        [TestInitialize]
+        public void Init()
         {
-
+            _stockViewModel = new StockViewModel();
         }
 
 
@@ -36,22 +39,28 @@ namespace UnitTestProject1
         {
             int totalActiveProducts = 33;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == true).ToList<Product>();
-
-            //Assert.AreEqual(3, product.Count);
-            
             Assert.AreEqual(totalActiveProducts, product.Count);
-           // Assert.AreEqual(5, product0].ID);
         }
         [TestMethod]
         public void GetInactiveProducts()
         {
             int totalInActiveProducts = 1;
             List<Product> product = ProductDB.GetAllProducts().Where(p => p.IsActive == false).ToList<Product>();
-
-            //Assert.AreEqual(3, product.Count);
-
             Assert.AreEqual(totalInActiveProducts, product.Count);
-            // Assert.AreEqual(5, product0].ID);
+        }
+        [TestMethod]
+        public void SwitchBetweenDeactivatedAndActivatedProducts()
+        {
+            // Aktive varer skal vises by default
+            Assert.AreEqual(true, _stockViewModel.SelectedProducts.Last().IsActive);
+            Assert.AreEqual(true, _stockViewModel.SelectedProducts.First().IsActive);
+
+            //Vi beder om at få vist de inaktive varer
+            _stockViewModel.ShowDeactivatedProducts();
+
+            // Skulle nu være false.
+            Assert.AreEqual(false, _stockViewModel.SelectedProducts.Last().IsActive);
+            Assert.AreEqual(false, _stockViewModel.SelectedProducts.First().IsActive);
         }
 
     }
