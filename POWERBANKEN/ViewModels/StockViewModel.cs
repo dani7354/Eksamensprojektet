@@ -16,7 +16,7 @@ namespace ViewModels
         private bool _deaktivatedProductsShown = false;
         private string _searchText;
 
-        public Product CurrentProduct { get; set; }
+        public static Product CurrentProduct { get; set; }
 
         public List<Product> SelectedProducts
         {
