@@ -14,9 +14,6 @@ namespace UnitTestProject1
     public class ForecastTests
     {
  
-
-
-      
         // Metode som skal testes.
         private Dictionary<DateTime, Product> CalculateOrderDate(List<SalesStatistics> salesStatistics, double pGrowth, DateTime periodStart, DateTime periodEnd)
         {
