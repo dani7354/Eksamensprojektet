@@ -52,5 +52,17 @@ namespace View
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void mItem_SaleForecast_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -49,10 +49,6 @@ namespace UnitTestProject1
         SalesStatistics s1;
         SalesStatistics s2;
         SalesStatistics s3;
-
-
-
-
         [TestInitialize()]
         public void MyTestInitialize()
         {
@@ -96,11 +92,8 @@ namespace UnitTestProject1
 
             Dictionary<DateTime, Product> result = CalculateOrderDate(salesStatistics, ExpGrowthPercent, newPeriodStart, newPeriodEnd);
 
-            Assert.AreEqual("", result.Last().Key.ToString("dd-MM-yyyy"));
-            Assert.AreEqual("", result.First().Key.ToString("dd-MM-yyyy"));
-
-
-
+            Assert.AreEqual("28-05-2018", result.Last().Key.ToString("dd-MM-yyyy"));
+            Assert.AreEqual("24-05-2018", result.First().Key.ToString("dd-MM-yyyy"));
         }
     }
 }

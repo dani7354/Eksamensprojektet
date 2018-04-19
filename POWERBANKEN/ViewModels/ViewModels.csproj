@@ -43,6 +43,7 @@
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="CommandHandler.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="ProductForecastViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockViewModel.cs" />
   </ItemGroup>

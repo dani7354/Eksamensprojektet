@@ -12,13 +12,14 @@
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
                     <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="150" Click="btn_SaveAndClose_Click"/>
+                    
                 </MenuItem>
-                <MenuItem Header="_Hjælp">
-                    <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
+                <MenuItem Header="_Funktioner">
+                    <MenuItem x:Name="mItem_SaleForecast" Header="Se salgsprognose" HorizontalAlignment="Left" Width="182" Height="20" Margin="0,0,-42,0" Click="mItem_SaleForecast_Click"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4">
+        <DataGrid HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectedItem="{Binding CurrentProduct, Mode=OneWayToSource}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
