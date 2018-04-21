@@ -31,7 +31,7 @@ namespace UnitTestProject1
         public void MyTestInitialize()
         {
             _reader = new CSVReader();
-            statistics = _reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
+         //   statistics = _reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
         }
         //
         // Use TestCleanup to run code after each test has run
