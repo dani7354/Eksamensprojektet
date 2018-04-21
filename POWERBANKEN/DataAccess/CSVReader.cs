@@ -15,9 +15,12 @@ namespace DataAccess
         {
             _readerEncoding = Encoding.GetEncoding("UTF-8");
         }
-        public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string pFilePath, DateTime periodStart, DateTime periodEnd)
+
+        public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string pFilePath)
         {
             List<SalesStatistics> productSalesStaticstic = new List<SalesStatistics>();
+            DateTime periodstart = FindStartDateInFileName(pFilePath);
+            DateTime periodEnd = periodstart.AddDays(DateTime.DaysInMonth(periodstart.Year, periodstart.Month) - 1);
             using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
             {
                 reader.ReadLine(); // Skipping the first line. 
@@ -25,13 +28,14 @@ namespace DataAccess
                 {
                     string[] tuple = reader.ReadLine().Split(',');
                     SalesStatistics prodStat = new SalesStatistics();
-                    prodStat.Start = periodStart;
+                    prodStat.Start = periodstart;
                     prodStat.End = periodEnd;
+
                     bool quantityFound = false;
                     int counter = 0;
                     while (!quantityFound || counter < 3)
-                    {      
-                        if (IsNumber(tuple[counter]))
+                    {
+                        if (IsNumber(tuple[counter])) // den solgte mængde vil i alle tilfælde være den første værdi i en række, som kun er et tal. Derfor prøver vi tryParse på alle værdier i tuplen.
                         {
                             prodStat.QuantiySold = Convert.ToInt32(tuple[counter]);
                             quantityFound = true;
@@ -40,14 +44,50 @@ namespace DataAccess
                     }
                     productSalesStaticstic.Add(prodStat);
                 }
-
             }
             return productSalesStaticstic;
         }
-        private bool IsNumber(string s)
+
+        private DateTime FindStartDateInFileName(string pfilePath)
         {
-            int n;
-            return int.TryParse(s, out n);
+            Dictionary<int, string> Months = new Dictionary<int, string>() // laver en dictionary med 12 KeyValuePairs - en for hver måned.
+            {
+                {1, "jan"},
+                {2, "feb"},
+                {3, "mar" },
+                {4, "apr" },
+                {5, "maj" },
+                {6, "jun" },
+                {7, "jul" },
+                {8, "aug" },
+                {9, "sep" },
+                {10, "okt" },
+                {11, "nov" },
+                {12, "dec" }
+            };
+            string fileName = pfilePath.Split('\\').Last(); // finder filnavnet ved at splitte stien op og vælge det sidste element
+            int month = Months.Where(m => fileName.ToLower().Contains(m.Value)).Single().Key; // prøver at matche tre af filnavnets bogstaver med en værdi i min dictionary og returnerer denne værdis tilhørende nøgle.
+            if (month == 0)
+            {
+                throw new Exception("Der kunne ikke bestemmes en måned ud fra filnavnet");
+            }
+            int yearStartIndex = fileName.Length - 8;
+            int year = 0;
+            if (IsNumber(fileName.Substring(yearStartIndex, 4)))
+            {
+                year = Convert.ToInt32(fileName.Substring(yearStartIndex, 4));
+            }
+            if (year == 0)
+            {
+                throw new Exception("Der kunne ikke bestemmes et årstal ud fra filnavnet. Sørg for, at filnavnet indeholder de 3 første bogstaver af måneden samt, at årstallet står som det sidste i filnavnet, dvs.  ");
+            }
+            DateTime startdate = new DateTime(year, month, 1);
+            return startdate;
+        }
+        private bool IsNumber(string stringToBeChecke)
+        {
+            int integerOut;
+            return int.TryParse(stringToBeChecke, out integerOut);
         }
 
     }
