@@ -26,32 +26,32 @@ namespace DataAccess
                 reader.ReadLine(); // Skipping the first line. 
                 while (reader.EndOfStream == false)
                 {
-                    string[] tuple = reader.ReadLine().Split(',');
-                    SalesStatistics prodStat = new SalesStatistics
-                    {
-                        Start = periodstart,
-                        End = periodEnd
-                    };
-
-                    bool quantityFound = false;
-                    int counter = 0;
-                    while (!quantityFound || counter < 3)
-                    {
-                        if (IsNumber(tuple[counter])) // den solgte mængde vil i alle tilfælde være den første værdi i en række, som kun er et tal. Derfor prøver vi tryParse på alle værdier i tuplen.
+                    string[] currentTuple = reader.ReadLine().Split(',');
+             
+                        SalesStatistics prodStat = new SalesStatistics
                         {
-                            prodStat.QuantitySold = Convert.ToInt32(tuple[counter]);
-                            quantityFound = true;
+                            Start = periodstart,
+                            End = periodEnd
+                        };
+
+                        bool quantityFound = false;
+                        int counter = 1;
+                        while (!quantityFound || counter < 3)
+                        {
+                            if (IsNumber(currentTuple[counter])) // den solgte mængde vil i alle tilfælde være den første værdi i en række, som kun er et tal. Derfor prøver vi tryParse på alle værdier i tuplen.
+                            {
+                                prodStat.QuantitySold = Convert.ToInt32(currentTuple[counter]);
+                                quantityFound = true;
+                            }
+                            counter++;
                         }
-                        counter++;
-                    }
-                    prodStat.Product = new Product // Ændres til at tjekke database efter matchende produkt. 
-                    {
-                        Name = tuple.First(),
-                        SKU = tuple.Last()
+                        prodStat.Product = new Product // Ændres til at tjekke database efter matchende produkt. 
+                        {
+                            Name = currentTuple.First(),
+                            SKU = currentTuple.Last()
 
-                    };
-
-                    productSalesStaticstic.Add(prodStat);
+                        };
+                    if(SalesDataObjectIsValid(prodStat))productSalesStaticstic.Add(prodStat);
                 }
             }
             return productSalesStaticstic;
@@ -92,6 +92,12 @@ namespace DataAccess
             }
             DateTime startdate = new DateTime(year, month, 1);
             return startdate;
+        }
+        private bool SalesDataObjectIsValid(SalesStatistics salesStat)
+        {
+            bool result = false;
+            if (!string.IsNullOrEmpty(salesStat.Product.Name) && !string.IsNullOrEmpty(salesStat.Product.SKU)) result = true;
+            return result;
         }
         private bool IsNumber(string stringToBeChecke)
         {

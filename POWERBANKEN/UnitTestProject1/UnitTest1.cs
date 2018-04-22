@@ -24,7 +24,7 @@ namespace UnitTestProject1
         {
             // test
             CSVReader reader = new CSVReader();
-            int totalProducts = 85;
+            int totalProducts = 76;
             string filePath = @"Product Sales - 2018-04-19-Sep. 2017.csv";
             List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 
@@ -37,7 +37,7 @@ namespace UnitTestProject1
         {
             // test
             CSVReader reader = new CSVReader();
-            int totalProducts = 78;
+            int totalProducts = 66;
             string filePath = @"Product Sales - 2018-04-19-Maj 2017.csv";
             List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 

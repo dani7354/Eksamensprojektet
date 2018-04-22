@@ -10,13 +10,13 @@
         <Button x:Name="Btn_Import" Content="Importer" HorizontalAlignment="Left" Margin="712,10,0,0" VerticalAlignment="Top" Width="52" Click="Btn_Import_Click" />
         <Button x:Name="Btn_Browse" Content="Gennemse" HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="67" Click="Btn_Browse_Click"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <DataGrid HorizontalAlignment="Left" Height="344" Margin="10,38,0,0" VerticalAlignment="Top" Width="772" ItemsSource="{Binding Sales, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid HorizontalAlignment="Left" Height="344" Margin="10,38,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="False" ItemsSource="{Binding Sales, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Product.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Product.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding QuantitySold}" Header="Antal solgt"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Start}" Header="Periode start"  Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding End}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Start, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode start"  Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
 
             </DataGrid.Columns>
         </DataGrid>
