@@ -27,9 +27,11 @@ namespace DataAccess
                 while (reader.EndOfStream == false)
                 {
                     string[] tuple = reader.ReadLine().Split(',');
-                    SalesStatistics prodStat = new SalesStatistics();
-                    prodStat.Start = periodstart;
-                    prodStat.End = periodEnd;
+                    SalesStatistics prodStat = new SalesStatistics
+                    {
+                        Start = periodstart,
+                        End = periodEnd
+                    };
 
                     bool quantityFound = false;
                     int counter = 0;
@@ -42,6 +44,13 @@ namespace DataAccess
                         }
                         counter++;
                     }
+                    prodStat.Product = new Product // Ændres til at tjekke database efter matchende produkt. 
+                    {
+                        Name = tuple.First(),
+                        SKU = tuple.Last()
+
+                    };
+
                     productSalesStaticstic.Add(prodStat);
                 }
             }

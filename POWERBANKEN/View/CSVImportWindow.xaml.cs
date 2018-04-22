@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModels;
 
 namespace View
 {
@@ -22,6 +23,21 @@ namespace View
         public CSVImportWindow()
         {
             InitializeComponent();
+        }
+
+        private void Btn_Browse_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_Import_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_SaveToDB_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
