@@ -54,7 +54,15 @@ namespace View
 
         private void Btn_SaveToDB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ikke implementeret");
+            try
+            {
+                _viewModel.WriteToDB();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

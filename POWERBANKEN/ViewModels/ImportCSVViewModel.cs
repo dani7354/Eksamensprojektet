@@ -60,6 +60,10 @@ namespace ViewModels
             }
             FilePath = _openFileDialog.FileName;
         }
+        public void WriteToDB()
+        {
+            ProductDB.InsertProductSale(_sales);
+        }
 
 
 
