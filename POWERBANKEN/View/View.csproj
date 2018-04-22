@@ -54,12 +54,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CSVImportWindow.xaml.cs">
+      <DependentUpon>CSVImportWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatesticWindow.xaml.cs">
       <DependentUpon>StatesticWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CSVImportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
