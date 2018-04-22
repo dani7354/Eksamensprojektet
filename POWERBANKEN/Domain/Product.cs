@@ -43,7 +43,7 @@ namespace Domain
 
         public override string ToString()
         {
-            return string.Format($"{Name};{SKU};{Brand.Name};{Type.TypeName}");
+            return string.Format($"{Name};{SKU}");
         }
     }
 }

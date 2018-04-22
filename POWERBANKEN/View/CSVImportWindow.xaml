@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Importer salgsdata for måned" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Btn_Import" Content="Importer" HorizontalAlignment="Left" Margin="712,10,0,0" VerticalAlignment="Top" Width="52" Click="Btn_Import_Click"/>
+        <Button x:Name="Btn_Import" Content="Importer" HorizontalAlignment="Left" Margin="712,10,0,0" VerticalAlignment="Top" Width="52" Click="Btn_Import_Click" />
         <Button x:Name="Btn_Browse" Content="Gennemse" HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="67" Click="Btn_Browse_Click"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="621" Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <DataGrid HorizontalAlignment="Left" Height="344" Margin="10,38,0,0" VerticalAlignment="Top" Width="772" ItemsSource="{Binding Sales, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">

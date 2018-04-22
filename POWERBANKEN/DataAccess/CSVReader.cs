@@ -39,7 +39,7 @@ namespace DataAccess
                     {
                         if (IsNumber(tuple[counter])) // den solgte mængde vil i alle tilfælde være den første værdi i en række, som kun er et tal. Derfor prøver vi tryParse på alle værdier i tuplen.
                         {
-                            prodStat.QuantiySold = Convert.ToInt32(tuple[counter]);
+                            prodStat.QuantitySold = Convert.ToInt32(tuple[counter]);
                             quantityFound = true;
                         }
                         counter++;

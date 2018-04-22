@@ -14,7 +14,6 @@ namespace ViewModels
         private CSVReader _csvReader;
         private List<SalesStatistics> _sales;
         private string _filePath;
-
         public List<SalesStatistics> Sales
         {
             get
@@ -47,12 +46,11 @@ namespace ViewModels
 
         public void ImportSalesInfo()
         {
-
+            Sales = _csvReader.ReadProductsSalesInfoFromCSV(_filePath);
         }
 
-        private void ChooseCSVFile()
+        public void ChooseCSVFile()
         {
-            string filename = "Ingen fil er valgt";
             OpenFileDialog _openFileDialog = new OpenFileDialog();
             _openFileDialog.Multiselect = false;
             _openFileDialog.Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*";
@@ -62,6 +60,7 @@ namespace ViewModels
             }
             FilePath = _openFileDialog.FileName;
         }
+
 
 
 
