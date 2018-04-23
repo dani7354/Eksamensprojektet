@@ -29,27 +29,6 @@ namespace View
             DataContext = fm;
 
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-          
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void GridForForeCast_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Beregn_Click(object sender, RoutedEventArgs e)
         {
             fm.CalculateForeCast();
