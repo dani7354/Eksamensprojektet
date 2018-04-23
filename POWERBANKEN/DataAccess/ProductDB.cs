@@ -19,8 +19,10 @@ namespace DataAccess
             {
 
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("See_Stock", con);
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand cmd1 = new SqlCommand("See_Stock", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
@@ -53,8 +55,10 @@ namespace DataAccess
                 con.Open();
                 foreach (Product p in products)
                 {
-                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con);
-                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     cmd1.Parameters.Add(new SqlParameter("@id", p.ID));
                     cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
@@ -75,8 +79,10 @@ namespace DataAccess
                 con.Open();
                 foreach (SalesStatistics p in pProductSales)
                 {
-                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con);
-                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
                     cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
                     cmd1.Parameters.Add(new SqlParameter("@date", p.End));
@@ -92,8 +98,10 @@ namespace DataAccess
             {
                 con.Open();
 
-                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con);
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
                 {

@@ -51,9 +51,11 @@ namespace ViewModels
 
         public void ChooseCSVFile()
         {
-            OpenFileDialog _openFileDialog = new OpenFileDialog();
-            _openFileDialog.Multiselect = false;
-            _openFileDialog.Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*";
+            OpenFileDialog _openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*"
+            };
             if (_openFileDialog.ShowDialog() == true)
             {
                 FilePath = _openFileDialog.FileName;
