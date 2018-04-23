@@ -9,7 +9,7 @@ using ViewModels;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest2
+    public class UnitTestAlgorithms
     {
         [TestMethod]
         public void TestAlgorithmDifferentialInPercent()
@@ -17,7 +17,7 @@ namespace UnitTestProject1
             DifferenceInPercent d = new DifferenceInPercent();
             var result = d.CalculateDifference();
             Assert.AreEqual(0, result);
-            
+
         }
 
         [TestMethod]
