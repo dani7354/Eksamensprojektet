@@ -89,7 +89,8 @@ namespace ViewModels
                 int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
                 ForecastList.Add(new SalesStatistics()
                 {
-                    QuantitySold = result,
+                    QuantitySold = stat.QuantitySold,
+                    ForeCastExpected = result,
                     Start = stat.Start.AddYears(1),
                     End = stat.End.AddYears(1),
                     Product = stat.Product

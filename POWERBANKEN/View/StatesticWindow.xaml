@@ -21,7 +21,19 @@
         </Label>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMonth}"/>
         <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged_1"/>
-        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="872" Margin="10,182,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="GridForForeCast_SelectionChanged" />
+        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="872" AutoGenerateColumns="False" Margin="10,182,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="GridForForeCast_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Product.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Product.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding QuantitySold}" Header="Antal solgt"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding ForeCastExpected}" Header="Forventet salg"  Width="auto"  IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Start, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode start"  Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
         <Button x:Name="Beregn" Content="Beregn mig" HorizontalAlignment="Left" Margin="402,17,0,0" VerticalAlignment="Top" Width="202" Height="51" FontSize="20" Click="Beregn_Click"/>
     </Grid>
 </Window>
