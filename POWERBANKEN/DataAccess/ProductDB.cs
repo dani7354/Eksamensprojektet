@@ -68,5 +68,22 @@ namespace DataAccess
                 }
             }
         }
+        public static void InsertProductSale(List<SalesStatistics> pProductSales)
+        {
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                foreach (SalesStatistics p in pProductSales)
+                {
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con);
+                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
+                    cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
+                    cmd1.Parameters.Add(new SqlParameter("@date", p.End));
+    
+                    cmd1.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
