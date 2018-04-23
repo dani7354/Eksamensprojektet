@@ -11,14 +11,6 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTestAlgorithms
     {
-        //[TestMethod]
-        //public void TestAlgorithmDifferentialInPercent()
-        //{
-        //    DifferenceInPercent d = new DifferenceInPercent();
-        //    var result = d.CalculateDifference();
-        //    Assert.AreEqual(0, result);
-
-        //}
 
         //[TestMethod]
         //public void TestGrowthInPercent()
@@ -42,8 +34,8 @@ namespace UnitTestProject1
             ForeCastModel fm = new ForeCastModel();
             var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
             
-           // Assert.AreEqual(7, result.Last().QuantitySold);
-            Assert.AreEqual(76, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
+            Assert.AreEqual(6, result.Last().QuantitySold);
+            Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
         }
 
 

@@ -20,7 +20,7 @@
             </Label.RenderTransform>
         </Label>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMonth}"/>
-        <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20"  Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
+        <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
         <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="405" VerticalAlignment="Top" Width="882" AutoGenerateColumns="False" Margin="0,154,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Product.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
