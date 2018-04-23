@@ -16,7 +16,7 @@ using ViewModels;
 namespace View
 {
     /// <summary>
-    /// Vindue til at i importere månedlige salgstal for alle produkter.
+    /// Vindue til at i importere månedlige salgstal for alle produkter fra CSV-fil.
     /// </summary>
     public partial class CSVImportWindow : Window
     {
