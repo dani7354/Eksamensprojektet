@@ -91,9 +91,12 @@ namespace DataAccess
                 }
             }
         }
+
+      
         public static List<SalesStatistics> ReadProductSale()
         {
             List<SalesStatistics> salesStatisticsList = new List<SalesStatistics>();
+            List<Product> allProducts = GetAllProducts();
             using (SqlConnection con = DBConnection.Connect)
             {
                 con.Open();
@@ -105,21 +108,25 @@ namespace DataAccess
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
                 {
-                    SalesStatistics ss = new SalesStatistics()
+                    SalesStatistics stat = new SalesStatistics()
                     {
                         QuantitySold = (int)reader[1],
-                        End = (DateTime)reader[2],
-
-                        Product = new Product()
-                        {
-                            SKU = (string)reader[0]
-
-
-                        }
-
+                        End = (DateTime)reader[2]
                     };
-                    ss.Start = new DateTime(ss.End.Year, ss.End.Month, 1);
-                    salesStatisticsList.Add(ss);
+                    stat.Start = new DateTime(stat.End.Year, stat.End.Month, 1);
+                    if(allProducts.Exists(p => p.SKU == (string)reader[0]))
+                    {
+                        stat.Product = allProducts.Where((p => p.SKU == (string)reader[0])).Single();
+                    }
+                    else
+                    {
+                        stat.Product = new Product()
+                        {
+                            SKU = (string)reader[0],
+                            Name = "Ukendt"
+                        };
+                    }
+                    salesStatisticsList.Add(stat);
                 }
             }
             return salesStatisticsList;
