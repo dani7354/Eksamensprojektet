@@ -19,9 +19,9 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMonth}"/>
-        <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged_1"/>
-        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="872" AutoGenerateColumns="False" Margin="10,182,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="GridForForeCast_SelectionChanged">
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMonth}"/>
+        <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="872" AutoGenerateColumns="False" Margin="10,182,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Product.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Product.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
