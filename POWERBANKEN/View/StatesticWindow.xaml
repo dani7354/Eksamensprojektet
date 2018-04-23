@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="StatesticWindow" Height="600" Width="900">
-    <Grid>
-        <TextBlock x:Name="Tb_Statestic" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="26,36,0,0" Height="32" Width="216" FontSize="20"><Run Text="Statistik:"/></TextBlock>
-        <TextBox x:Name="Tbx_SearchboxStatestic" HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" Text="Søg produkt..." VerticalAlignment="Top" Width="324" Margin="473,23,0,0" TextChanged="TextBox_TextChanged" FontSize="20" FontStyle="Italic"/>
+    <Grid Margin="10,10,0,0">
+        <TextBlock x:Name="Tb_Statestic" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,26,0,0" Height="32" Width="216" FontSize="20" Text="Forecast:"/>
         <Label x:Name="Lbl__InNumbers" Content="%-vis:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="473,90,0,0" Height="43" Width="84" FontSize="20"/>
         <Label x:Name="Lbl_PeriodFrom" Content="Periode fra:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,97,0,0" Height="38" Width="112" FontSize="20" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
@@ -20,7 +19,9 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="238" Margin="173,95,0,0" Height="40" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Months, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMonth}"/>
         <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged_1"/>
+        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="872" Margin="10,182,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="GridForForeCast_SelectionChanged" />
+        <Button x:Name="Beregn" Content="Beregn mig" HorizontalAlignment="Left" Margin="402,17,0,0" VerticalAlignment="Top" Width="202" Height="51" FontSize="20" Click="Beregn_Click"/>
     </Grid>
 </Window>

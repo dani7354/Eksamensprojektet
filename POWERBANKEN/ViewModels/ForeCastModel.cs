@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
+using ViewModels;
 
 namespace ViewModels
 {
@@ -28,6 +30,7 @@ namespace ViewModels
         }
         private double _GrowthInPercent;
         private List<DateTime> _months;
+        private List<SalesStatistics> _foreCastGrid;
 
         public double GrowthInPercent
         {
@@ -54,6 +57,31 @@ namespace ViewModels
                 NotifyPropertyChanged("Months");
             }
             
+        }
+
+        public DateTime SelectedMonth
+        {
+            get; set; 
+        }
+
+        public List<SalesStatistics> ForeCast
+        {
+            get
+            {
+                return _foreCastGrid;
+            }
+            set
+            {
+                _foreCastGrid = value;
+                NotifyPropertyChanged("ForeCast");
+            }
+        }
+
+        public void CalculateForeCast()
+        {
+            DifferenceInPercent differenceInPercent = new DifferenceInPercent();
+            ForeCast = differenceInPercent.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
+
         }
     }
 }

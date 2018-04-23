@@ -21,11 +21,12 @@ namespace View
     public partial class StatesticWindow : Window
     {
 
-       
+        ForeCastModel fm;
         public StatesticWindow()
         {
             InitializeComponent();
-            DataContext = new ForeCastModel();
+            fm = new ForeCastModel();
+            DataContext = fm;
 
         }
 
@@ -42,6 +43,16 @@ namespace View
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void GridForForeCast_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Beregn_Click(object sender, RoutedEventArgs e)
+        {
+            fm.CalculateForeCast();
         }
     }
 }
