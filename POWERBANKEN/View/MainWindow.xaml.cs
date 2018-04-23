@@ -46,5 +46,11 @@ namespace View
             StockWindow swindow = new StockWindow();
             swindow.Show();
         }
+
+        private void ImportFromCSV_Click(object sender, RoutedEventArgs e)
+        {
+            CSVImportWindow csvImportWindow = new CSVImportWindow();
+            csvImportWindow.Show();
+        }
     }
 }

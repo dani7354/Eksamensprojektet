@@ -40,10 +40,10 @@ namespace DataAccess
 
                     Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
                             productionInHours, productType, brand, isActive);
-                        ProductList.Add(product);
-                    
+                    ProductList.Add(product);
+
                 }
-              return ProductList;
+                return ProductList;
             }
         }
         public static void UpdateProducts(List<Product> products)
@@ -68,5 +68,55 @@ namespace DataAccess
                 }
             }
         }
+        public static void InsertProductSale(List<SalesStatistics> pProductSales)
+        {
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                foreach (SalesStatistics p in pProductSales)
+                {
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con);
+                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
+                    cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
+                    cmd1.Parameters.Add(new SqlParameter("@date", p.End));
+
+                    cmd1.ExecuteNonQuery();
+                }
+            }
+        }
+        public static List<SalesStatistics> ReadProductSale()
+        {
+            List<SalesStatistics> salesStatisticsList = new List<SalesStatistics>();
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+
+                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con);
+                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    SalesStatistics ss = new SalesStatistics()
+                    {
+                        QuantitySold = (int)reader[1],
+                        End = (DateTime)reader[2],
+
+                        Product = new Product()
+                        {
+                            SKU = (string)reader[0]
+
+
+                        }
+
+                    };
+                    ss.Start = new DateTime(ss.End.Year, ss.End.Month, 1);
+                    salesStatisticsList.Add(ss);
+                }
+            }
+            return salesStatisticsList;
+        }
+
+
     }
 }

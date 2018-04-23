@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModels;
 
 namespace View
 {
@@ -19,14 +20,18 @@ namespace View
     /// </summary>
     public partial class StatesticWindow : Window
     {
+
+        ForeCastModel fm;
         public StatesticWindow()
         {
             InitializeComponent();
+            fm = new ForeCastModel();
+            DataContext = fm;
+
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Beregn_Click(object sender, RoutedEventArgs e)
         {
-
+            fm.CalculateForeCast();
         }
     }
 }
