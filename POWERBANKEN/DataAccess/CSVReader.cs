@@ -36,7 +36,7 @@ namespace DataAccess
 
                         bool quantityFound = false;
                         int counter = 1;
-                        while (!quantityFound || counter < 3)
+                        while (quantityFound == false || counter < 3)
                         {
                             if (IsNumber(currentTuple[counter])) // den solgte mængde vil i alle tilfælde være den første værdi i en række, som kun er et tal. Derfor prøver vi tryParse på alle værdier i tuplen.
                             {
