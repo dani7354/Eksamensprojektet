@@ -20,14 +20,30 @@ namespace UnitTestProject1
             _stockViewModel = new StockViewModel();
         }
         [TestMethod]
-        public void ReadFromCSVWorks() //opdateres, når læser-metoden er færdiglavet. 
+        public void ReadFromCSVWorksSeptember()
         {
-            int totalProducts = 211;
+            // test
             CSVReader reader = new CSVReader();
-            DateTime start = new DateTime(2018, 1, 1);
-            DateTime end = new DateTime(2018, 4, 9);
-            List<SalesStatistics> info =  reader.ReadProductsSalesInfoFromCSV("products.csv", start, end);
-            Assert.AreEqual(totalProducts, info.Count);
+            int totalProducts = 76;
+            string filePath = @"Product Sales - 2018-04-19-Sep. 2017.csv";
+            List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
+
+            Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
+            Assert.AreEqual(saleStatistics.First().Start, new DateTime(2017, 9, 1));
+            Assert.AreEqual(saleStatistics.First().End, new DateTime(2017, 9, 30));
+        }
+        [TestMethod]
+        public void ReadFromCSVWorksMay() //opdateres, når læser-metoden er færdiglavet. 
+        {
+            // test
+            CSVReader reader = new CSVReader();
+            int totalProducts = 66;
+            string filePath = @"Product Sales - 2018-04-19-Maj 2017.csv";
+            List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
+
+            Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
+            Assert.AreEqual(saleStatistics.First().Start, new DateTime(2017, 5, 1));
+            Assert.AreEqual(saleStatistics.First().End, new DateTime(2017, 5, 31));
         }
 
         [TestMethod]

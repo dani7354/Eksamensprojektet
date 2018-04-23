@@ -29,6 +29,15 @@ namespace Domain
             result = r * 100;
             return result;
         }
+
+        public double GrowthInPercentPerPeriod(int LastYearssale, double growthForPeriod)
+        {
+            double ExpectedSaleForThisYearsPeriod = LastYearssale * growthForPeriod;
+
+            double result = ExpectedSaleForThisYearsPeriod * growthForPeriod;
+
+            return result;
+        }
         
      
     }

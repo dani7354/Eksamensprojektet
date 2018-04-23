@@ -8,7 +8,7 @@ namespace Domain
 {
     public class SalesStatistics
     {
-        public int QuantiySold { get; set; }
+        public int QuantitySold { get; set; }
         public Product Product { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }

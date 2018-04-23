@@ -22,10 +22,6 @@ namespace UnitTestProject1
         {
          
         }
-
- 
-
-     
       
         [TestInitialize()]
         public void MyTestInitialize()
@@ -38,14 +34,15 @@ namespace UnitTestProject1
         // [TestCleanup()]
         // public void MyTestCleanup() { }
         //
-   
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic here
-            //
-        }
+
+        //[TestMethod]
+        //public void TestMethod1()
+        //{
+
+        //    TODO: Add test logic here
+
+
+        //}
     }
 }

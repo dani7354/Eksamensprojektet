@@ -15,7 +15,8 @@
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
                     <MenuItem x:Name="AddItem" Header="Vis produktoversigt" HorizontalAlignment="Left" Width="200" Click="StockView_Click"/>
-                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="150" />
+                    <MenuItem x:Name="ImportFromCSV" Header="Importer salgstal" HorizontalAlignment="Left" Width="200" Click="ImportFromCSV_Click"/>
+                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="200" />
                 </MenuItem>
             </Menu>
         </StackPanel>
