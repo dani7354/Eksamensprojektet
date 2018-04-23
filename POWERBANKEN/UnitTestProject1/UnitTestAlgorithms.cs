@@ -11,28 +11,41 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTestAlgorithms
     {
-        [TestMethod]
-        public void TestAlgorithmDifferentialInPercent()
-        {
-            DifferenceInPercent d = new DifferenceInPercent();
-            var result = d.CalculateDifference();
-            Assert.AreEqual(0, result);
+        //[TestMethod]
+        //public void TestAlgorithmDifferentialInPercent()
+        //{
+        //    DifferenceInPercent d = new DifferenceInPercent();
+        //    var result = d.CalculateDifference();
+        //    Assert.AreEqual(0, result);
 
-        }
+        //}
 
-        [TestMethod]
-        public void TestGrowthInPercent()
-        {
-            Algorithms a = new Algorithms();
+        //[TestMethod]
+        //public void TestGrowthInPercent()
+        //{
+        //    Algorithms a = new Algorithms();
 
-            int LastYearsSale = 100;
-            double GrowthForPeriod = 1.10;
-            double ExpectedSaleForThisYearsSale = LastYearsSale * GrowthForPeriod;
-            double result = ExpectedSaleForThisYearsSale * GrowthForPeriod;
+        //    int LastYearsSale = 100;
+        //    double GrowthForPeriod = 1.10;
+        //    double ExpectedSaleForThisYearsSale = LastYearsSale * GrowthForPeriod;
+        //    double result = ExpectedSaleForThisYearsSale * GrowthForPeriod;
            
-           double resultNow = a.GrowthInPercentPerPeriod(LastYearsSale, GrowthForPeriod);
+        //   double resultNow = a.GrowthInPercentPerPeriod(LastYearsSale, GrowthForPeriod);
 
-            Assert.AreEqual(result, resultNow);
+        //    Assert.AreEqual(result, resultNow);
+        //}
+
+        [TestMethod]
+
+        public void TestForeCast()
+        {
+            DifferenceInPercent dp = new DifferenceInPercent();
+            var result = dp.ForeCastCalculation(10, new DateTime(2017, 1, 1));
+            
+           // Assert.AreEqual(7, result.Last().QuantitySold);
+            Assert.AreEqual(76, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
         }
+
+
     }
 }

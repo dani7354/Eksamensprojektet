@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="DifferenceInPercent.cs" />
+    <Compile Include="ForeCastModel.cs" />
     <Compile Include="ImportCSVViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

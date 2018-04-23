@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModels;
 
 namespace View
 {
@@ -19,12 +20,26 @@ namespace View
     /// </summary>
     public partial class StatesticWindow : Window
     {
+
+       
         public StatesticWindow()
         {
             InitializeComponent();
+            DataContext = new ForeCastModel();
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
         }

@@ -92,7 +92,7 @@ namespace DataAccess
             {
                 con.Open();
 
-                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.PRODUCTSALES", con);
+                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con);
                 cmd1.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
