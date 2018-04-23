@@ -10,17 +10,39 @@ namespace ViewModels
 {
     public class DifferenceInPercent
     {
-        Algorithms algorithms = new Algorithms();
-        CSVReader reader = new CSVReader();
-        DateTime d = new DateTime(2015, 1, 1);
-        public List<double> CalculateDifference()
+        
+        private int _expectedSale;
+        private int _actualSale;
+        public int ExpectedSale
         {
-            List<double> list = new List<double>();
-            //foreach (var item in query)
-            //{
-            //    list.Add(algorithms.DifferantialInPercent(0, item.QuantitySold));
-            //}
-            return list;
+            get { return _expectedSale; }
+            set { _expectedSale = value; }
+        }
+        public int ActualSale
+        {
+            get { return _actualSale; }
+            set { _actualSale = value; }
+        }
+        public double DifferantialInPercent(int expectedSale, int actualSale)
+        {
+            var a = ProductDB.ReadProductSale();
+            ExpectedSale = expectedSale;
+            ActualSale = actualSale;
+            double result;
+            double r;
+            result = ActualSale - ExpectedSale;
+            r = result / ExpectedSale;
+            result = r * 100;
+            return result;
+        }
+
+        public double GrowthInPercentPerPeriod(int LastYearssale, double growthForPeriod)
+        {
+            double ExpectedSaleForThisYearsPeriod = LastYearssale * growthForPeriod;
+
+            double result = ExpectedSaleForThisYearsPeriod * growthForPeriod;
+
+            return result;
         }
     }
 }

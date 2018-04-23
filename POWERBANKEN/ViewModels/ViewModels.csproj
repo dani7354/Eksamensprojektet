@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="CommandHandler.cs" />
     <Compile Include="DifferenceInPercent.cs" />
     <Compile Include="ImportCSVViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
