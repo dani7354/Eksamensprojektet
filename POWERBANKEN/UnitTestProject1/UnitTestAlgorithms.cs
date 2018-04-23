@@ -39,8 +39,8 @@ namespace UnitTestProject1
 
         public void TestForeCast()
         {
-            DifferenceInPercent dp = new DifferenceInPercent();
-            var result = dp.ForeCastCalculation(10, new DateTime(2017, 1, 1));
+            ForeCastModel fm = new ForeCastModel();
+            var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
             
            // Assert.AreEqual(7, result.Last().QuantitySold);
             Assert.AreEqual(76, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);

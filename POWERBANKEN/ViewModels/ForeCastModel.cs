@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using ViewModels;
+using DataAccess;
 
 namespace ViewModels
 {
@@ -77,10 +78,31 @@ namespace ViewModels
             }
         }
 
+
+        public List<SalesStatistics> ForeCastCalculation(double GrowthInPercent, DateTime month)
+        {
+            GrowthInPercent = (GrowthInPercent / 100) + 1;
+            List<SalesStatistics> ForecastList = new List<SalesStatistics>();
+            List<SalesStatistics> monthOftheYear = ProductDB.ReadProductSale().Where(x => x.Start.Month == month.Month).ToList();
+            foreach (var stat in monthOftheYear)
+            {
+                int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
+                ForecastList.Add(new SalesStatistics()
+                {
+                    QuantitySold = result,
+                    Start = stat.Start.AddYears(1),
+                    End = stat.End.AddYears(1),
+                    Product = stat.Product
+                });
+            }
+            return ForecastList;
+        }
+
+
         public void CalculateForeCast()
         {
-            DifferenceInPercent differenceInPercent = new DifferenceInPercent();
-            ForeCast = differenceInPercent.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
+            ForeCastModel fm = new ForeCastModel();
+            ForeCast = fm.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
 
         }
     }
