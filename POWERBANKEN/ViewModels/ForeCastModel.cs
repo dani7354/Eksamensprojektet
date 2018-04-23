@@ -83,7 +83,7 @@ namespace ViewModels
         {
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();
-            List<SalesStatistics> monthOftheYear = ProductDB.ReadProductSale().Where(x => x.Start.Month == month.Month).ToList();
+            List<SalesStatistics> monthOftheYear = ProductDB.ReadProductSale().AsParallel().Where(x => x.Start.Month == month.Month).ToList();
             foreach (var stat in monthOftheYear)
             {
                 int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
