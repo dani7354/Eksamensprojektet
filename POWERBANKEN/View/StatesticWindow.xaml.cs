@@ -29,7 +29,7 @@ namespace View
             DataContext = fm;
 
         }
-        private void Beregn_Click(object sender, RoutedEventArgs e)
+        private void Calculate_Click(object sender, RoutedEventArgs e)
         {
             fm.CalculateForeCast();
         }

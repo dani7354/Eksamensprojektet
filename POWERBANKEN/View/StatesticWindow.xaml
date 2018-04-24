@@ -34,6 +34,6 @@
 
         </DataGrid>
 
-        <Button x:Name="Beregn" Content="Beregn mig" HorizontalAlignment="Left" Margin="402,17,0,0" VerticalAlignment="Top" Width="202" Height="51" FontSize="20" Click="Beregn_Click"/>
+        <Button x:Name="Beregn" Content="Beregn mig" HorizontalAlignment="Left" Margin="402,17,0,0" VerticalAlignment="Top" Width="202" Height="51" FontSize="20" Click="Calculate_Click"/>
     </Grid>
 </Window>

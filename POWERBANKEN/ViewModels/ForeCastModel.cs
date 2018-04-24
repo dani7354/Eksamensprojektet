@@ -11,6 +11,55 @@ namespace ViewModels
 {
     public class ForeCastModel : BaseViewModel
     {
+        private double _growthInPercent;
+        private List<DateTime> _months;
+        private List<SalesStatistics> _foreCastGrid;
+
+        public double GrowthInPercent
+        {
+            get
+            {
+                return _growthInPercent;
+            }
+            set
+            {
+                _growthInPercent = value;
+                NotifyPropertyChanged("GrowthInPercent");
+            }
+        }
+
+        public List<DateTime> Months
+        {
+            get
+            {
+                return _months;
+            }
+            set
+            {
+                _months = value;
+                NotifyPropertyChanged("Months");
+            }
+
+        }
+
+        public DateTime SelectedMonth
+        {
+            get; set;
+        }
+
+        public List<SalesStatistics> ForeCast
+        {
+            get
+            {
+                return _foreCastGrid;
+            }
+            set
+            {
+                _foreCastGrid = value;
+                NotifyPropertyChanged("ForeCast");
+            }
+        }
+
         public ForeCastModel()
         {
             Months = new List<DateTime>()
@@ -29,55 +78,7 @@ namespace ViewModels
             }; 
             
         }
-        private double _GrowthInPercent;
-        private List<DateTime> _months;
-        private List<SalesStatistics> _foreCastGrid;
-
-        public double GrowthInPercent
-        {
-            get
-            {
-                return _GrowthInPercent;
-            }
-            set
-            {
-                _GrowthInPercent = value;
-                NotifyPropertyChanged("GrowthInPercent");
-            }
-        }
-
-        public List<DateTime> Months
-        {
-            get
-            {
-                return _months;
-            }
-            set
-            {
-                _months = value;
-                NotifyPropertyChanged("Months");
-            }
-            
-        }
-
-        public DateTime SelectedMonth
-        {
-            get; set; 
-        }
-
-        public List<SalesStatistics> ForeCast
-        {
-            get
-            {
-                return _foreCastGrid;
-            }
-            set
-            {
-                _foreCastGrid = value;
-                NotifyPropertyChanged("ForeCast");
-            }
-        }
-
+    
 
         public List<SalesStatistics> ForeCastCalculation(double GrowthInPercent, DateTime month)
         {
