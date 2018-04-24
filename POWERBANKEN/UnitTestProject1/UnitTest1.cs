@@ -88,14 +88,6 @@ namespace UnitTestProject1
             int expfutureQuantitySold = (int)Math.Ceiling(expquantitySold * ((vm.GrowthInPercent / 100) + 1));
             Assert.AreEqual(expquantitySold, vm.ForeCast.First().QuantitySold);
             Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First().ForeCastExpected);
-
-
-
-
         }
-
-        
-
-
     }
 }
