@@ -100,7 +100,6 @@ namespace DataAccess
             using (SqlConnection con = DBConnection.Connect)
             {
                 con.Open();
-
                 SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con)
                 {
                     CommandType = System.Data.CommandType.StoredProcedure

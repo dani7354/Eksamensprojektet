@@ -75,6 +75,8 @@ namespace UnitTestProject1
             Assert.AreEqual(false, _stockViewModel.SelectedProducts.First().IsActive);
         }
 
+        
+
 
     }
 }
