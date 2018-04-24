@@ -66,10 +66,5 @@ namespace ViewModels
         {
             ProductDB.InsertProductSale(_sales);
         }
-
-
-
-
-
     }
 }

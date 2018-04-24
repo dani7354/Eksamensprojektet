@@ -74,6 +74,27 @@ namespace UnitTestProject1
             Assert.AreEqual(false, _stockViewModel.SelectedProducts.Last().IsActive);
             Assert.AreEqual(false, _stockViewModel.SelectedProducts.First().IsActive);
         }
+        [TestMethod]
+        public void CalculateFutureProductSalesForMonth()
+        {
+            ForeCastModel vm = new ForeCastModel();
+
+            vm.SelectedMonth = vm.Months.First(); // choosing month
+            vm.GrowthInPercent = 23.45; // typing for future month 
+
+            vm.CalculateForeCast();
+
+            int expquantitySold = 69; // aflæst i excel
+            int expfutureQuantitySold = (int)Math.Ceiling(expquantitySold * ((vm.GrowthInPercent / 100) + 1));
+            Assert.AreEqual(expquantitySold, vm.ForeCast.First().QuantitySold);
+            Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First().ForeCastExpected);
+
+
+
+
+        }
+
+        
 
 
     }
