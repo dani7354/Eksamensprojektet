@@ -4,13 +4,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-using ViewModels;
 using DataAccess;
 
 namespace ViewModels
 {
     public class ForeCastModel : BaseViewModel
     {
+        private double _growthInPercent;
+        private List<DateTime> _months;
+        private List<SalesStatistics> _foreCastGrid;
+
+        public double GrowthInPercent
+        {
+            get
+            {
+                return _growthInPercent;
+            }
+            set
+            {
+                _growthInPercent = value;
+                NotifyPropertyChanged("GrowthInPercent");
+            }
+        }
+
+        public List<DateTime> Months
+        {
+            get
+            {
+                return _months;
+            }
+            set
+            {
+                _months = value;
+                NotifyPropertyChanged("Months");
+            }
+
+        }
+
+        public DateTime SelectedMonth
+        {
+            get; set;
+        }
+
+        public List<SalesStatistics> ForeCast
+        {
+            get
+            {
+                return _foreCastGrid;
+            }
+            set
+            {
+                _foreCastGrid = value;
+                NotifyPropertyChanged("ForeCast");
+            }
+        }
+
         public ForeCastModel()
         {
             Months = new List<DateTime>()
@@ -29,81 +77,14 @@ namespace ViewModels
             }; 
             
         }
-        private double _GrowthInPercent;
-        private List<DateTime> _months;
-        private List<SalesStatistics> _foreCastGrid;
-
-        public double GrowthInPercent
-        {
-            get
-            {
-                return _GrowthInPercent;
-            }
-            set
-            {
-                _GrowthInPercent = value;
-                NotifyPropertyChanged("GrowthInPercent");
-            }
-        }
-
-        public List<DateTime> Months
-        {
-            get
-            {
-                return _months;
-            }
-            set
-            {
-                _months = value;
-                NotifyPropertyChanged("Months");
-            }
-            
-        }
-
-        public DateTime SelectedMonth
-        {
-            get; set; 
-        }
-
-        public List<SalesStatistics> ForeCast
-        {
-            get
-            {
-                return _foreCastGrid;
-            }
-            set
-            {
-                _foreCastGrid = value;
-                NotifyPropertyChanged("ForeCast");
-            }
-        }
-
-
-        public List<SalesStatistics> ForeCastCalculation(double GrowthInPercent, DateTime month)
-        {
-            GrowthInPercent = (GrowthInPercent / 100) + 1;
-            List<SalesStatistics> ForecastList = new List<SalesStatistics>();
-            List<SalesStatistics> monthOftheYear = ProductDB.ReadProductSale().AsParallel().Where(x => x.Start.Month == month.Month).ToList();
-            foreach (var stat in monthOftheYear)
-            {
-                int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
-                ForecastList.Add(new SalesStatistics()
-                {
-                    QuantitySold = stat.QuantitySold,
-                    ForeCastExpected = result,
-                    Start = stat.Start.AddYears(1),
-                    End = stat.End.AddYears(1),
-                    Product = stat.Product
-                });
-            }
-            return ForecastList;
-        }
+   
 
 
         public void CalculateForeCast()
         {
-            ForeCastModel fm = new ForeCastModel();
-            ForeCast = fm.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
+            ForeCastCalculator fc = new ForeCastCalculator();
+         
+            ForeCast = fc.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
 
         }
     }
