@@ -29,7 +29,7 @@ namespace UnitTestProject1
 
         [TestMethod]
 
-        public void TestForeCast()
+        public void TestForeCastWorks()
         {
             ForeCastModel fm = new ForeCastModel();
             var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
@@ -38,6 +38,16 @@ namespace UnitTestProject1
             Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
         }
 
+        [TestMethod]
 
+        public void TestForeCastNegativeNumbers()
+        {
+            ForeCastModel fm = new ForeCastModel();
+            var result = fm.ForeCastCalculation(-100, new DateTime(2017, 1, 1));
+
+            Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
+            Assert.AreEqual(69, result.OrderByDescending(x => x.QuantitySold).First().QuantitySold);
+
+        }
     }
 }
