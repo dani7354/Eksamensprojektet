@@ -19,8 +19,10 @@ namespace DataAccess
             {
 
                 con.Open();
-                SqlCommand cmd1 = new SqlCommand("See_Stock", con);
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand cmd1 = new SqlCommand("See_Stock", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
 
                 SqlDataReader reader = cmd1.ExecuteReader();
 
@@ -53,8 +55,10 @@ namespace DataAccess
                 con.Open();
                 foreach (Product p in products)
                 {
-                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con);
-                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     cmd1.Parameters.Add(new SqlParameter("@id", p.ID));
                     cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
@@ -75,8 +79,10 @@ namespace DataAccess
                 con.Open();
                 foreach (SalesStatistics p in pProductSales)
                 {
-                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con);
-                    cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                    SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con)
+                    {
+                        CommandType = System.Data.CommandType.StoredProcedure
+                    };
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
                     cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
                     cmd1.Parameters.Add(new SqlParameter("@date", p.End));
@@ -85,33 +91,42 @@ namespace DataAccess
                 }
             }
         }
+
+      
         public static List<SalesStatistics> ReadProductSale()
         {
             List<SalesStatistics> salesStatisticsList = new List<SalesStatistics>();
+            List<Product> allProducts = GetAllProducts();
             using (SqlConnection con = DBConnection.Connect)
             {
                 con.Open();
 
-                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con);
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
                 {
-                    SalesStatistics ss = new SalesStatistics()
+                    SalesStatistics stat = new SalesStatistics()
                     {
                         QuantitySold = (int)reader[1],
-                        End = (DateTime)reader[2],
-
-                        Product = new Product()
-                        {
-                            SKU = (string)reader[0]
-
-
-                        }
-
+                        End = (DateTime)reader[2]
                     };
-                    ss.Start = new DateTime(ss.End.Year, ss.End.Month, 1);
-                    salesStatisticsList.Add(ss);
+                    stat.Start = new DateTime(stat.End.Year, stat.End.Month, 1);
+                    if(allProducts.Exists(p => p.SKU == (string)reader[0]))
+                    {
+                        stat.Product = allProducts.Where((p => p.SKU == (string)reader[0])).Single();
+                    }
+                    else
+                    {
+                        stat.Product = new Product()
+                        {
+                            SKU = (string)reader[0],
+                            Name = "Ukendt"
+                        };
+                    }
+                    salesStatisticsList.Add(stat);
                 }
             }
             return salesStatisticsList;
