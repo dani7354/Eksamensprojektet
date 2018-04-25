@@ -11,58 +11,65 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTestAlgorithms
     {
+        IDataStorage dataStorage;
+        Random rnd = new Random();
+        Product p1 = new Product(123, "Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"), true);
+        Product p2 = new Product(123, "Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"), true);
+        Product p3 = new Product(123, "Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"), true);
+
+        SalesStatistics[] p1stat = new SalesStatistics[12];
+        SalesStatistics[] p2stat = new SalesStatistics[12];
+        SalesStatistics[] p3stat = new SalesStatistics[12];
+        [TestInitialize]
+        public void Init()
+        {
+            dataStorage = TestDB.Instance;
 
 
+            for (int i = 0; i < p1stat.Length; i++)
+            {
+                int DaysInMonth = DateTime.DaysInMonth(2017, i+1);
+                p1stat[i] = new SalesStatistics()
+                {
+                    PeriodStart = new DateTime(2017, i+1, 1),
+                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+                    QuantitySold = rnd.Next(0, 400),
+                    Product = p1
+                };
+                p2stat[i] = new SalesStatistics()
+                {
+                    PeriodStart = new DateTime(2017, i+1, 1),
+                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+                    QuantitySold = rnd.Next(0, 100),
+                    Product = p2
+                };
+                p3stat[i] = new SalesStatistics()
+                {
+                    PeriodStart = new DateTime(2017, i+1, 1),
+                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+                    QuantitySold = rnd.Next(0, 160),
+                    Product = p3
+                };
 
-        //[TestInitialize]
+            }
+           // Gemmer testdata i databasen
+            dataStorage.InsertProductSale(p1stat.ToList());
+            dataStorage.InsertProductSale(p2stat.ToList());
+            dataStorage.InsertProductSale(p3stat.ToList());
+            dataStorage.UpdateProducts(new List<Product>() { p1, p2, p3 });
+        }
+        [TestMethod]
+        public void CalculationWorksWithSalesForEveryMonth()
+        {
+            ForeCastModel forecatModel = new ForeCastModel();
+            forecatModel.datastorage = dataStorage;
+            forecatModel.GrowthInPercent = 30.32; // indtaster vækst i procent.
+            forecatModel.CalculateForeCast();
 
-        //[TestMethod]
-        //public void TestGrowthInPercent()
-        //{
-        //    Algorithms a = new Algorithms();
+            Assert.AreEqual(3, forecatModel.ForeCast.Count());
+            
 
-        //    int LastYearsSale = 100;
-        //    double GrowthForPeriod = 1.10;
-        //    double ExpectedSaleForThisYearsSale = LastYearsSale * GrowthForPeriod;
-        //    double result = ExpectedSaleForThisYearsSale * GrowthForPeriod;
 
-        //   double resultNow = a.GrowthInPercentPerPeriod(LastYearsSale, GrowthForPeriod);
-
-        //    Assert.AreEqual(result, resultNow);
-        //}
-
-        //[TestMethod]
-
-        //public void TestForeCastWorks()
-        //{
-        //    ForeCastModel fm = new ForeCastModel();
-        //    var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
-
-        //    Assert.AreEqual(6, result.Last().QuantitySold);
-        //    Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
-        //}
-
-        //[TestMethod]
-
-        //public void TestForeCastNegativeNumbers()
-        //{
-        //    ForeCastModel fm = new ForeCastModel();
-        //    var result = fm.ForeCastCalculation(-100, new DateTime(2017, 1, 1));
-
-        //    Assert.AreEqual(0, result.OrderBy(x => x.ForeCastExpected).Last().ForeCastExpected);
-
-        //}
-
-        //[TestMethod]
-
-        //public void TestStockCalculation()
-        //{
-        //    OrderDateCalculator ODC = new OrderDateCalculator();
-        //    Product product = new Product();
-        //    DateTime dt = new DateTime(2018, 04, 25);
-        //    var result = ODC.StockCalculation(product,dt ,5);
-
-        //    Assert.AreEqual(new DateTime(2018,05,03), result);
-        //}
+        }
     }
 }

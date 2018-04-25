@@ -87,17 +87,21 @@ namespace ViewModels
         {
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();
-            foreach (var stat in productSales.Where(p => products.Contains(p.Product)))
+            foreach (var stat in productSales)
             {
-                int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
-                ForecastList.Add(new SalesStatistics()
+                if(products.Any(p => p.Equals(stat.Product)))
                 {
-                    QuantitySold = stat.QuantitySold,
-                    ExpectedSales = result,
-                    PeriodStart = stat.PeriodStart.AddYears(1),
-                    PeriodEnd = stat.PeriodEnd.AddYears(1),
-                    Product = stat.Product
-                });
+                    int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
+                    ForecastList.Add(new SalesStatistics()
+                    {
+                        QuantitySold = stat.QuantitySold,
+                        ExpectedSales = result,
+                        PeriodStart = stat.PeriodStart.AddYears(1),
+                        PeriodEnd = stat.PeriodEnd.AddYears(1),
+                        Product = stat.Product
+                    });
+                }
+              
             }
             return ForecastList;
         }

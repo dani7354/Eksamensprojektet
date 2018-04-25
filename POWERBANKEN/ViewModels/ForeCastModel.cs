@@ -11,10 +11,12 @@ namespace ViewModels
    
     public class ForeCastModel : BaseViewModel
     {
+        public IDataStorage datastorage;
         private double _growthInPercent;
         private List<DateTime> _months;
         private Dictionary<DateTime, Product>_foreCastGrid;
         private List<Product> products;
+        private List<SalesStatistics> productSales;
 
         public double GrowthInPercent
         {
@@ -29,24 +31,24 @@ namespace ViewModels
             }
         }
 
-        public List<DateTime> Months
-        {
-            get
-            {
-                return _months;
-            }
-            set
-            {
-                _months = value;
-                NotifyPropertyChanged("Months");
-            }
+        //public List<DateTime> Months
+        //{
+        //    get
+        //    {
+        //        return _months;
+        //    }
+        //    set
+        //    {
+        //        _months = value;
+        //        NotifyPropertyChanged("Months");
+        //    }
 
-        }
+        //}
 
-        public DateTime SelectedMonth
-        {
-            get; set;
-        }
+        //public DateTime SelectedMonth
+        //{
+        //    get; set;
+        //}
 
         public Dictionary<DateTime,Product> ForeCast
         {
@@ -63,28 +65,30 @@ namespace ViewModels
 
         public ForeCastModel()
         {
-            Months = new List<DateTime>()
-            { new DateTime(DateTime.Now.Year, 1, 1),
-            new DateTime(DateTime.Now.Year, 2, 1),
-            new DateTime(DateTime.Now.Year, 3, 1),
-            new DateTime(DateTime.Now.Year, 4, 1),
-            new DateTime(DateTime.Now.Year, 5, 1),
-            new DateTime(DateTime.Now.Year, 6, 1),
-            new DateTime(DateTime.Now.Year, 7, 1),
-            new DateTime(DateTime.Now.Year, 8, 1),
-            new DateTime(DateTime.Now.Year, 9, 1),
-            new DateTime(DateTime.Now.Year, 10, 1),
-            new DateTime(DateTime.Now.Year, 11, 1),
-            new DateTime(DateTime.Now.Year, 12, 1)
-            }; 
+            //Months = new List<DateTime>()
+            //{ new DateTime(DateTime.Now.Year, 1, 1),
+            //new DateTime(DateTime.Now.Year, 2, 1),
+            //new DateTime(DateTime.Now.Year, 3, 1),
+            //new DateTime(DateTime.Now.Year, 4, 1),
+            //new DateTime(DateTime.Now.Year, 5, 1),
+            //new DateTime(DateTime.Now.Year, 6, 1),
+            //new DateTime(DateTime.Now.Year, 7, 1),
+            //new DateTime(DateTime.Now.Year, 8, 1),
+            //new DateTime(DateTime.Now.Year, 9, 1),
+            //new DateTime(DateTime.Now.Year, 10, 1),
+            //new DateTime(DateTime.Now.Year, 11, 1),
+            //new DateTime(DateTime.Now.Year, 12, 1)
+            //}; 
             
         }
 
         public void CalculateForeCast()
         {
+            productSales =  datastorage.GetProductSales();
+            products = datastorage.GetAllProducts();
             OrderDateCalculator orderDateCalc = new OrderDateCalculator();
 
-            ForeCast = orderDateCalc.OrderDatesForAllProducts(products);
+            ForeCast = orderDateCalc.OrderDatesForAllProducts(products, productSales, GrowthInPercent);
 
         }
     }
