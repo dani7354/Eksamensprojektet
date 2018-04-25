@@ -55,8 +55,8 @@ namespace UnitTestProject1
         {
             OrderDateCalculator ODC = new OrderDateCalculator();
             Product product = new Product();
-
-            var result = ODC.StockCalculation(product,new DateTime(2018,04,25) ,5);
+            DateTime dt = new DateTime(2018, 04, 25);
+            var result = ODC.StockCalculation(product,dt ,5);
 
             Assert.AreEqual(new DateTime(2018,05,03), result);
         }

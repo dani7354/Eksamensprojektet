@@ -33,7 +33,7 @@ namespace ViewModels
             } }
         public DateTime StockCalculation(Product product, DateTime currentDateOfTheMonth, int expectedSalePerDay)
         {
-            int numberOfDaysUntilStockRunsDy = 0;
+            int numberOfDaysUntilStockRunsDy = -1; //Vi minusser med en fordi at datetime klasse, starter på den 01. og vil vi have idags dato med
 
             while (product.StockAmount >= product.MinStock)
             {
