@@ -31,9 +31,6 @@ namespace Domain
         public double PurchasePrice { get; set; }
         public int StockAmount { get; set; } = 100;
         public int MinStock { get; set; } = 10;
-        public int MaxStock { get; set; }
-        public double ProductionTimeInHours { get; set; }
-
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
         public bool IsActive { get; set; }
