@@ -14,6 +14,7 @@ namespace ViewModels
         private double _growthInPercent;
         private List<DateTime> _months;
         private Dictionary<DateTime, Product>_foreCastGrid;
+        private List<Product> products;
 
         public double GrowthInPercent
         {
@@ -78,12 +79,12 @@ namespace ViewModels
             }; 
             
         }
-   
+
         public void CalculateForeCast()
         {
             OrderDateCalculator orderDateCalc = new OrderDateCalculator();
 
-            ForeCast = orderDateCalc.GetOrderDatesForProducts();
+            ForeCast = orderDateCalc.OrderDatesForAllProducts(products);
 
         }
     }

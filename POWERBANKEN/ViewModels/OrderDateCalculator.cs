@@ -48,6 +48,19 @@ namespace ViewModels
 
             return OrderDate;
         }
+
+        public Dictionary<DateTime, Product> OrderDatesForAllProducts(List<Product> allProducts)
+        {
+            Dictionary<DateTime, Product> AllProducts = new Dictionary<DateTime, Product>();
+            foreach (Product product in allProducts)
+            {
+                StockCalculation(product, new DateTime(2018,04,25), 100);
+                AllProducts.Add(StockCalculation(product, new DateTime(2018,04,25), 100),product);
+            }
+
+            return AllProducts;
+
+        }
         //public List<SalesStatistics> CalculateProductSalesForMonth(double GrowthInPercent, List<Product> products, List<SalesStatistics> productSales)
         //{
         //    GrowthInPercent = (GrowthInPercent / 100) + 1;
@@ -72,9 +85,6 @@ namespace ViewModels
         //{
 
         //    var futureSales = CalculateProductSalesForMonth(growth, products, productsales);
-       
-
-
         //    return null;
         //}
     }
