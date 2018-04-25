@@ -12,6 +12,10 @@ namespace UnitTestProject1
     public class UnitTestAlgorithms
     {
 
+
+
+        //[TestInitialize]
+
         //[TestMethod]
         //public void TestGrowthInPercent()
         //{
@@ -21,7 +25,7 @@ namespace UnitTestProject1
         //    double GrowthForPeriod = 1.10;
         //    double ExpectedSaleForThisYearsSale = LastYearsSale * GrowthForPeriod;
         //    double result = ExpectedSaleForThisYearsSale * GrowthForPeriod;
-           
+
         //   double resultNow = a.GrowthInPercentPerPeriod(LastYearsSale, GrowthForPeriod);
 
         //    Assert.AreEqual(result, resultNow);
@@ -33,7 +37,7 @@ namespace UnitTestProject1
         //{
         //    ForeCastModel fm = new ForeCastModel();
         //    var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
-            
+
         //    Assert.AreEqual(6, result.Last().QuantitySold);
         //    Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
         //}
@@ -49,16 +53,16 @@ namespace UnitTestProject1
 
         //}
 
-        [TestMethod]
+        //[TestMethod]
 
-        public void TestStockCalculation()
-        {
-            OrderDateCalculator ODC = new OrderDateCalculator();
-            Product product = new Product();
-            DateTime dt = new DateTime(2018, 04, 25);
-            var result = ODC.StockCalculation(product,dt ,5);
+        //public void TestStockCalculation()
+        //{
+        //    OrderDateCalculator ODC = new OrderDateCalculator();
+        //    Product product = new Product();
+        //    DateTime dt = new DateTime(2018, 04, 25);
+        //    var result = ODC.StockCalculation(product,dt ,5);
 
-            Assert.AreEqual(new DateTime(2018,05,03), result);
-        }
+        //    Assert.AreEqual(new DateTime(2018,05,03), result);
+        //}
     }
 }

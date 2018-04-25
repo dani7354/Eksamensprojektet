@@ -11,6 +11,7 @@ namespace ViewModels
 {
     public class ImportCSVViewModel : BaseViewModel
     {
+        public IDataStorage dataStorage;
         private CSVReader _csvReader;
         private List<SalesStatistics> _sales;
         private string _filePath;
@@ -40,6 +41,7 @@ namespace ViewModels
         }
         public ImportCSVViewModel()
         {
+            dataStorage = new ProductDB();
             _csvReader = new CSVReader();
             FilePath = "Vælg en filsti";
         }
@@ -64,7 +66,7 @@ namespace ViewModels
         }
         public void WriteToDB()
         {
-            ProductDB.InsertProductSale(_sales);
+            dataStorage.InsertProductSale(_sales);
         }
     }
 }

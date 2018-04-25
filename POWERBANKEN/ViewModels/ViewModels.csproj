@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="OrderDateCalculator.cs" />
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="ForeCastCalculator.cs" />
     <Compile Include="ForeCastModel.cs" />
     <Compile Include="ImportCSVViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
