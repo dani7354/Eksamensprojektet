@@ -13,7 +13,6 @@ namespace DataAccess
     {
         public static List<Product> GetAllProducts()
         {
-            List<Product> InactiveProductList = new List<Product>();
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
