@@ -79,12 +79,12 @@ namespace ViewModels
             
         }
    
-        public void CalculateForeCast()
-        {
-            OrderDateCalculator orderDateCalc = new OrderDateCalculator();
+        //public void CalculateForeCast()
+        //{
+        //    OrderDateCalculator orderDateCalc = new OrderDateCalculator();
 
-            ForeCast = orderDateCalc.GetOrderDatesForProducts();
+        //    ForeCast = orderDateCalc.GetOrderDatesForProducts();
 
-        }
+        //}
     }
 }

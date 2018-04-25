@@ -29,9 +29,9 @@ namespace View
             DataContext = fm;
 
         }
-        private void Calculate_Click(object sender, RoutedEventArgs e)
-        {
-            fm.CalculateForeCast();
-        }
+        //private void Calculate_Click(object sender, RoutedEventArgs e)
+        //{
+        //    fm.CalculateForeCast();
+        //}
     }
 }
