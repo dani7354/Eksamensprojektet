@@ -67,6 +67,7 @@ namespace UnitTestProject1
             forecatModel.CalculateForeCast();
 
             Assert.AreEqual(3, forecatModel.ForeCast.Count());
+            Assert.AreEqual("", forecatModel.ForeCast.First().Key);
             
 
 
