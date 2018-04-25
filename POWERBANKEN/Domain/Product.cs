@@ -31,8 +31,8 @@ namespace Domain
         public string Name { get; set; }
         public string SKU { get; set; }
         public double PurchasePrice { get; set; }
-        public int StockAmount { get; set; }
-        public int MinStock { get; set; }
+        public int StockAmount { get; set; } = 100;
+        public int MinStock { get; set; } = 5;
         public int MaxStock { get; set; }
         public double ProductionTimeInHours { get; set; }
 

@@ -48,5 +48,17 @@ namespace UnitTestProject1
         //    Assert.AreEqual(0, result.OrderBy(x => x.ForeCastExpected).Last().ForeCastExpected);
 
         //}
+
+        [TestMethod]
+
+        public void TestStockCalculation()
+        {
+            OrderDateCalculator ODC = new OrderDateCalculator();
+            Product product = new Product();
+
+            var result = ODC.StockCalculation(product,new DateTime(2018,04,25) ,5);
+
+            Assert.AreEqual(new DateTime(2018,05,03), result);
+        }
     }
 }
