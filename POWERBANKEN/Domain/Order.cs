@@ -20,7 +20,7 @@ namespace Domain
         public DateTime OrderDate { get; set; }
         public DateTime ExpectedDeliveryDate { get; set; }
         public DateTime ActualDeliveryDate { get; set; }
-        public int Amount { get; set; }
+       public int Amount { get; set; }
         public double TotalOrderPrice { get; set; }
 
 

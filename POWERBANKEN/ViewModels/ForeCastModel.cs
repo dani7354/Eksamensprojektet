@@ -84,7 +84,7 @@ namespace ViewModels
         {
             ForeCastCalculator fc = new ForeCastCalculator();
          
-            ForeCast = fc.ForeCastCalculation(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
+            ForeCast = fc.CalculateProductSalesForMonth(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
 
         }
     }

@@ -9,7 +9,14 @@ namespace ViewModels
 {
     public class ForeCastCalculator
     {
-        public List<SalesStatistics> ForeCastCalculation(double GrowthInPercent, DateTime month)
+        
+        public Dictionary<DateTime, Product> GetOrderDatesForProducts()
+        {
+            return null;
+        }
+
+
+        public List<SalesStatistics> CalculateProductSalesForMonth(double GrowthInPercent, DateTime month)
         {
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();

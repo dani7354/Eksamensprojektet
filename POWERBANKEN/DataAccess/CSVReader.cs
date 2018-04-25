@@ -100,8 +100,7 @@ namespace DataAccess
         }
         private bool IsNumber(string stringToBeChecke)
         {
-            int integerOut;
-            return int.TryParse(stringToBeChecke, out integerOut);
+            return int.TryParse(stringToBeChecke, out int integerOut);
         }
 
     }
