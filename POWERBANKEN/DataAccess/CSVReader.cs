@@ -29,8 +29,8 @@ namespace DataAccess
              
                         SalesStatistics prodStat = new SalesStatistics
                         {
-                            Start = periodstart,
-                            End = periodEnd
+                            PeriodStart = periodstart,
+                            PeriodEnd = periodEnd
                         };
 
                         bool quantityFound = false;

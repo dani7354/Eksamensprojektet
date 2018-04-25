@@ -24,11 +24,7 @@ namespace Domain
         {
             ExpectedSale = expectedSale;
             ActualSale = actualSale;
-            double result;
-            double r;
-            result = ActualSale - ExpectedSale;
-            r = result / ExpectedSale;
-            result = r * 100;
+            double result = ((ActualSale - ExpectedSale) / expectedSale) * 100;
             return result;
         }
     }

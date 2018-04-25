@@ -29,8 +29,8 @@ namespace UnitTestProject1
             List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 
             Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
-            Assert.AreEqual(saleStatistics.First().Start, new DateTime(2017, 9, 1));
-            Assert.AreEqual(saleStatistics.First().End, new DateTime(2017, 9, 30));
+            Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 9, 1));
+            Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 9, 30));
         }
         [TestMethod]
         public void ReadFromCSVWorksMay() //opdateres, når læser-metoden er færdiglavet. 
@@ -42,8 +42,8 @@ namespace UnitTestProject1
             List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 
             Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
-            Assert.AreEqual(saleStatistics.First().Start, new DateTime(2017, 5, 1));
-            Assert.AreEqual(saleStatistics.First().End, new DateTime(2017, 5, 31));
+            Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 5, 1));
+            Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 5, 31));
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace UnitTestProject1
             int expquantitySold = 69; // aflæst i excel
             int expfutureQuantitySold = (int)Math.Ceiling(expquantitySold * ((vm.GrowthInPercent / 100) + 1));
             Assert.AreEqual(expquantitySold, vm.ForeCast.First().QuantitySold);
-            Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First().ForeCastExpected);
+            Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First().ExpectedSales);
         }
     }
 }
