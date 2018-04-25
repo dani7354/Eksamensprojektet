@@ -27,26 +27,26 @@ namespace UnitTestProject1
         //    Assert.AreEqual(result, resultNow);
         //}
 
-        [TestMethod]
+        //[TestMethod]
 
-        public void TestForeCastWorks()
-        {
-            ForeCastModel fm = new ForeCastModel();
-            var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
+        //public void TestForeCastWorks()
+        //{
+        //    ForeCastModel fm = new ForeCastModel();
+        //    var result = fm.ForeCastCalculation(10, new DateTime(2017, 1, 1));
             
-            Assert.AreEqual(6, result.Last().QuantitySold);
-            Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
-        }
+        //    Assert.AreEqual(6, result.Last().QuantitySold);
+        //    Assert.AreEqual(69, result.OrderBy(x => x.QuantitySold).Last().QuantitySold);
+        //}
 
-        [TestMethod]
+        //[TestMethod]
 
-        public void TestForeCastNegativeNumbers()
-        {
-            ForeCastModel fm = new ForeCastModel();
-            var result = fm.ForeCastCalculation(-100, new DateTime(2017, 1, 1));
+        //public void TestForeCastNegativeNumbers()
+        //{
+        //    ForeCastModel fm = new ForeCastModel();
+        //    var result = fm.ForeCastCalculation(-100, new DateTime(2017, 1, 1));
 
-            Assert.AreEqual(0, result.OrderBy(x => x.ForeCastExpected).Last().ForeCastExpected);
+        //    Assert.AreEqual(0, result.OrderBy(x => x.ForeCastExpected).Last().ForeCastExpected);
 
-        }
+        //}
     }
 }
