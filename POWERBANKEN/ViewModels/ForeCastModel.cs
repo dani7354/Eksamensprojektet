@@ -81,9 +81,9 @@ namespace ViewModels
    
         public void CalculateForeCast()
         {
-            ForeCastCalculator forecastCalculator = new ForeCastCalculator();
-         
-            ForeCast = forecastCalculator.CalculateProductSalesForMonth(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToDictionary();
+            OrderDateCalculator orderDateCalc = new OrderDateCalculator();
+
+            ForeCast = orderDateCalc.GetOrderDatesForProducts();
 
         }
     }
