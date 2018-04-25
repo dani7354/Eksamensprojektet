@@ -39,8 +39,7 @@ namespace DataAccess
                     Brand brand = new Brand((string)reader[9]);
                     bool isActive = (bool)reader[10];
 
-                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, maxStock,
-                            productionInHours, productType, brand, isActive);
+                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, productType, brand, isActive);
                     ProductList.Add(product);
 
                 }
@@ -64,8 +63,8 @@ namespace DataAccess
                     cmd1.Parameters.Add(new SqlParameter("@price", p.PurchasePrice));
                     cmd1.Parameters.Add(new SqlParameter("@stockamount", p.StockAmount));
                     cmd1.Parameters.Add(new SqlParameter("@minstock", p.MinStock));
-                    cmd1.Parameters.Add(new SqlParameter("@maxstock", p.MaxStock));
-                    cmd1.Parameters.Add(new SqlParameter("@productionhours", p.ProductionTimeInHours));
+              
+               
                     cmd1.Parameters.Add(new SqlParameter("@isactive", p.IsActive));
                     cmd1.ExecuteNonQuery();
                 }
@@ -84,7 +83,7 @@ namespace DataAccess
                     };
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
                     cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
-                    cmd1.Parameters.Add(new SqlParameter("@date", p.End));
+                    cmd1.Parameters.Add(new SqlParameter("@date", p.PeriodEnd));
 
                     cmd1.ExecuteNonQuery();
                 }
@@ -109,9 +108,9 @@ namespace DataAccess
                     SalesStatistics stat = new SalesStatistics()
                     {
                         QuantitySold = (int)reader[1],
-                        End = (DateTime)reader[2]
+                        PeriodEnd = (DateTime)reader[2]
                     };
-                    stat.Start = new DateTime(stat.End.Year, stat.End.Month, 1);
+                    stat.PeriodStart = new DateTime(stat.PeriodEnd.Year, stat.PeriodEnd.Month, 1);
                     if(allProducts.Exists(p => p.SKU == (string)reader[0]))
                     {
                         stat.Product = allProducts.Where((p => p.SKU == (string)reader[0])).Single();
