@@ -29,6 +29,7 @@
                 <DataGridTextColumn Binding="{Binding ForeCastExpected}" Header="Forventet salg"  Width="auto"  IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Start, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode start"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
 
             </DataGrid.Columns>
 

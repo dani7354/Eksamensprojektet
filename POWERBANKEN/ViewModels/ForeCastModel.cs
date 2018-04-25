@@ -13,7 +13,7 @@ namespace ViewModels
     {
         private double _growthInPercent;
         private List<DateTime> _months;
-        private List<SalesStatistics> _foreCastGrid;
+        private Dictionary<DateTime, Product>_foreCastGrid;
 
         public double GrowthInPercent
         {
@@ -47,7 +47,7 @@ namespace ViewModels
             get; set;
         }
 
-        public List<SalesStatistics> ForeCast
+        public Dictionary<DateTime,Product> ForeCast
         {
             get
             {
@@ -79,13 +79,11 @@ namespace ViewModels
             
         }
    
-
-
         public void CalculateForeCast()
         {
             ForeCastCalculator forecastCalculator = new ForeCastCalculator();
          
-            ForeCast = forecastCalculator.CalculateProductSalesForMonth(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToList();
+            ForeCast = forecastCalculator.CalculateProductSalesForMonth(GrowthInPercent, SelectedMonth).OrderByDescending(x => x.QuantitySold).ToDictionary();
 
         }
     }
