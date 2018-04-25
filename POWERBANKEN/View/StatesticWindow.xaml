@@ -23,13 +23,10 @@
         <TextBox HorizontalAlignment="Left" Height="54" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Margin="608,95,0,0" FontSize="20" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
         <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="405" VerticalAlignment="Top" Width="882" AutoGenerateColumns="False" Margin="0,154,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Product.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Product.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding QuantitySold}" Header="Antal solgt"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding ForeCastExpected}" Header="Forventet salg"  Width="auto"  IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Start, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode start"  Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding End, StringFormat={}{0:dd/MM/yyyy}}" Header="Periode slut"  Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Value.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Value.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Value.QuantitySold}" Header="Antal solgt"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Key, StringFormat={}{0:dd/MM/yyyy}}" Header="Bestillings dato"  Width="auto" IsReadOnly="True"/>
 
             </DataGrid.Columns>
 
