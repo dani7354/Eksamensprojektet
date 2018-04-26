@@ -29,8 +29,9 @@ namespace Domain
         public string Name { get; set; }
         public string SKU { get; set; }
         public double PurchasePrice { get; set; }
-        public int StockAmount { get; set; } = 100;
-        public int MinStock { get; set; } = 10;
+        public int StockAmount { get; set; } 
+        public int MinStock { get; set; } 
+        public int LeadTimeDays { get; set; }
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
         public bool IsActive { get; set; }
@@ -40,5 +41,12 @@ namespace Domain
         {
             return string.Format($"{SKU}");
         }
+
+        public override bool Equals(object obj)
+        {
+            Product p = (Product)obj;
+            return this.SKU.Equals(p.SKU);
+        }
+        
     }
 }

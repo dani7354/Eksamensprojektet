@@ -11,6 +11,7 @@ namespace ViewModels
 {
     public class StockViewModel : BaseViewModel
     {
+        public IDataStorage datastorage;
         private List<Product> _allProducts;
         private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
@@ -45,7 +46,8 @@ namespace ViewModels
         }
         public StockViewModel()
         {
-            _allProducts = ProductDB.GetAllProducts();
+            datastorage = new ProductDB();
+            _allProducts = datastorage.GetAllProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
         public void Search()
@@ -54,7 +56,7 @@ namespace ViewModels
         }
         public void UpdateProducts()
         {
-            ProductDB.UpdateProducts(_allProducts);
+            datastorage.UpdateProducts(_allProducts);
         }
         public void ShowDeactivatedProducts()
         {
