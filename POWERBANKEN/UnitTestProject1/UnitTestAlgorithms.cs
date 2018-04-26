@@ -64,14 +64,13 @@ namespace UnitTestProject1
         [TestMethod]
         public void CalculationWorksWithSalesForEveryMonth()
         {
-            ForeCastModel forecatModel = new ForeCastModel();
-            forecatModel.datastorage = dataStorage;
-            forecatModel.GrowthInPercent = 50; // indtaster vækst i procent.
-            forecatModel.CalculateForeCast();
+            OrderDateCalculator calc = new OrderDateCalculator();
+            var result  = calc.OrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.23);
+    
 
-            Assert.AreEqual(3, forecatModel.ForeCast.Count());
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.First().Key);
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.Last().Key);
+            Assert.AreEqual(3, calc);
+            Assert.AreEqual(new DateTime(2018, 5, 13), result.First().Key);
+            Assert.AreEqual(new DateTime(2018, 5, 13), result.Last().Key);
             
 
 

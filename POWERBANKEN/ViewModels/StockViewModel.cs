@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-using DataAccess;
 using System.Windows.Input;
 
 namespace ViewModels
 {
     public class StockViewModel : BaseViewModel
     {
-        public IDataStorage datastorage;
+        private Controller.Controller _controller;
         private List<Product> _allProducts;
         private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
@@ -46,8 +45,8 @@ namespace ViewModels
         }
         public StockViewModel()
         {
-            datastorage = new ProductDB();
-            _allProducts = datastorage.GetAllProducts();
+            _controller = Controller.Controller.Instance;
+            _allProducts = _controller.GetProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
         public void Search()
@@ -56,7 +55,7 @@ namespace ViewModels
         }
         public void UpdateProducts()
         {
-            datastorage.UpdateProducts(_allProducts);
+            _controller.UpdateProducts();
         }
         public void ShowDeactivatedProducts()
         {

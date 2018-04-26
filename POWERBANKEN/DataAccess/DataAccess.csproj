@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSVReader.cs" />
+    <Compile Include="DBConnection.cs" />
+    <Compile Include="IDataStorage.cs" />
+    <Compile Include="ProductDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
