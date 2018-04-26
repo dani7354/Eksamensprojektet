@@ -23,6 +23,9 @@ namespace UnitTestProject1
         [TestInitialize]
         public void Init()
         {
+            p1.LeadTimeDays = 14;
+            p2.LeadTimeDays = 30;
+            p3.LeadTimeDays = 7;
             dataStorage = TestDB.Instance;
 
 
@@ -63,11 +66,12 @@ namespace UnitTestProject1
         {
             ForeCastModel forecatModel = new ForeCastModel();
             forecatModel.datastorage = dataStorage;
-            forecatModel.GrowthInPercent = 30.32; // indtaster vækst i procent.
+            forecatModel.GrowthInPercent = 50; // indtaster vækst i procent.
             forecatModel.CalculateForeCast();
 
             Assert.AreEqual(3, forecatModel.ForeCast.Count());
-            Assert.AreEqual("", forecatModel.ForeCast.First().Key);
+            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.First().Key);
+            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.Last().Key);
             
 
 
