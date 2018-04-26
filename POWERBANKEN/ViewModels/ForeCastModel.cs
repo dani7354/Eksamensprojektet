@@ -13,7 +13,6 @@ namespace ViewModels
     {
         public IDataStorage datastorage;
         private double _growthInPercent;
-        //private List<DateTime> _months;
         private Dictionary<DateTime, Product>_foreCastGrid;
         private List<Product> products;
         private List<SalesStatistics> productSales;
@@ -65,6 +64,8 @@ namespace ViewModels
 
         public ForeCastModel()
         {
+
+            datastorage = new ProductDB();
             //Months = new List<DateTime>()
             //{ new DateTime(DateTime.Now.Year, 1, 1),
             //new DateTime(DateTime.Now.Year, 2, 1),
