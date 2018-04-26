@@ -27,7 +27,7 @@
                 <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding MaxStock}" Header="Max beholdning (stk)"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime"  Width="auto"/>
 
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Algorithms.cs" />
     <Compile Include="Brand.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="DataRepository.cs" />
     <Compile Include="Delivery.cs" />
     <Compile Include="Receipt.cs" />
