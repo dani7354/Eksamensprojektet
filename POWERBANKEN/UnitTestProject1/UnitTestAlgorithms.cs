@@ -33,7 +33,7 @@ namespace UnitTestProject1
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = rnd.Next(0, 400),
+                    QuantitySold = 50,
                     Product = p1
                 };
                 p2stat[i] = new SalesStatistics()
