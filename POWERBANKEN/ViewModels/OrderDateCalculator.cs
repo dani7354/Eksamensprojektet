@@ -35,7 +35,7 @@ namespace ViewModels
             } }
         public DateTime StockCalculation(Product product, List<SalesStatistics> futureSalesForProduct)
         {
-         //   int numberOfDaysUntilStockRunsDy = -1; //Vi minusser med en fordi at datetime klasse, starter på den 01. og vil vi have idags dato med
+        
 
             DateTime currentDate = DateTime.Today;
             Product productCopy = new Product(product.ID, product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand, product.IsActive);
@@ -46,7 +46,7 @@ namespace ViewModels
                 currentDate = currentDate.AddDays(1);
             }
             DateTime RunningDryOfProducts = currentDate;
-            DateTime OrderDate = RunningDryOfProducts.AddDays(product.LeadTimeDays);
+            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays);
 
             return OrderDate;
         }
