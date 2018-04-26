@@ -86,8 +86,8 @@ namespace UnitTestProject1
 
             int expquantitySold = 69; // aflæst i excel
             int expfutureQuantitySold = (int)Math.Ceiling(expquantitySold * ((vm.GrowthInPercent / 100) + 1));
-            Assert.AreEqual(expquantitySold, vm.ForeCast.First().QuantitySold);
-            Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First().ExpectedSales);
+            Assert.AreEqual(expquantitySold, vm.ForeCast.First().Value.StockAmount);
+            Assert.AreEqual(expfutureQuantitySold,  vm.ForeCast.First());
         }
     }
 }
