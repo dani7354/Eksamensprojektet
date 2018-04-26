@@ -47,6 +47,10 @@ namespace Domain
             Product p = (Product)obj;
             return this.SKU.Equals(p.SKU);
         }
-        
+        public override int GetHashCode()
+        {
+            return this.SKU.GetHashCode();
+        }
+
     }
 }
