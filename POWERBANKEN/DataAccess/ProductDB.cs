@@ -85,8 +85,6 @@ namespace DataAccess
                 }
             }
         }
-
-      
         public List<SalesStatistics> GetProductSales()
         {
             List<SalesStatistics> salesStatisticsList = new List<SalesStatistics>();
@@ -103,19 +101,19 @@ namespace DataAccess
                 {
                     SalesStatistics stat = new SalesStatistics()
                     {
-                        QuantitySold = (int)reader[1],
-                        PeriodEnd = (DateTime)reader[2]
+                        QuantitySold = (int)reader["quantity"],
+                        PeriodEnd = (DateTime)reader["periodend"]
                     };
                     stat.PeriodStart = new DateTime(stat.PeriodEnd.Year, stat.PeriodEnd.Month, 1);
-                    if(allProducts.Exists(p => p.SKU == (string)reader[0]))
+                    if(allProducts.Exists(p => p.SKU == (string)reader["sku"]))
                     {
-                        stat.Product = allProducts.Where((p => p.SKU == (string)reader[0])).Single();
+                        stat.Product = allProducts.Where((p => p.SKU == (string)reader["sku"])).Single();
                     }
                     else
                     {
                         stat.Product = new Product()
                         {
-                            SKU = (string)reader[0],
+                            SKU = (string)reader["sku"],
                             Name = "Ukendt"
                         };
                     }
