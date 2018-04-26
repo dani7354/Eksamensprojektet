@@ -43,14 +43,14 @@ namespace UnitTestProject1
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = rnd.Next(0, 100),
+                    QuantitySold = 20- i,
                     Product = p2
                 };
                 p3stat[i] = new SalesStatistics()
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = rnd.Next(0, 160),
+                    QuantitySold = 30 - i,
                     Product = p3
                 };
 
