@@ -8,10 +8,9 @@ namespace Domain
 {
     public class Product
     {
-        public Product(int productID, string productName, string sku, double purchasePrice, int stockAmount, int minStock,
-          ProductType type, Brand brand, bool isActive)
+        public Product(string productName, string sku, double purchasePrice, int stockAmount, int minStock,
+          ProductType type, Brand brand, int leadtimeInDays , bool isActive)
         {
-            ID = productID;
             Name = productName;
             SKU = sku;
             PurchasePrice = purchasePrice;
@@ -19,13 +18,14 @@ namespace Domain
             MinStock = minStock;
             Type = type;
             Brand = brand;
+            LeadTimeDays = leadtimeInDays;
             IsActive = isActive;
         }
         public Product()
         {
 
         }
-        public int ID { get; set; }
+
         public string Name { get; set; }
         public string SKU { get; set; }
         public double PurchasePrice { get; set; }

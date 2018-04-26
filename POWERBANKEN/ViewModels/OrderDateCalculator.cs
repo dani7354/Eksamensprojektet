@@ -38,7 +38,7 @@ namespace ViewModels
         
 
             DateTime currentDate = DateTime.Today;
-            Product productCopy = new Product(product.ID, product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand, product.IsActive);
+            Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
             while (productCopy.StockAmount >= productCopy.MinStock)
             {
                 int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);

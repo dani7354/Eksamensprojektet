@@ -13,9 +13,9 @@ namespace UnitTestProject1
     {
         IDataStorage dataStorage;
         Random rnd = new Random();
-        Product p1 = new Product(123, "Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"), true);
-        Product p2 = new Product(123, "Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"), true);
-        Product p3 = new Product(123, "Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"), true);
+        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"),20, true);
+        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"),20, true);
+        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"),20, true);
 
         SalesStatistics[] p1stat = new SalesStatistics[12];
         SalesStatistics[] p2stat = new SalesStatistics[12];

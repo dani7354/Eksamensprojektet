@@ -13,7 +13,7 @@ namespace ViewModels
     {
         public IDataStorage datastorage;
         private double _growthInPercent;
-        private List<DateTime> _months;
+        //private List<DateTime> _months;
         private Dictionary<DateTime, Product>_foreCastGrid;
         private List<Product> products;
         private List<SalesStatistics> productSales;

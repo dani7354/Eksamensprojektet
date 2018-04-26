@@ -27,19 +27,17 @@ namespace DataAccess
 
                 while (reader.Read())
                 {
-                    int productID = (int)reader[0];
-                    string productName = (string)reader[1];
-                    string sku = reader[2].ToString();
-                    double purchasePrice = (double)reader[3];
-                    int amount = (int)reader[4];
-                    int minStock = (int)reader[5];
-                    int maxStock = (int)reader[6];
-                    double productionInHours = (double)reader[7];
-                    ProductType productType = new ProductType((string)reader[8]);
-                    Brand brand = new Brand((string)reader[9]);
-                    bool isActive = (bool)reader[10];
+                    string productName = (string)reader["PRODUCTNAME"];
+                    string sku = reader["SKU"].ToString();
+                    double purchasePrice = (double)reader["PURCHASEPRICE"];
+                    int amount = (int)reader["AMOUNT"];
+                    int minStock = (int)reader["MINSTOCK"];
+                    ProductType productType = new ProductType((string)reader["PRODUCTTYPE"]);
+                    Brand brand = new Brand((string)reader["BRAND"]);
+                    int leadtimeInDays = (int)reader["LEADTIMEINDAYS"];
+                    bool isActive = (bool)reader["ISACTIVE"];
 
-                    Product product = new Product(productID, productName, sku, purchasePrice, amount, minStock, productType, brand, isActive);
+                    Product product = new Product(productName, sku, purchasePrice, amount, minStock, productType, brand,leadtimeInDays, isActive);
                     ProductList.Add(product);
 
                 }
@@ -57,14 +55,12 @@ namespace DataAccess
                     {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
-                    cmd1.Parameters.Add(new SqlParameter("@id", p.ID));
                     cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
                     cmd1.Parameters.Add(new SqlParameter("@price", p.PurchasePrice));
-                    cmd1.Parameters.Add(new SqlParameter("@stockamount", p.StockAmount));
+                    cmd1.Parameters.Add(new SqlParameter("@amount", p.StockAmount));
                     cmd1.Parameters.Add(new SqlParameter("@minstock", p.MinStock));
-              
-               
+                    cmd1.Parameters.Add(new SqlParameter("@leadtimeInDays", p.LeadTimeDays));
                     cmd1.Parameters.Add(new SqlParameter("@isactive", p.IsActive));
                     cmd1.ExecuteNonQuery();
                 }
