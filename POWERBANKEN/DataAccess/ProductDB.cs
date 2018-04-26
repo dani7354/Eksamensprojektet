@@ -34,7 +34,7 @@ namespace DataAccess
                     int minStock = (int)reader["MINSTOCK"];
                     ProductType productType = new ProductType((string)reader["PRODUCTTYPE"]);
                     Brand brand = new Brand((string)reader["BRANDNAME"]);
-                    int leadtimeInDays = (int)reader["LEADTIMEINDAYS"];
+                    int leadtimeInDays = (int)reader["LEADTIMEDAYS"];
                     bool isActive = (bool)reader["ISACTIVE"];
 
                     Product product = new Product(productName, sku, purchasePrice, amount, minStock, productType, brand,leadtimeInDays, isActive);
