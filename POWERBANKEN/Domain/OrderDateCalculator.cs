@@ -31,19 +31,25 @@ namespace Domain
         //    } }
         public DateTime StockCalculation(Product product, List<SalesStatistics> futureSalesForProduct)
         {
-        
-
             DateTime currentDate = DateTime.Today;
             Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
             while (productCopy.StockAmount >= productCopy.MinStock)
             {
+                const int YEAR_LIMIT = 3000;
                 int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
                 productCopy.StockAmount -= dailySale;
-                currentDate = currentDate.AddDays(1);
+                if(currentDate.Year < YEAR_LIMIT)
+                {
+                    currentDate = currentDate.AddDays(1);
+                }
+                else
+                {
+                    break;
+                }
+                
             }
             DateTime RunningDryOfProducts = currentDate;
             DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays);
-
             return OrderDate;
         }
 
