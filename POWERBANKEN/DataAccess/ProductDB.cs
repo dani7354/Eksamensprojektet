@@ -9,9 +9,9 @@ using Domain;
 
 namespace DataAccess
 {
-    public static class ProductDB
+    public  class ProductDB : IDataStorage
     {
-        public static List<Product> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
@@ -46,7 +46,7 @@ namespace DataAccess
                 return ProductList;
             }
         }
-        public static void UpdateProducts(List<Product> products)
+        public void UpdateProducts(List<Product> products)
         {
             using (SqlConnection con = DBConnection.Connect)
             {
@@ -70,7 +70,7 @@ namespace DataAccess
                 }
             }
         }
-        public static void InsertProductSale(List<SalesStatistics> pProductSales)
+        public void InsertProductSale(List<SalesStatistics> pProductSales)
         {
             using (SqlConnection con = DBConnection.Connect)
             {
@@ -91,7 +91,7 @@ namespace DataAccess
         }
 
       
-        public static List<SalesStatistics> ReadProductSale()
+        public List<SalesStatistics> GetProductSales()
         {
             List<SalesStatistics> salesStatisticsList = new List<SalesStatistics>();
             List<Product> allProducts = GetAllProducts();
