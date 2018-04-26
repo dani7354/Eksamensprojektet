@@ -50,10 +50,6 @@
     <Compile Include="StockViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{b28e73ec-b109-4d8d-bce5-e87e24c1bf8b}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{c3975f01-b345-495d-bb7d-14ae09e830bb}</Project>
       <Name>Domain</Name>
