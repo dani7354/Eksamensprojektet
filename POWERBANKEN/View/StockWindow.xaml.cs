@@ -52,5 +52,10 @@ namespace View
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Tb_SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _viewModel.Search();
+        }
     }
 }

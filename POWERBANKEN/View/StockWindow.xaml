@@ -34,7 +34,7 @@
         </DataGrid>
         <Button x:Name="btn_SaveAndClose" Content="Gem og luk"  HorizontalAlignment="Left" Margin="834,617,0,0" VerticalAlignment="Top" Width="75" Click="btn_SaveAndClose_Click"   />
         <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="674,613,0,0" VerticalAlignment="Top" Width="155" Height="24" Click="btn_ChangeGridSource_Click"   />
-        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="23" Margin="674,585,0,0" TextWrapping="Wrap" Text="{Binding SearchText, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="23" Margin="674,585,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" TextChanged="Tb_SearchBox_TextChanged" />
     </Grid>
 
 </Window>

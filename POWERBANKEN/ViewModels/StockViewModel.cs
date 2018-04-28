@@ -51,7 +51,7 @@ namespace ViewModels
         }
         public void Search()
         {
-          
+            SelectedProducts = _allProducts.Where(p => p.ToString().ToLower().Contains(_searchText.ToLower())).ToList();
         }
         public void UpdateProducts()
         {
