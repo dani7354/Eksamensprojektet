@@ -46,7 +46,6 @@ namespace Domain
                 {
                     break;
                 }
-                
             }
             DateTime RunningDryOfProducts = currentDate;
             DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays);
@@ -84,9 +83,7 @@ namespace Domain
                     {
                         orderDate = DateTime.Today;
                     }
-
                     AllOrderDatesForProducts.Add(orderDate, product);
-
                 }
             }
             return AllOrderDatesForProducts;
@@ -109,11 +106,8 @@ namespace Domain
                         Product = stat.Product
                     });
                 }
-              
             }
             return ForecastList;
         }
-
-       
     }
 }
