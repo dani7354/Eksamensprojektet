@@ -49,10 +49,10 @@ namespace Controller
         {
             _dataStorage.UpdateProducts(_products);
         }
-        public Dictionary<DateTime, Product> GetOrderDatesForProducts(double growthInPercent)
+        public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
         {
             OrderDateCalculator orderCalc = new OrderDateCalculator();
-            Dictionary<DateTime, Product> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
+            Dictionary<Product, DateTime> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
             if(orderDates.Count > 0)
             {
                 return orderDates;

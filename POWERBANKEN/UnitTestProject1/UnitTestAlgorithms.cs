@@ -65,7 +65,7 @@ namespace UnitTestProject1
         public void CalculationWorksWithSalesForEveryMonth()
         {
             OrderDateCalculator calc = new OrderDateCalculator();
-            Dictionary<DateTime, Product> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
+            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
     
 
             Assert.AreEqual(3, result.Count);

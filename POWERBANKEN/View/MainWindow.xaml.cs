@@ -36,8 +36,8 @@ namespace View
 
         private void Btn_Statestic_Click(object sender, RoutedEventArgs e)
         {
-            StatesticWindow statesticWindow = new StatesticWindow();
-            statesticWindow.Show();
+            OrderDatesWindow orderDatesWindow = new OrderDatesWindow();
+            orderDatesWindow.Show();
             w.Close();
         }
 

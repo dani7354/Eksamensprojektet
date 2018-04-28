@@ -1,0 +1,25 @@
+﻿<Window x:Class="View.OrderDatesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="Bestillingsdatoer" Height="600" Width="900">
+    <Grid Margin="10,10,0,0">
+        <Label x:Name="Lbl__InNumbers" Content="Vækst i procent:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,59,0,0" Height="34" Width="92" />
+        <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Margin="97,62,0,0" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
+        <DataGrid x:Name="GridForForeCast" HorizontalAlignment="Left" Height="461" VerticalAlignment="Top" Width="872" AutoGenerateColumns="False" Margin="0,88,0,0" ItemsSource="{Binding ForeCast, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Key.SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Key.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Key.StockAmount}" Header="Nuværende lagerbeholdning"  Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Value, StringFormat={}{0:dd/MM/yyyy}}" Header="Bestillings dato"  Width="auto" IsReadOnly="True"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button x:Name="Beregn" Content="Beregn mig" HorizontalAlignment="Left" Margin="165,62,0,0" VerticalAlignment="Top" Width="83" Height="21" Click="Calculate_Click"/>
+    </Grid>
+</Window>
