@@ -44,8 +44,17 @@ namespace Domain
 
         public override bool Equals(object obj)
         {
-            Product p = (Product)obj;
-            return this.SKU.Equals(p.SKU);
+            if (obj.GetType() == this.GetType())
+            {
+                Product p = (Product)obj;
+                return this.SKU.Equals(p.SKU);
+            }
+            else
+            {
+                return false;
+            }
+         
+           
         }
         public override int GetHashCode()
         {

@@ -70,8 +70,8 @@ namespace UnitTestProject1
 
             Assert.AreEqual(3, result.Count);
             // Forventede resultater udregnet på forhånd. 
-            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Key); 
-            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Key);
+            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
+            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
             
 
 
