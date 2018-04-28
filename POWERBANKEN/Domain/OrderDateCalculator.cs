@@ -68,9 +68,9 @@ namespace Domain
             return dailySale;
         }
 
-        public Dictionary<DateTime, Product> GetOrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
+        public Dictionary<Product, DateTime> GetOrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
         {
-            Dictionary<DateTime, Product> AllOrderDatesForProducts = new Dictionary<DateTime, Product>();
+            Dictionary<Product, DateTime> AllOrderDatesForProducts = new Dictionary<Product, DateTime>();
             List<SalesStatistics> futureMonthlySales = CalculateProductSalesForMonth(growthInPercent, allProducts, productSales);
 
             foreach (Product product in allProducts.Where(p => p.IsActive == true))
@@ -83,7 +83,7 @@ namespace Domain
                     {
                         orderDate = DateTime.Today;
                     }
-                    AllOrderDatesForProducts.Add(orderDate, product);
+                    AllOrderDatesForProducts.Add(product, orderDate);
                 }
             }
             return AllOrderDatesForProducts;

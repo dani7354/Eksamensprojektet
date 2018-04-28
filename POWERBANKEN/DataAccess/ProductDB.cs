@@ -57,7 +57,7 @@ namespace DataAccess
                     };
                     cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
-                    cmd1.Parameters.Add(new SqlParameter("@price", p.PurchasePrice));
+                    cmd1.Parameters.Add(new SqlParameter("@purchaseprice", p.PurchasePrice));
                     cmd1.Parameters.Add(new SqlParameter("@amount", p.StockAmount));
                     cmd1.Parameters.Add(new SqlParameter("@minstock", p.MinStock));
                     cmd1.Parameters.Add(new SqlParameter("@leadtimeInDays", p.LeadTimeDays));
