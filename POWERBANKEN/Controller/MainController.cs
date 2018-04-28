@@ -8,14 +8,14 @@ using Domain;
 
 namespace Controller
 {
-    public class Controller
+    public class MainController
     {
-        private static readonly Controller _instance = new Controller();
+        private static readonly MainController _instance = new MainController();
         private IDataStorage _dataStorage;
         private List<Product> _products;
         private List<SalesStatistics> _productSales;
-        private Controller() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); }
-        public static Controller Instance
+        private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); }
+        public static MainController Instance
         {
             get
             {

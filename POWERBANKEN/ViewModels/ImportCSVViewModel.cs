@@ -11,7 +11,7 @@ namespace ViewModels
 {
     public class ImportCSVViewModel : BaseViewModel
     {
-        private Controller.Controller _controller;
+        private Controller.MainController _controller;
         private List<SalesStatistics> _sales;
         private string _filePath;
         public List<SalesStatistics> Sales
@@ -40,7 +40,7 @@ namespace ViewModels
         }
         public ImportCSVViewModel()
         {
-            _controller = Controller.Controller.Instance;
+            _controller = Controller.MainController.Instance;
             FilePath = "Vælg en filsti";
         }
 

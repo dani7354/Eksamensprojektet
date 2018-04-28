@@ -74,12 +74,18 @@ namespace Domain
             Dictionary<DateTime, Product> AllOrderDatesForProducts = new Dictionary<DateTime, Product>();
             List<SalesStatistics> futureMonthlySales = CalculateProductSalesForMonth(growthInPercent, allProducts, productSales);
 
-            foreach (Product product in allProducts)
+            foreach (Product product in allProducts.Where(p => p.IsActive == true))
             {
                 if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
                 {
                     List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
-                    AllOrderDatesForProducts.Add(CalculateOrderDateForProduct(product, salesForProducts), product);
+                    DateTime orderDate = CalculateOrderDateForProduct(product, salesForProducts);
+                    if(orderDate< DateTime.Today)
+                    {
+                        orderDate = DateTime.Today;
+                    }
+
+                    AllOrderDatesForProducts.Add(orderDate, product);
 
                 }
             }

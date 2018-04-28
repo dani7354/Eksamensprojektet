@@ -12,11 +12,10 @@ namespace ViewModels
    
     public class ForeCastModel : BaseViewModel
     {
-        private Controller.Controller _controller;
+        private Controller.MainController _controller;
         private double _growthInPercent;
         private Dictionary<DateTime, Product>_foreCastGrid;
-        private List<Product> products;
-        private List<SalesStatistics> productSales;
+
 
         public double GrowthInPercent
         {
@@ -66,7 +65,7 @@ namespace ViewModels
         public ForeCastModel()
         {
 
-            _controller = Controller.Controller.Instance;
+            _controller = MainController.Instance;
             //Months = new List<DateTime>()
             //{ new DateTime(DateTime.Now.Year, 1, 1),
             //new DateTime(DateTime.Now.Year, 2, 1),
@@ -86,7 +85,7 @@ namespace ViewModels
 
         public void CalculateForeCast()
         {
-           ForeCast =  _controller.GetOrderDatesForProducts(GrowthInPercent);
+            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent);
         }
     }
 }

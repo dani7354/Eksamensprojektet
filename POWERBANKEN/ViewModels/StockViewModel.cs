@@ -10,7 +10,7 @@ namespace ViewModels
 {
     public class StockViewModel : BaseViewModel
     {
-        private Controller.Controller _controller;
+        private Controller.MainController _controller;
         private List<Product> _allProducts;
         private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
@@ -45,7 +45,7 @@ namespace ViewModels
         }
         public StockViewModel()
         {
-            _controller = Controller.Controller.Instance;
+            _controller = Controller.MainController.Instance;
             _allProducts = _controller.GetProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
