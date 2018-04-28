@@ -10,7 +10,7 @@ using Domain;
 namespace ViewModels
 {
    
-    public class ForeCastModel : BaseViewModel
+    public class ForeCastViewModel : BaseViewModel
     {
         private Controller.MainController _controller;
         private double _growthInPercent;
@@ -62,7 +62,7 @@ namespace ViewModels
             }
         }
 
-        public ForeCastModel()
+        public ForeCastViewModel()
         {
 
             _controller = MainController.Instance;

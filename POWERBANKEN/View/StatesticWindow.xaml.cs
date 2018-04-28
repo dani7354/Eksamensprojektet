@@ -21,11 +21,11 @@ namespace View
     public partial class StatesticWindow : Window
     {
 
-        ForeCastModel fm;
+        ForeCastViewModel fm;
         public StatesticWindow()
         {
             InitializeComponent();
-            fm = new ForeCastModel();
+            fm = new ForeCastViewModel();
             DataContext = fm;
 
         }
