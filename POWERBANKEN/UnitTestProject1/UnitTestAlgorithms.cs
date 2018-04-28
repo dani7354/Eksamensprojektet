@@ -43,14 +43,14 @@ namespace UnitTestProject1
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = 20- i,
+                    QuantitySold = 20,
                     Product = p2
                 };
                 p3stat[i] = new SalesStatistics()
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = 30 - i,
+                    QuantitySold = 30,
                     Product = p3
                 };
 
@@ -65,12 +65,13 @@ namespace UnitTestProject1
         public void CalculationWorksWithSalesForEveryMonth()
         {
             OrderDateCalculator calc = new OrderDateCalculator();
-            var result  = calc.OrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.23);
+            Dictionary<DateTime, Product> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
     
 
             Assert.AreEqual(3, result.Count);
-            //Assert.AreEqual(new DateTime(2018, 5, 13), result.First().Key);
-            //Assert.AreEqual(new DateTime(2018, 5, 13), result.Last().Key);
+            // Forventede resultater udregnet på forhånd. 
+            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Key); 
+            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Key);
             
 
 

@@ -29,7 +29,7 @@ namespace Domain
         //    {
         //        _expectedSalePerDay = value;
         //    } }
-        public DateTime StockCalculation(Product product, List<SalesStatistics> futureSalesForProduct)
+        public DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
         {
             DateTime currentDate = DateTime.Today;
             Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
@@ -69,7 +69,7 @@ namespace Domain
             return dailySale;
         }
 
-        public Dictionary<DateTime, Product> OrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
+        public Dictionary<DateTime, Product> GetOrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
         {
             Dictionary<DateTime, Product> AllOrderDatesForProducts = new Dictionary<DateTime, Product>();
             List<SalesStatistics> futureMonthlySales = CalculateProductSalesForMonth(growthInPercent, allProducts, productSales);
@@ -79,7 +79,7 @@ namespace Domain
                 if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
                 {
                     List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
-                    AllOrderDatesForProducts.Add(StockCalculation(product, salesForProducts), product);
+                    AllOrderDatesForProducts.Add(CalculateOrderDateForProduct(product, salesForProducts), product);
 
                 }
             }
