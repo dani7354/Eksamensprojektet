@@ -85,7 +85,8 @@ namespace ViewModels
 
         public void CalculateForeCast()
         {
-            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent);
+            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent).OrderBy(d => d.Key).ToDictionary(d => d.Key, d => d.Value);
         }
     }
 }
+//
