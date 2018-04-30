@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProductViewModel.cs" />
     <Compile Include="OrderDateCalculator.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="ForeCastModel.cs" />
