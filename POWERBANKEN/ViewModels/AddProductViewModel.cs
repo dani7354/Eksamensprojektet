@@ -7,7 +7,7 @@ using Domain;
 
 namespace ViewModels
 {
-    public class AddProductViewModel
+    public class AddProductViewModel : BaseViewModel
     {
         Controller.MainController controller = Controller.MainController.Instance;
 

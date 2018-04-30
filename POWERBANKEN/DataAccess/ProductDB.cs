@@ -145,5 +145,54 @@ namespace DataAccess
                 con.Close();
             }
         }
+        public void GetProductTypes()
+        {
+            List<ProductType> productTypes = new List<ProductType>();
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_PRODUCT_TYPES", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    ProductType productType = new ProductType()
+                    {
+                        TypeID = (int) reader["TYPEID"],
+                        TypeName = (string)reader["PRODUCTTYPE"]
+                    };
+                    productTypes.Add(productType);
+
+                }
+            }
+
+        }
+        public void GetBrands()
+        {
+            List<Brand> brands = new List<Brand>();
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_BRANDS", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    Brand brand = new Brand()
+                    {
+                        BrandID = (int)reader["BRANDID"],
+                        Name = (string)reader["BRANDNAME"]
+                    };
+                    brands.Add(brand);
+
+                }
+            }
+
+        }
+
     }
 }

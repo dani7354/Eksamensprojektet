@@ -11,6 +11,10 @@ namespace Domain
     {
         private int productTypeID;
 
+        public ProductType()
+        {
+        }
+
         public ProductType(string typeName)
         {
             this.TypeName = typeName;
@@ -27,6 +31,10 @@ namespace Domain
             get
             {
                 return productTypeID;
+            }
+            set
+            {
+                productTypeID = value;
             }
         }
       
