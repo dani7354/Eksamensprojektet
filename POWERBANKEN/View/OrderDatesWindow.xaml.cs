@@ -18,14 +18,14 @@ namespace View
     /// <summary>
     /// Interaction logic for StatesticWindow.xaml
     /// </summary>
-    public partial class StatesticWindow : Window
+    public partial class OrderDatesWindow : Window
     {
 
-        ForeCastModel fm;
-        public StatesticWindow()
+        ForeCastViewModel fm;
+        public OrderDatesWindow()
         {
             InitializeComponent();
-            fm = new ForeCastModel();
+            fm = new ForeCastViewModel();
             DataContext = fm;
 
         }

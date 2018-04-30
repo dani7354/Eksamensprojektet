@@ -35,22 +35,25 @@ namespace Domain
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
         public bool IsActive { get; set; }
-
-
         public override string ToString()
         {
-            return string.Format($"{SKU}");
+            return string.Format($"{SKU};{Name}");
         }
-
         public override bool Equals(object obj)
         {
-            Product p = (Product)obj;
-            return this.SKU.Equals(p.SKU);
+            if (obj.GetType() == this.GetType())
+            {
+                Product p = (Product)obj;
+                return this.SKU.Equals(p.SKU);
+            }
+            else
+            {
+                return false;
+            }
         }
         public override int GetHashCode()
         {
             return this.SKU.GetHashCode();
         }
-
     }
 }

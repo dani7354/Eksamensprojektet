@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-using DataAccess;
+
 using Microsoft.Win32;
 
 namespace ViewModels
 {
     public class ImportCSVViewModel : BaseViewModel
     {
-        public IDataStorage dataStorage;
-        private CSVReader _csvReader;
+        private Controller.MainController _controller;
         private List<SalesStatistics> _sales;
         private string _filePath;
         public List<SalesStatistics> Sales
@@ -41,14 +40,13 @@ namespace ViewModels
         }
         public ImportCSVViewModel()
         {
-            dataStorage = new ProductDB();
-            _csvReader = new CSVReader();
+            _controller = Controller.MainController.Instance;
             FilePath = "Vælg en filsti";
         }
 
         public void ImportSalesInfo()
         {
-            Sales = _csvReader.ReadProductsSalesInfoFromCSV(_filePath);
+            Sales = _controller.ReadProductsSalesInfoFromCSV(_filePath);
         }
 
         public void ChooseCSVFile()
@@ -66,7 +64,7 @@ namespace ViewModels
         }
         public void WriteToDB()
         {
-            dataStorage.InsertProductSale(_sales);
+            _controller.InsertProductSale(_sales);
         }
     }
 }

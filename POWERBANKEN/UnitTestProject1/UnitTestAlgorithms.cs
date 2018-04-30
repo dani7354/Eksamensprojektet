@@ -43,14 +43,14 @@ namespace UnitTestProject1
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = 20- i,
+                    QuantitySold = 20,
                     Product = p2
                 };
                 p3stat[i] = new SalesStatistics()
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = 30 - i,
+                    QuantitySold = 30,
                     Product = p3
                 };
 
@@ -64,14 +64,14 @@ namespace UnitTestProject1
         [TestMethod]
         public void CalculationWorksWithSalesForEveryMonth()
         {
-            ForeCastModel forecatModel = new ForeCastModel();
-            forecatModel.datastorage = dataStorage;
-            forecatModel.GrowthInPercent = 50; // indtaster vækst i procent.
-            forecatModel.CalculateForeCast();
+            OrderDateCalculator calc = new OrderDateCalculator();
+            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
+    
 
-            Assert.AreEqual(3, forecatModel.ForeCast.Count());
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.First().Key);
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.Last().Key);
+            Assert.AreEqual(3, result.Count);
+            // Forventede resultater udregnet på forhånd. 
+            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
+            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
             
 
 
