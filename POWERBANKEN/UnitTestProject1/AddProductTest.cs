@@ -13,7 +13,7 @@ namespace UnitTestProject1
     [TestClass]
     public class AddProductTest
     {
-        [TestMethod]
+        [TestMethod]      
         public void TestAddingProduct()
         {
             string sku = "T105";
@@ -32,6 +32,11 @@ namespace UnitTestProject1
 
             ProductDB db = new ProductDB();
             Assert.IsTrue(db.GetAllProducts().Exists(p => p.SKU == sku));
+        }
+        [TestCleanup]
+        public void TestClean()
+        {
+            
         }
     }
 }
