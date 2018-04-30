@@ -23,10 +23,11 @@ namespace UnitTestProject1
             int minAmount = 10;
             int productTypeID = 1;
             int brandID = 1;
-            double leadTime = 50;
+            int leadTime = 50;
             bool isActive = true;
-            ViewModels.AddProductViewModel apvm = new AddProductViewModel();
 
+           ViewModels.AddProductViewModel apvm = new AddProductViewModel();
+            
             apvm.AddAProduct(sku, name, purchasePrice, amount, minAmount, productTypeID, brandID, leadTime, isActive);
 
             ProductDB db = new ProductDB();

@@ -12,6 +12,12 @@ namespace Domain
         {
             this.Name = brandName;
         }
+
+        public Brand(int brandID)
+        {
+            BrandID = brandID;
+        }
+
         public string Name { get; set; }
         public int BrandID { get; set; }
     }

@@ -23,7 +23,12 @@ namespace Controller
             }
         }
 
-       public List<Product> GetProducts()
+        public void AddProduct(Product product)
+        {
+            _dataStorage.InsertProduct(product);
+        }
+
+        public List<Product> GetProducts()
         {
             if(_products == null)
             {
