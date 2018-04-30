@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProductViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="ForeCastViewModel.cs" />
     <Compile Include="ImportCSVViewModel.cs" />

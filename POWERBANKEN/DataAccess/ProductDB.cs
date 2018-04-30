@@ -123,6 +123,27 @@ namespace DataAccess
             return salesStatisticsList;
         }
 
-
+        public void InsertProduct(Product product)
+        {
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.INSERT_PRODUCT", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                cmd1.Parameters.Add(new SqlParameter("@sku", product.SKU));
+                cmd1.Parameters.Add(new SqlParameter("@name", product.Name));
+                cmd1.Parameters.Add(new SqlParameter("@purchaseprice", product.PurchasePrice));
+                cmd1.Parameters.Add(new SqlParameter("@amount", product.StockAmount));
+                cmd1.Parameters.Add(new SqlParameter("@minstock", product.MinStock));
+                cmd1.Parameters.Add(new SqlParameter("@producttypeid", product.Type.TypeID));
+                cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.BrandID));
+                cmd1.Parameters.Add(new SqlParameter("@leadtime", product.LeadTimeDays));
+                cmd1.Parameters.Add(new SqlParameter("@isactive", product.IsActive));
+                cmd1.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 }

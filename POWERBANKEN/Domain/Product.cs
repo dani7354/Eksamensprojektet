@@ -41,7 +41,7 @@ namespace Domain
         }
         public override bool Equals(object obj)
         {
-            if (obj.GetType() == this.GetType())
+            if (obj != null && obj.GetType() == this.GetType())
             {
                 Product p = (Product)obj;
                 return this.SKU.Equals(p.SKU);

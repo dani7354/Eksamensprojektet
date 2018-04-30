@@ -9,11 +9,26 @@ namespace Domain
 
     public class ProductType
     {
+        private int productTypeID;
+
         public ProductType(string typeName)
         {
             this.TypeName = typeName;
         }
+
+        public ProductType(int productTypeID)
+        {
+            this.productTypeID = productTypeID;
+        }
+
         public string TypeName { get; set; }
+        public int TypeID
+        {
+            get
+            {
+                return productTypeID;
+            }
+        }
       
     }
 }
