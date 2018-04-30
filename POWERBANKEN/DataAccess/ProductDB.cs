@@ -139,6 +139,10 @@ namespace DataAccess
                 cmd1.Parameters.Add(new SqlParameter("@minstock", product.MinStock));
                 cmd1.Parameters.Add(new SqlParameter("@producttypeid", product.Type.TypeID));
                 cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.BrandID));
+                cmd1.Parameters.Add(new SqlParameter("@leadtime", product.LeadTimeDays));
+                cmd1.Parameters.Add(new SqlParameter("@isactive", product.IsActive));
+                cmd1.ExecuteNonQuery();
+                con.Close();
 
 
 
