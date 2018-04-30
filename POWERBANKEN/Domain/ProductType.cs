@@ -14,6 +14,7 @@ namespace Domain
             this.TypeName = typeName;
         }
         public string TypeName { get; set; }
+        public int TypeID { get; set; }
       
     }
 }
