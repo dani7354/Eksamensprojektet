@@ -14,6 +14,10 @@ namespace DataAccess
         void InsertProductSale(List<SalesStatistics> pProductSales);
         List<SalesStatistics> GetProductSales();
         void InsertProduct(Product product);
+        List<Brand> GetBrands();
+        List<ProductType> GetProductTypes();
+
+
 
 
     }

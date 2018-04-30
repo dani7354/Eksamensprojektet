@@ -37,6 +37,11 @@ namespace Domain
                 productTypeID = value;
             }
         }
-      
+
+        public override string ToString()
+        {
+            return string.Format($"{TypeName}");
+        }
+
     }
 }

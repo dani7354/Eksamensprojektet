@@ -61,7 +61,15 @@ namespace View
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProductWindow addprodWin = new AddProductWindow();
+            addprodWin.Show();
+            addprodWin.Closing += AddprodWin_Closing;
 
+        }
+
+        private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _viewModel.GetProducts();
+            
         }
     }
 }

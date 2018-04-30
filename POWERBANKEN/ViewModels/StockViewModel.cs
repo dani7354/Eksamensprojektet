@@ -71,6 +71,10 @@ namespace ViewModels
             }
          
         }
+        public void GetProducts()
+        {
+            _allProducts = _controller.GetProducts();
+        }
 
     }
 }

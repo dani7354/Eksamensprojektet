@@ -21,8 +21,8 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="139,131,0,0" TextWrapping="Wrap" Text="{Binding StockAmount}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="139,156,0,0" TextWrapping="Wrap" Text="{Binding MinAmount}" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="139,238,0,0" TextWrapping="Wrap" Text="{Binding LeadTimeDays}" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="139,184,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="139,211,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="139,184,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding Type}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="139,211,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Brands}" SelectedItem="{Binding Brand}"/>
         <Label Content="Tilføj produkt" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Ravie"/>
         <Button Content="Tilføj" HorizontalAlignment="Left" Margin="264,341,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Add"/>
 

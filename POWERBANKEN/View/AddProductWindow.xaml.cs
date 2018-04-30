@@ -29,7 +29,8 @@ namespace View
 
         private void Btn_Add(object sender, RoutedEventArgs e)
         {
-
+            _viewModel.AddProduct();
+            Close();
         }
     }
 }

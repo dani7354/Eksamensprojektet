@@ -145,7 +145,7 @@ namespace DataAccess
                 con.Close();
             }
         }
-        public void GetProductTypes()
+        public List<ProductType> GetProductTypes()
         {
             List<ProductType> productTypes = new List<ProductType>();
             using (SqlConnection con = DBConnection.Connect)
@@ -167,9 +167,10 @@ namespace DataAccess
 
                 }
             }
+            return productTypes;
 
         }
-        public void GetBrands()
+        public List<Brand> GetBrands()
         {
             List<Brand> brands = new List<Brand>();
             using (SqlConnection con = DBConnection.Connect)
@@ -191,6 +192,7 @@ namespace DataAccess
 
                 }
             }
+            return brands;
 
         }
 
