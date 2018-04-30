@@ -48,7 +48,7 @@ namespace ViewModels
             }
             else
             {
-                throw new Exception("Produkted blev ikke gemt - tjek din indstatning");
+                throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
             }
         }
     }
