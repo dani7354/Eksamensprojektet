@@ -14,6 +14,6 @@ HVAD GIK MINDRE GODT?
 
 FORSLAG TIL ÆNDRINGER
 - Faste mødetider og pauser
-- Uniottests og TDD-tilgang anvendes i højere grad
+- Unittests og TDD-tilgang anvendes i højere grad
 - Romkugletorsdag
 - Plan for fordeling af arbejdsroller udarbejdes.
