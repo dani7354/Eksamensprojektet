@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for StockWindow.xaml
-    /// </summary>
     public partial class StockWindow : Window
     {
         StockViewModel _viewModel = null;
