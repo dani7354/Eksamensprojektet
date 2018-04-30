@@ -138,7 +138,7 @@ namespace DataAccess
                 cmd1.Parameters.Add(new SqlParameter("@amount", product.StockAmount));
                 cmd1.Parameters.Add(new SqlParameter("@minstock", product.MinStock));
                 cmd1.Parameters.Add(new SqlParameter("@producttypeid", product.Type.TypeID));
-                cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.BrandID));
+                cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.ID));
                 cmd1.Parameters.Add(new SqlParameter("@leadtime", product.LeadTimeDays));
                 cmd1.Parameters.Add(new SqlParameter("@isactive", product.IsActive));
                 cmd1.ExecuteNonQuery();
@@ -161,7 +161,7 @@ namespace DataAccess
                     ProductType productType = new ProductType()
                     {
                         TypeID = (int) reader["TYPEID"],
-                        TypeName = (string)reader["PRODUCTTYPE"]
+                        Name = (string)reader["PRODUCTTYPE"]
                     };
                     productTypes.Add(productType);
 
@@ -185,7 +185,7 @@ namespace DataAccess
                 {
                     Brand brand = new Brand()
                     {
-                        BrandID = (int)reader["BRANDID"],
+                        ID = (int)reader["BRANDID"],
                         Name = (string)reader["BRANDNAME"]
                     };
                     brands.Add(brand);

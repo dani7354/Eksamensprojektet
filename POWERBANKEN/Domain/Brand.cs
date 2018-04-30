@@ -19,14 +19,14 @@ namespace Domain
 
         public Brand(int brandID)
         {
-            BrandID = brandID;
+            ID = brandID;
         }
 
         public string Name { get; set; }
-        public int BrandID { get; set; }
-        public override string ToString()
-        {
-            return string.Format($"{Name}");
-        }
+        public int ID { get; set; }
+        //public override string ToString()
+        //{
+        //    return string.Format($"{Name}");
+        //}
     }
 }
