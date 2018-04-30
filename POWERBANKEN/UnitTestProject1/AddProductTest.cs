@@ -7,6 +7,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ViewModels;
 using Domain;
 using DataAccess;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace UnitTestProject1
 {
@@ -32,6 +34,19 @@ namespace UnitTestProject1
 
             ProductDB db = new ProductDB();
             Assert.IsTrue(db.GetAllProducts().Exists(p => p.SKU == sku));
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("DELETE FROM POWERBANKEN.PRODUCT WHERE PRODUCT.SKU = 'T105'", con);
+            
+                cmd1.ExecuteNonQuery();
+                con.Close();
+            }
         }
     }
 }
