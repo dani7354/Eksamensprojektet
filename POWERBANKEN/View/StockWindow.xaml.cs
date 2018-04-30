@@ -69,7 +69,7 @@ namespace View
         private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _viewModel.GetProducts();
-            
+            dGrid_products.Items.Refresh();
         }
     }
 }
