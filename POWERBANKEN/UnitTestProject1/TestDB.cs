@@ -36,6 +36,9 @@ namespace UnitTestProject1
 
         public List<SalesStatistics> GetProductSales() => _productSales;
 
- 
+        public void InsertProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
