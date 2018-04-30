@@ -57,5 +57,11 @@ namespace View
         {
             _viewModel.Search();
         }
+
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductWindow addprodWin = new AddProductWindow();
+
+        }
     }
 }

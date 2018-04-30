@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProductWindow.xaml.cs">
+      <DependentUpon>AddProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CSVImportWindow.xaml.cs">
       <DependentUpon>CSVImportWindow.xaml</DependentUpon>
     </Compile>
@@ -63,6 +66,10 @@
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CSVImportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
