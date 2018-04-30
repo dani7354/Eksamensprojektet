@@ -73,7 +73,6 @@ namespace ViewModels
         }
         public void GetProducts()
         {
-            _allProducts = _controller.GetProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
 
