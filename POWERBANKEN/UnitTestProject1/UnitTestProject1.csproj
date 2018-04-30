@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{97794fb8-52ef-40a3-9abd-b18b16ba2fa0}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{b28e73ec-b109-4d8d-bce5-e87e24c1bf8b}</Project>
       <Name>DataAccess</Name>

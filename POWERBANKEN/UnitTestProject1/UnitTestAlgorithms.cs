@@ -13,9 +13,9 @@ namespace UnitTestProject1
     {
         IDataStorage dataStorage;
         Random rnd = new Random();
-        Product p1 = new Product(123, "Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"), true);
-        Product p2 = new Product(123, "Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"), true);
-        Product p3 = new Product(123, "Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"), true);
+        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"),20, true);
+        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"),20, true);
+        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"),20, true);
 
         SalesStatistics[] p1stat = new SalesStatistics[12];
         SalesStatistics[] p2stat = new SalesStatistics[12];
@@ -43,14 +43,14 @@ namespace UnitTestProject1
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = rnd.Next(0, 100),
+                    QuantitySold = 20,
                     Product = p2
                 };
                 p3stat[i] = new SalesStatistics()
                 {
                     PeriodStart = new DateTime(2017, i+1, 1),
                     PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
-                    QuantitySold = rnd.Next(0, 160),
+                    QuantitySold = 30,
                     Product = p3
                 };
 
@@ -64,14 +64,14 @@ namespace UnitTestProject1
         [TestMethod]
         public void CalculationWorksWithSalesForEveryMonth()
         {
-            ForeCastModel forecatModel = new ForeCastModel();
-            forecatModel.datastorage = dataStorage;
-            forecatModel.GrowthInPercent = 50; // indtaster vækst i procent.
-            forecatModel.CalculateForeCast();
+            OrderDateCalculator calc = new OrderDateCalculator();
+            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
+    
 
-            Assert.AreEqual(3, forecatModel.ForeCast.Count());
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.First().Key);
-            Assert.AreEqual(new DateTime(2018, 5, 13), forecatModel.ForeCast.Last().Key);
+            Assert.AreEqual(3, result.Count);
+            // Forventede resultater udregnet på forhånd. 
+            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
+            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
             
 
 

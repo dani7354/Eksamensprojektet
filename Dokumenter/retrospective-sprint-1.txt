@@ -1,0 +1,19 @@
+SPRINT RETROSPECTIVE - FØRSTE SPRINT
+
+HVAD GIK GODT?
+- projektlog: vi er gode til at få skrevet og fulgt op på det, som vi har skrevet.
+- Godt fremmøde.
+- vi har OK fokus på artefakter samt vurderingskriterier.
+- Gode til at arrangere møder (PO, projektledergruppe samt underviser)
+- Der er gjort noget ud af refaktorering allerede fra starten
+
+HVAD GIK MINDRE GODT?
+- Folk arbejder sommetider på projektet hjemmefra uden at aftale med gruppen, hvilket kan være til stor forvirring for resten af gruppen. Der bør ikke træffes vigtige beslutninger selvstændigt.
+- Der tages forhastede beslutninger, fordi der skal ske noget!
+- Vi har ikke kun holdt os til PBI'erne for dette sprint, vi er nogle gange hoppet ved siden af. 
+
+FORSLAG TIL ÆNDRINGER
+- Faste mødetider og pauser
+- Unittests og TDD-tilgang anvendes i højere grad
+- Romkugletorsdag
+- Plan for fordeling af arbejdsroller udarbejdes.

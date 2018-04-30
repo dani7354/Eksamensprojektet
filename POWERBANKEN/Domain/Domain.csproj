@@ -44,6 +44,7 @@
     <Compile Include="Brand.cs" />
     <Compile Include="DataRepository.cs" />
     <Compile Include="Delivery.cs" />
+    <Compile Include="OrderDateCalculator.cs" />
     <Compile Include="Receipt.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductType.cs" />

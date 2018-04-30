@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Controller;
 using Domain;
-using DataAccess;
+
 namespace ViewModels
 {
    
-    public class ForeCastModel : BaseViewModel
+    public class ForeCastViewModel : BaseViewModel
     {
-        public IDataStorage datastorage;
+        private Controller.MainController _controller;
         private double _growthInPercent;
-        private List<DateTime> _months;
-        private Dictionary<DateTime, Product>_foreCastGrid;
-        private List<Product> products;
-        private List<SalesStatistics> productSales;
+        private Dictionary<Product, DateTime>_foreCastGrid;
+
 
         public double GrowthInPercent
         {
@@ -50,7 +49,7 @@ namespace ViewModels
         //    get; set;
         //}
 
-        public Dictionary<DateTime,Product> ForeCast
+        public Dictionary<Product, DateTime> ForeCast
         {
             get
             {
@@ -63,8 +62,10 @@ namespace ViewModels
             }
         }
 
-        public ForeCastModel()
+        public ForeCastViewModel()
         {
+
+            _controller = MainController.Instance;
             //Months = new List<DateTime>()
             //{ new DateTime(DateTime.Now.Year, 1, 1),
             //new DateTime(DateTime.Now.Year, 2, 1),
@@ -84,12 +85,8 @@ namespace ViewModels
 
         public void CalculateForeCast()
         {
-            productSales =  datastorage.GetProductSales();
-            products = datastorage.GetAllProducts();
-            OrderDateCalculator orderDateCalc = new OrderDateCalculator();
-
-            ForeCast = orderDateCalc.OrderDatesForAllProducts(products, productSales, GrowthInPercent);
-
+            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent).OrderBy(d => d.Value).ToDictionary(d => d.Key, d => d.Value);
         }
     }
 }
+//

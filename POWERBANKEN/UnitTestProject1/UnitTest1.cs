@@ -1,11 +1,11 @@
 ﻿using System;
-using DataAccess;
 using ViewModels;
 using Domain;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
+using Domain;
 
 
 namespace UnitTestProject1
@@ -63,7 +63,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void SwitchBetweenDeactivatedAndActivatedProducts()
         {
-            _stockViewModel.datastorage = TestDB.Instance; //
+          //  _stockViewModel.datastorage = TestDB.Instance; //
             // Aktive varer skal vises by default
             Assert.AreEqual(true, _stockViewModel.SelectedProducts.Last().IsActive);
             Assert.AreEqual(true, _stockViewModel.SelectedProducts.First().IsActive);

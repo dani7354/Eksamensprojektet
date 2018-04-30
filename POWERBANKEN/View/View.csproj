@@ -57,8 +57,8 @@
     <Compile Include="CSVImportWindow.xaml.cs">
       <DependentUpon>CSVImportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatesticWindow.xaml.cs">
-      <DependentUpon>StatesticWindow.xaml</DependentUpon>
+    <Compile Include="OrderDatesWindow.xaml.cs">
+      <DependentUpon>OrderDatesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StockWindow.xaml.cs">
       <DependentUpon>StockWindow.xaml</DependentUpon>
@@ -83,7 +83,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatesticWindow.xaml">
+    <Page Include="OrderDatesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

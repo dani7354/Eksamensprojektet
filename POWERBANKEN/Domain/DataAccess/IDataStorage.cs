@@ -13,7 +13,6 @@ namespace DataAccess
         void UpdateProducts(List<Product> products);
         void InsertProductSale(List<SalesStatistics> pProductSales);
         List<SalesStatistics> GetProductSales();
-        void InsertProduct(Product product);
 
 
     }
