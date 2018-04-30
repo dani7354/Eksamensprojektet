@@ -19,32 +19,32 @@ namespace UnitTestProject1
         {
             _stockViewModel = new StockViewModel();
         }
-        [TestMethod]
-        public void ReadFromCSVWorksSeptember()
-        {
-            // test
-            CSVReader reader = new CSVReader();
-            int totalProducts = 76;
-            string filePath = @"Product Sales - 2018-04-19-Sep. 2017.csv";
-            List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
+        //[TestMethod]
+        //public void ReadFromCSVWorksSeptember()
+        //{
+        //    // test
+        //   // CSVReader reader = new CSVReader();
+        //    int totalProducts = 76;
+        //    string filePath = @"Product Sales - 2018-04-19-Sep. 2017.csv";
+        //    List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 
-            Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
-            Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 9, 1));
-            Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 9, 30));
-        }
-        [TestMethod]
-        public void ReadFromCSVWorksMay() //opdateres, når læser-metoden er færdiglavet. 
-        {
-            // test
-            CSVReader reader = new CSVReader();
-            int totalProducts = 66;
-            string filePath = @"Product Sales - 2018-04-19-Maj 2017.csv";
-            List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
+        //    Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
+        //    Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 9, 1));
+        //    Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 9, 30));
+        //}
+        //[TestMethod]
+        //public void ReadFromCSVWorksMay() //opdateres, når læser-metoden er færdiglavet. 
+        //{
+        //    // test
+        //    CSVReader reader = new CSVReader();
+        //    int totalProducts = 66;
+        //    string filePath = @"Product Sales - 2018-04-19-Maj 2017.csv";
+        //    List<SalesStatistics> saleStatistics = reader.ReadProductsSalesInfoFromCSV(filePath);
 
-            Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
-            Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 5, 1));
-            Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 5, 31));
-        }
+        //    Assert.AreEqual(totalProducts, saleStatistics.Count); // Er alle produkter indlæst fra filen.
+        //    Assert.AreEqual(saleStatistics.First().PeriodStart, new DateTime(2017, 5, 1));
+        //    Assert.AreEqual(saleStatistics.First().PeriodEnd, new DateTime(2017, 5, 31));
+        //}
 
         //[TestMethod]
         //public void GetActiveProductsFromDB()
