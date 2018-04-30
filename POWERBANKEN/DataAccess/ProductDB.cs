@@ -143,9 +143,6 @@ namespace DataAccess
                 cmd1.Parameters.Add(new SqlParameter("@isactive", product.IsActive));
                 cmd1.ExecuteNonQuery();
                 con.Close();
-
-
-
             }
         }
     }
