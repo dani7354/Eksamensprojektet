@@ -28,7 +28,7 @@ namespace ViewModels
             {
                 if (value.Count > 0)
                 {
-                    const int DAYS_PERIOD = 14;
+                    const int DAYS_PERIOD = 30;
                     _orderDates = value.Where(o => o.Value < DateTime.Now.AddDays(DAYS_PERIOD)).ToDictionary(d => d.Key, d => d.Value);
                     _orderDates.OrderBy(o => o.Value).ToDictionary(d => d.Key, d => d.Value);
                     NotifyPropertyChanged("OrderDates");

@@ -16,7 +16,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Bestillinger de næste 14 dage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="398" FontSize="20"/>
+        <Label Content="Bestillinger de næste 30 dage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="398" FontSize="20"/>
 
     </Grid>
 </Window>
