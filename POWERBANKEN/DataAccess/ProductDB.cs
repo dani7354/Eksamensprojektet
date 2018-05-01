@@ -138,12 +138,63 @@ namespace DataAccess
                 cmd1.Parameters.Add(new SqlParameter("@amount", product.StockAmount));
                 cmd1.Parameters.Add(new SqlParameter("@minstock", product.MinStock));
                 cmd1.Parameters.Add(new SqlParameter("@producttypeid", product.Type.TypeID));
-                cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.BrandID));
+                cmd1.Parameters.Add(new SqlParameter("@brandid", product.Brand.ID));
                 cmd1.Parameters.Add(new SqlParameter("@leadtime", product.LeadTimeDays));
                 cmd1.Parameters.Add(new SqlParameter("@isactive", product.IsActive));
                 cmd1.ExecuteNonQuery();
                 con.Close();
             }
         }
+        public List<ProductType> GetProductTypes()
+        {
+            List<ProductType> productTypes = new List<ProductType>();
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_PRODUCT_TYPES", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    ProductType productType = new ProductType()
+                    {
+                        TypeID = (int) reader["TYPEID"],
+                        Name = (string)reader["PRODUCTTYPE"]
+                    };
+                    productTypes.Add(productType);
+
+                }
+            }
+            return productTypes;
+
+        }
+        public List<Brand> GetBrands()
+        {
+            List<Brand> brands = new List<Brand>();
+            using (SqlConnection con = DBConnection.Connect)
+            {
+                con.Open();
+                SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_BRANDS", con)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    Brand brand = new Brand()
+                    {
+                        ID = (int)reader["BRANDID"],
+                        Name = (string)reader["BRANDNAME"]
+                    };
+                    brands.Add(brand);
+
+                }
+            }
+            return brands;
+
+        }
+
     }
 }

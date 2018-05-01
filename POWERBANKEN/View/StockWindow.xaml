@@ -19,7 +19,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4">
+        <DataGrid x:Name="dGrid_products" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>

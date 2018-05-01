@@ -11,9 +11,13 @@ namespace Domain
     {
         private int productTypeID;
 
+        public ProductType()
+        {
+        }
+
         public ProductType(string typeName)
         {
-            this.TypeName = typeName;
+            this.Name = typeName;
         }
 
         public ProductType(int productTypeID)
@@ -21,14 +25,23 @@ namespace Domain
             this.productTypeID = productTypeID;
         }
 
-        public string TypeName { get; set; }
+        public string Name { get; set; }
         public int TypeID
         {
             get
             {
                 return productTypeID;
             }
+            set
+            {
+                productTypeID = value;
+            }
         }
-      
+
+        //public override string ToString()
+        //{
+        //    return string.Format($"{Name}");
+        //}
+
     }
 }

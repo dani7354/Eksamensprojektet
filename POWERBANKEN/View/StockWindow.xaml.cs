@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for StockWindow.xaml
-    /// </summary>
     public partial class StockWindow : Window
     {
         StockViewModel _viewModel = null;
@@ -61,7 +58,15 @@ namespace View
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProductWindow addprodWin = new AddProductWindow();
+            addprodWin.Show();
+            addprodWin.Closing += AddprodWin_Closing;
 
+        }
+
+        private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _viewModel.GetProducts();
+            dGrid_products.Items.Refresh();
         }
     }
 }

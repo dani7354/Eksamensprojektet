@@ -14,6 +14,8 @@ namespace Controller
         private IDataStorage _dataStorage;
         private List<Product> _products;
         private List<SalesStatistics> _productSales;
+        private List<Brand> _brands;
+        private List<ProductType> _productTypes;
         private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); }
         public static MainController Instance
         {
@@ -26,6 +28,8 @@ namespace Controller
         public void AddProduct(Product product)
         {
             _dataStorage.InsertProduct(product);
+            _products.Add(product);
+            _products = _dataStorage.GetAllProducts();
         }
 
         public List<Product> GetProducts()
@@ -72,6 +76,23 @@ namespace Controller
         {
             _dataStorage.InsertProductSale(sales);
             _productSales = _dataStorage.GetProductSales();
+        }
+
+        public List<Brand> GetBrands()
+        {
+            if(_brands == null)
+            {
+                _brands = _dataStorage.GetBrands();
+            }
+            return _brands;
+        }
+        public List<ProductType> GetProductTypes()
+        {
+            if(_productTypes == null)
+            {
+                _productTypes = _dataStorage.GetProductTypes();
+            }
+            return _productTypes;
         }
     }
 }

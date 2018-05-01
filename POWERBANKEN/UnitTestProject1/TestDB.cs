@@ -40,5 +40,15 @@ namespace UnitTestProject1
         {
             throw new NotImplementedException();
         }
+
+        public List<Brand> GetBrands()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProductType> GetProductTypes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

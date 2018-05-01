@@ -71,6 +71,10 @@ namespace ViewModels
             }
          
         }
+        public void GetProducts()
+        {
+            SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+        }
 
     }
 }
