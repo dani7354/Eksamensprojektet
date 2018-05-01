@@ -7,8 +7,8 @@ namespace Domain
 {
     public class OrderDateCalculator
     {
-        private int _expectedSalePerDay;
-        private DateTime _currentDateOfTheMonth;
+        //private int _expectedSalePerDay;
+        //private DateTime _currentDateOfTheMonth;
 
         //DateTime CurrentDateOfTheMonth
         //{
