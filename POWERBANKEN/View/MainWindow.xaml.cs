@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,47 +11,72 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class StockWindow : Window
     {
-        Window w;
-        public MainWindow()
+        StockViewModel _viewModel = null;
+        public StockWindow()
         {
-            w = new Window();
+            _viewModel = new StockViewModel();
             InitializeComponent();
+            DataContext = _viewModel;
         }
 
-        private void Btn_Order_Click(object sender, RoutedEventArgs e)
+        private void btn_SaveAndClose_Click(object sender, RoutedEventArgs e)
         {
-            Orders orders = new Orders();
-            orders.Show();
-            w.Close();
+            try
+            {
+                _viewModel.UpdateProducts();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void Btn_Statestic_Click(object sender, RoutedEventArgs e)
+        private void btn_ChangeGridSource_Click(object sender, RoutedEventArgs e)
         {
-            OrderDatesWindow orderDatesWindow = new OrderDatesWindow();
-            orderDatesWindow.Show();
-            w.Close();
+            try
+            {
+                _viewModel.ShowDeactivatedProducts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void StockView_Click(object sender, RoutedEventArgs e)
+        private void Tb_SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            StockWindow swindow = new StockWindow();
-            swindow.Show();
+            _viewModel.Search();
         }
 
-        private void ImportFromCSV_Click(object sender, RoutedEventArgs e)
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-            CSVImportWindow csvImportWindow = new CSVImportWindow();
-            csvImportWindow.Show();
+            AddProductWindow addprodWin = new AddProductWindow();
+            addprodWin.Show();
+            addprodWin.Closing += AddprodWin_Closing;
+
+        }
+
+        private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _viewModel.GetProducts();
+            dGrid_products.Items.Refresh();
+        }
+
+        private void dGrid_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
