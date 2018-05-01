@@ -79,7 +79,7 @@ namespace Domain
                 {
                     List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
                     DateTime orderDate = CalculateOrderDateForProduct(product, salesForProducts);
-                    if(orderDate< DateTime.Today)
+                    if(orderDate < DateTime.Today)
                     {
                         orderDate = DateTime.Today;
                     }
