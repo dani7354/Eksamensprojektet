@@ -8,6 +8,6 @@ namespace ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public static 
+       
     }
 }
