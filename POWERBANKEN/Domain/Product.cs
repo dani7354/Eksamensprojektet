@@ -21,11 +21,7 @@ namespace Domain
             LeadTimeDays = leadtimeInDays;
             IsActive = isActive;
         }
-        public Product()
-        {
-
-        }
-
+        public Product(){}
         public string Name { get; set; }
         public string SKU { get; set; }
         public double PurchasePrice { get; set; }

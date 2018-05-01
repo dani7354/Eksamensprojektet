@@ -21,12 +21,7 @@ namespace Domain
         {
             ID = brandID;
         }
-
         public string Name { get; set; }
         public int ID { get; set; }
-        //public override string ToString()
-        //{
-        //    return string.Format($"{Name}");
-        //}
     }
 }
