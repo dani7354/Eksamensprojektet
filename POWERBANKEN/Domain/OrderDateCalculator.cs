@@ -61,10 +61,7 @@ namespace Domain
                 SalesStatistics productSalesForMonth = futureSalesForProduct.Where(s => s.PeriodEnd.Month.Equals(currentDate.Month)).Single();
                 dailySale = productSalesForMonth.ExpectedSales / daysInMonth;
             }
-            else
-            {
-                dailySale =  futureSalesForProduct.First().ExpectedSales / daysInMonth; //bør nok laves om
-            }
+            
             return dailySale;
         }
 

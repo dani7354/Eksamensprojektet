@@ -16,6 +16,8 @@ namespace ViewModels
         private bool _deaktivatedProductsShown = false;
         private string _searchText;
 
+        
+
         public List<Product> SelectedProducts
         {
             get
@@ -69,12 +71,10 @@ namespace ViewModels
                 SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
                 _deaktivatedProductsShown = false;
             }
-         
         }
         public void GetProducts()
         {
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
-
     }
 }

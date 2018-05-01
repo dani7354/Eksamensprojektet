@@ -82,7 +82,6 @@ namespace UnitTestProject1
             OrderDateCalculator calc = new OrderDateCalculator();
             double expGrowth = 20;
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
-            Assert.AreEqual(3, result.Count);
             Assert.IsFalse(result.ContainsKey(p4));
         }
      
