@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-using System.Windows.Input;
+using System.Windows.Input; 
 
 namespace ViewModels
 {
     public class AddProductViewModel : BaseViewModel
     {
-		public ICommand Add {
+		
+		public ICommand Add
+		{
 		get
 			{
-				return new CommandHandler(() => AddAProduct(Name, SKU, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
+				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
 			}
 		}
         public AddProductViewModel()
@@ -24,8 +26,8 @@ namespace ViewModels
         Controller.MainController controller = Controller.MainController.Instance;
         private List<ProductType> _productTypes;
         private List<Brand> _brands;
-        private string _name;
         private string _sku;
+        private string _name;
         private double _purchasePrice;
         private int _stockAmount;
         private int _minStock;
@@ -185,15 +187,21 @@ namespace ViewModels
         }
         public bool IsActive { get; private set; } = true; // Kan ikke ændres i UI.
 
-
+		
         public void AddAProduct(string sku, string name, double purchasePrice, int amount, int minAmount, int productTypeID, int brandID, int leadTime, bool isActive)
         {
-         
-            Product product = new Product(name, sku, purchasePrice, amount, minAmount, new ProductType(productTypeID), new Brand(brandID), leadTime, isActive);
-            
-            controller.AddProduct(product);
-        }
+			try
+			{
+				Product product = new Product(name, sku, purchasePrice, amount, minAmount, new ProductType(productTypeID), new Brand(brandID), leadTime, isActive);
 
+				controller.AddProduct(product);
+			}
+			catch (Exception)
+			{
+
+			}
+        }
+		
         public void AddProduct()
         {
             if(Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
