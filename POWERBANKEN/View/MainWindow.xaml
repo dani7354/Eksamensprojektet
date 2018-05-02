@@ -43,7 +43,7 @@
         <Button x:Name="Btn_Graph" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,205,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
         <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Left" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Left" Margin="921,22,0,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
-        <WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />
+        <!--<WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />-->
     </Grid>
 
 </Window>
