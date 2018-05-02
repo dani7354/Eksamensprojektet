@@ -75,6 +75,6 @@ namespace ViewModels
         {
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
         }
-
+		 
     }
 }
