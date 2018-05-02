@@ -24,7 +24,7 @@
         <ComboBox HorizontalAlignment="Left" Margin="139,184,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding ProductTypes, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding Type}" />
         <ComboBox HorizontalAlignment="Left" Margin="139,211,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Brands, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding Brand}"/>
         <Label Content="Tilføj produkt" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
-        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="264,341,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Add"/>
+        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="264,341,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Add}"/>
 
 
     </Grid>

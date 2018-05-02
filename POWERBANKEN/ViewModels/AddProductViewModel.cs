@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
+using System.Windows.Input;
 
 namespace ViewModels
 {
     public class AddProductViewModel : BaseViewModel
     {
-
+		public ICommand Add {
+		get
+			{
+				return new CommandHandler(() => AddAProduct(Name, SKU, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
+			}
+		}
         public AddProductViewModel()
         {
             ProductTypes = controller.GetProductTypes();

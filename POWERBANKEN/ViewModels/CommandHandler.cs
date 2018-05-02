@@ -7,22 +7,30 @@ using System.Windows.Input;
 
 namespace ViewModels
 {
-    public class CommandHandler<T> : ICommand where T : class
+    public class CommandHandler : ICommand
     {
-        private readonly Predicate<T> _canExecute;
-        private readonly Action<T> _execute;
+        private readonly bool _canExecute;
+        private readonly Action _execute;
         public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
-        {
-            if (_canExecute == null)
-                return true;
-            return _canExecute((T)parameter);
-        }
+		public CommandHandler()
+		{
 
-        public void Execute(object parameter)
+		}
+		public CommandHandler(Action action, bool canExecute)
+		{
+			this._execute = action;
+			this._canExecute = canExecute;
+		}
+
+		public bool CanExecute(object parameter)
+		{
+			return _canExecute;
+		}
+
+		public void Execute(object parameter)
         {
-            _execute((T)parameter);
+			_execute();
         }
         public void RaiseCanExecuteChanged()
         {

@@ -21,7 +21,7 @@ namespace ViewModels
         private double _growthInPercent;
         private int _daysInAdvance;
 
-        private readonly CommandHandler<string> _commandHandler;
+        private readonly CommandHandler _commandHandler;
 
 
         public Dictionary<Product, DateTime> OrderDates
@@ -151,7 +151,7 @@ namespace ViewModels
             }
         }
 
-        public CommandHandler<string> ButtonClickCommand
+        public CommandHandler ButtonClickCommand
         {
             get{ return _commandHandler; }
         }

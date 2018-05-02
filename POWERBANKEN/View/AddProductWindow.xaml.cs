@@ -27,19 +27,5 @@ namespace View
 
         }
 
-        private void Btn_Add(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-            _viewModel.AddProduct();
-            Close();
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
     }
 }
