@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using Domain;
 using System.Windows.Input;
+using System.Windows.Interactivity;
 
 namespace ViewModels
 {
@@ -17,8 +18,12 @@ namespace ViewModels
         private string _searchText;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool running = true;
+
         private double _growthInPercent;
         private int _daysInAdvance;
+
+        private readonly CommandHandler<string> _commandHandler;
+
 
         public Dictionary<Product, DateTime> OrderDates
         {
@@ -145,6 +150,11 @@ namespace ViewModels
                 OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(3000);
             }
+        }
+
+        public CommandHandler<string> ButtonClickCommand
+        {
+            get{ return _commandHandler; }
         }
     }
 }

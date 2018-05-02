@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="StockWindow" Height="700" Width="1500">
@@ -12,6 +13,7 @@
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
                     <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="170" Click="btn_SaveAndClose_Click"/>
+                    
                     <MenuItem x:Name="AddProduct" Header="Tilføj produkt" HorizontalAlignment="Left" Width="170" Click="AddProduct_Click"/>
                 </MenuItem>
                 <MenuItem Header="Instillinger">
