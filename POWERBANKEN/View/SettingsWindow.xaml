@@ -9,10 +9,11 @@
     <Grid>
         <Label Content="Instillinger" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Ravie" />
         <Label Content="Vækst (%)" HorizontalAlignment="Left" Margin="172,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Tidsinterval for baggrundsberegning" HorizontalAlignment="Left" Margin="31,109,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,81,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,109,0,0" TextWrapping="Wrap" Text="{Binding UpdateInterval}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Underret om bestillingsdatoer" HorizontalAlignment="Left" Margin="60,109,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,81,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,112,0,0" TextWrapping="Wrap" Text="{Binding DaysInAdvance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
         <Button Content="Luk" HorizontalAlignment="Left" Margin="264,352,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Close"/>
+        <Label Content="dage forud" HorizontalAlignment="Left" Margin="281,112,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
