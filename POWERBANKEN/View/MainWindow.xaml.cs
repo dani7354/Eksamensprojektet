@@ -79,8 +79,9 @@ namespace View
 
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
+			OrderDatesWindow odw = new OrderDatesWindow();
+			odw.Show();
+		}
 
         private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
         {
