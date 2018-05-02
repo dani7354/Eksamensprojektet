@@ -37,7 +37,7 @@ namespace Domain
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
             if (futureSalesForProduct.Exists(s => s.PeriodEnd.Month.Equals(currentDate.Month)))
             {
-                SalesStatistics productSalesForMonth = futureSalesForProduct.Where(s => s.PeriodEnd.Month.Equals(currentDate.Month)).Single();
+                SalesStatistics productSalesForMonth = futureSalesForProduct.Where(s => s.PeriodEnd.Month.Equals(currentDate.Month)).First();
                 dailySale = productSalesForMonth.ExpectedSales / daysInMonth;
             }
             

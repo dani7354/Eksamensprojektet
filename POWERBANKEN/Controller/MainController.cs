@@ -12,11 +12,12 @@ namespace Controller
     {
         private static readonly MainController _instance = new MainController();
         private IDataStorage _dataStorage;
+        private TxtAccess _txtAccess;
         private List<Product> _products;
         private List<SalesStatistics> _productSales;
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
-        private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); }
+        private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess(); }
         public static MainController Instance
         {
             get
@@ -93,6 +94,23 @@ namespace Controller
                 _productTypes = _dataStorage.GetProductTypes();
             }
             return _productTypes;
+        }
+
+        public double GetGrowthInPercent()
+        {
+            if(double.TryParse(_txtAccess.ReadFile(), out double percent))
+            {
+                return percent;
+            }
+            else
+            {
+                throw new Exception("Den læste streng kunne ikke konverteres til den påkrævede type.");
+            }
+        }
+
+        public void WriteGrowthToFile(double percent)
+        {
+            _txtAccess.WriteToFile(percent.ToString());
         }
     }
 }

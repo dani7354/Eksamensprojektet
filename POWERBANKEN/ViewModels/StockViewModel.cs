@@ -18,7 +18,12 @@ namespace ViewModels
         private string _searchText;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool running = true;
+
+        private double _growthInPercent;
+        private int _daysInAdvance;
+
         private readonly CommandHandler<string> _commandHandler;
+
 
         public Dictionary<Product, DateTime> OrderDates
         {
@@ -30,8 +35,7 @@ namespace ViewModels
             {
                 if (value.Count > 0)
                 {
-                    const int DAYS_PERIOD = 30;
-                    _orderDates = value.Where(o => o.Value < DateTime.Now.AddDays(DAYS_PERIOD)).ToDictionary(d => d.Key, d => d.Value);
+                    _orderDates = value.Where(o => o.Value < DateTime.Now.AddDays(DaysInAdvance)).ToDictionary(d => d.Key, d => d.Value);
                     _orderDates.OrderBy(o => o.Value).ToDictionary(d => d.Key, d => d.Value);
                     NotifyPropertyChanged("OrderDates");
                 }
@@ -65,11 +69,47 @@ namespace ViewModels
                 }
             }
         }
+        public double GrowthInPercent
+        {
+            get
+            {
+                return _growthInPercent;
+            }
+            set
+            {
+                _growthInPercent = value;
+                NotifyPropertyChanged("GrowthInPercent");
+                _controller.WriteGrowthToFile(_growthInPercent);
+            }
+
+        
+        }
+        public int DaysInAdvance
+        {
+            get
+            {
+                return _daysInAdvance;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    _daysInAdvance = 0;
+                }
+                else
+                {
+                    _daysInAdvance = value;
+                }
+                NotifyPropertyChanged("DaysInAdvance");
+            }
+        }
         public StockViewModel()
         {
             _controller = Controller.MainController.Instance;
             _allProducts = _controller.GetProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+            GrowthInPercent = _controller.GetGrowthInPercent();
+            DaysInAdvance = 7;
             StartBackgroundCalc();
         }
         public void Search()
@@ -107,7 +147,7 @@ namespace ViewModels
         {
             while (running)
             {
-                OrderDates = _controller.GetOrderDatesForProducts(70);
+                OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(3000);
             }
         }
