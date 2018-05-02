@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="StockWindow" Height="700" Width="1300">
+        Title="StockWindow" Height="700" Width="1500">
 
     <Grid>
         <StackPanel VerticalAlignment="Top">
@@ -19,7 +19,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" MaxWidth="900" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
@@ -33,14 +33,17 @@
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_SaveAndClose" Content="Gem og luk"  HorizontalAlignment="Left" Margin="306,612,0,0" VerticalAlignment="Top" Width="109" Click="btn_SaveAndClose_Click" Height="21"   />
+        <Button x:Name="btn_SaveAndClose" Content="Gem"  HorizontalAlignment="Left" Margin="306,612,0,0" VerticalAlignment="Top" Width="109" Click="btn_SaveAndClose_Click" Height="21"   />
         <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="74,608,0,0" VerticalAlignment="Top" Width="225" Height="26" Click="btn_ChangeGridSource_Click"   />
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="25" Margin="184,570,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="231" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Left" Margin="131,570,0,0" VerticalAlignment="Top" Width="46" Height="28"/>
         <Button x:Name="Btn_VareStatistic" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
-        <Label x:Name="lbl_Statistic" Content="Varestatistik" HorizontalAlignment="Left" Margin="830,87,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
-        <Label x:Name="lbl_Statistic_Copy" Content="Statistik" HorizontalAlignment="Left" Margin="830,205,0,0" VerticalAlignment="Top" Height="51" Width="168" FontSize="20"/>
+        <Label x:Name="lbl_Statistic" Content="Varestatistik" HorizontalAlignment="Left" Margin="921,84,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
+        <Label x:Name="lbl_Statistic_Copy" Content="Statistik" HorizontalAlignment="Left" Margin="944,202,0,0" VerticalAlignment="Top" Height="51" Width="168" FontSize="20"/>
         <Button x:Name="Btn_Graph" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,205,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
+        <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Left" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
+        <Label Content="Kommende bestillinger" HorizontalAlignment="Left" Margin="921,22,0,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
+        <WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />
     </Grid>
 
 </Window>

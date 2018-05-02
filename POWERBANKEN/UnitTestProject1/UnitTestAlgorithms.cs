@@ -13,9 +13,10 @@ namespace UnitTestProject1
     {
         IDataStorage dataStorage;
         Random rnd = new Random();
-        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"),20, true);
-        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"),20, true);
-        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"),20, true);
+        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
+        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
+        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
+        Product p4 = new Product("Anker 10000", "FG34LK", 200, 40, 5, new ProductType("PowerBank"), new Brand("Anker"), 20, true); // uden tilhørende salgsdata.
 
         SalesStatistics[] p1stat = new SalesStatistics[12];
         SalesStatistics[] p2stat = new SalesStatistics[12];
@@ -59,27 +60,31 @@ namespace UnitTestProject1
             dataStorage.InsertProductSale(p1stat.ToList());
             dataStorage.InsertProductSale(p2stat.ToList());
             dataStorage.InsertProductSale(p3stat.ToList());
-            dataStorage.UpdateProducts(new List<Product>() { p1, p2, p3 });
+            dataStorage.InsertProduct(p1);
+            dataStorage.InsertProduct(p2);
+            dataStorage.InsertProduct(p3);
+            dataStorage.InsertProduct(p4);
         }
         [TestMethod]
-        public void CalculationWorksWithSalesForEveryMonth()
+        public void OrderDateCalc_WorksWithSalesForEveryMonth()
         {
             OrderDateCalculator calc = new OrderDateCalculator();
-            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), 30.00);
-    
-
+            double expGrowth = 30.00;
+            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.AreEqual(3, result.Count);
             // Forventede resultater udregnet på forhånd. 
             Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
             Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
-            
-
-
         }
         [TestMethod]
-        public void AlgorithmWithThreads()
+        public void OrderDateCalc_IgnoreProductsWithNoSalesData()
         {
-
+            OrderDateCalculator calc = new OrderDateCalculator();
+            double expGrowth = 20;
+            var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
+            Assert.IsFalse(result.ContainsKey(p4));
         }
+     
+
     }
 }

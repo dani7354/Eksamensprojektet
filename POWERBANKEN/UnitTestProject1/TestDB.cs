@@ -12,6 +12,8 @@ namespace UnitTestProject1
     {
         private List<Product> _products = new List<Product>();
         private List<SalesStatistics> _productSales = new List<SalesStatistics>();
+        private List<Brand> _brands;
+        private List<ProductType> _productTypes;
         private static readonly TestDB _instance = new TestDB();
         public static TestDB Instance
         {
@@ -38,17 +40,17 @@ namespace UnitTestProject1
 
         public void InsertProduct(Product product)
         {
-            throw new NotImplementedException();
+            if(!_products.Contains(product)) _products.Add(product);
         }
 
         public List<Brand> GetBrands()
         {
-            throw new NotImplementedException();
+            return _brands;
         }
 
         public List<ProductType> GetProductTypes()
         {
-            throw new NotImplementedException();
+            return _productTypes;
         }
     }
 }

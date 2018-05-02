@@ -23,14 +23,17 @@ namespace View
             _viewModel = new StockViewModel();
             InitializeComponent();
             DataContext = _viewModel;
+            this.Closing += StockWindow_Closing;
         }
 
+        private void StockWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Environment.Exit(1); // Lukker alle øvrige vinduer, hvis Mainvinduet lukkes
+       
         private void btn_SaveAndClose_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 _viewModel.UpdateProducts();
-                this.Close();
+              
             }
             catch (Exception ex)
             {
@@ -77,6 +80,12 @@ namespace View
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
+        {
+            OrderNotificationWindow ordernotificationwindow = new OrderNotificationWindow(_viewModel);
+            ordernotificationwindow.Show();
         }
     }
 }
