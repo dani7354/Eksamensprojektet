@@ -14,6 +14,9 @@
                     <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="170" Click="btn_SaveAndClose_Click"/>
                     <MenuItem x:Name="AddProduct" Header="Tilføj produkt" HorizontalAlignment="Left" Width="170" Click="AddProduct_Click"/>
                 </MenuItem>
+                <MenuItem Header="Instillinger">
+                    <MenuItem x:Name="Settings" Header="Instillinger" HorizontalAlignment="Left" Width="170" Click="Settings_Click"/>
+                </MenuItem>
                 <MenuItem Header="_Hjælp">
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
                 </MenuItem>

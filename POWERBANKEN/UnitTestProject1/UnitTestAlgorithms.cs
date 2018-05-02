@@ -5,7 +5,8 @@ using Domain;
 using System.Linq;
 using System.Collections.Generic;
 using ViewModels;
-
+using Controller;
+using System.IO;
 namespace UnitTestProject1
 {
     [TestClass]
@@ -73,8 +74,8 @@ namespace UnitTestProject1
             Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.AreEqual(3, result.Count);
             // Forventede resultater udregnet på forhånd. 
-            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
-            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
+            Assert.AreEqual(DateTime.Today.AddDays(16), result.First().Value); 
+            Assert.AreEqual(DateTime.Today.AddDays(88), result.Last().Value);
         }
         [TestMethod]
         public void OrderDateCalc_IgnoreProductsWithNoSalesData()
@@ -84,6 +85,25 @@ namespace UnitTestProject1
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.IsFalse(result.ContainsKey(p4));
         }
+        [TestMethod]
+        public void WriteAndReadGrowth()
+        {
+            MainController mainController = MainController.Instance;
+
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = 20;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            percent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(20, percent);
+        }
+       
+
+
+
+    
      
 
     }

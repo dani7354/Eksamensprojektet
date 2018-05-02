@@ -17,6 +17,7 @@ namespace ViewModels
         private string _searchText;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool running = true;
+        private double _growthInPercent;
 
         public Dictionary<Product, DateTime> OrderDates
         {
@@ -63,11 +64,27 @@ namespace ViewModels
                 }
             }
         }
+        public double GrowthInPercent
+        {
+            get
+            {
+                return _growthInPercent;
+            }
+            set
+            {
+                _growthInPercent = value;
+                NotifyPropertyChanged("GrowthInPercent");
+                _controller.WriteGrowthToFile(_growthInPercent);
+            }
+
+        
+        }
         public StockViewModel()
         {
             _controller = Controller.MainController.Instance;
             _allProducts = _controller.GetProducts();
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+            GrowthInPercent = _controller.GetGrowthInPercent();
             StartBackgroundCalc();
         }
         public void Search()
@@ -105,7 +122,7 @@ namespace ViewModels
         {
             while (running)
             {
-                OrderDates = _controller.GetOrderDatesForProducts(70);
+                OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(3000);
             }
         }
