@@ -15,17 +15,21 @@ using ViewModels;
 
 namespace View
 {
-  
-    public partial class AddProductWindow : Window
+    /// <summary>
+    /// Interaction logic for SettingsWindow.xaml
+    /// </summary>
+    public partial class SettingsWindow : Window
     {
-        AddProductViewModel _viewModel;
-        public AddProductWindow()
+        private StockViewModel _viewModel;
+        public SettingsWindow(StockViewModel viewModel)
         {
+            _viewModel = viewModel;
             InitializeComponent();
-            _viewModel = new AddProductViewModel();
             DataContext = _viewModel;
-
         }
-
+        private void Btn_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

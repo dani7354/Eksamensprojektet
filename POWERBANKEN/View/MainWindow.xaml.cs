@@ -79,13 +79,19 @@ namespace View
 
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
+			OrderDatesWindow odw = new OrderDatesWindow();
+			odw.Show();
+		}
 
         private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
         {
             OrderNotificationWindow ordernotificationwindow = new OrderNotificationWindow(_viewModel);
             ordernotificationwindow.Show();
+        }
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow setwindow = new SettingsWindow(_viewModel);
+            setwindow.Show();
         }
     }
 }

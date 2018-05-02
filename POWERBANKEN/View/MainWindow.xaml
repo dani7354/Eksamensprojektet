@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="StockWindow" Height="700" Width="1500">
@@ -12,7 +13,11 @@
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
                     <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="170" Click="btn_SaveAndClose_Click"/>
+                    
                     <MenuItem x:Name="AddProduct" Header="Tilføj produkt" HorizontalAlignment="Left" Width="170" Click="AddProduct_Click"/>
+                </MenuItem>
+                <MenuItem Header="Instillinger">
+                    <MenuItem x:Name="Settings" Header="Instillinger" HorizontalAlignment="Left" Width="170" Click="Settings_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Hjælp">
                     <MenuItem x:Name="About" Header="&amp;About" HorizontalAlignment="Left" Width="140"/>
@@ -43,7 +48,7 @@
         <Button x:Name="Btn_Graph" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,205,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
         <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Left" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Left" Margin="921,22,0,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
-        <WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />
+        <!--<WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />-->
     </Grid>
 
 </Window>
