@@ -86,7 +86,7 @@ namespace UnitTestProject1
             Assert.IsFalse(result.ContainsKey(p4));
         }
         [TestMethod]
-        public void WriteAndReadGrowth()
+        public void WriteAndReadTextFile_GrowthWithWholeNumber()
         {
             MainController mainController = MainController.Instance;
 
@@ -95,16 +95,37 @@ namespace UnitTestProject1
             double percent = 20;
             mainController.WriteGrowthToFile(percent);
             // læsning
-            percent = mainController.GetGrowthInPercent();
+            double readpercent = mainController.GetGrowthInPercent();
             Assert.AreEqual(true, File.Exists(filePath));
-            Assert.AreEqual(20, percent);
+            Assert.AreEqual(percent, readpercent);
         }
-       
+        [TestMethod]
+        public void WriteAndReadTextFile_GrowthWithDecimalNumber()
+        {
+            MainController mainController = MainController.Instance;
 
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = 54.342568431;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            double readpercent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(percent, readpercent);
+        }
+        [TestMethod]
+        public void WriteAndReadTextFile_GrowthWithNegativeNumber()
+        {
+            MainController mainController = MainController.Instance;
 
-
-    
-     
-
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = -54.342568431;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            double readpercent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(percent, readpercent);
+        }
     }
 }
