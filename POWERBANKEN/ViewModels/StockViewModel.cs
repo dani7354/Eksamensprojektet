@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using Domain;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 
 namespace ViewModels
 {
