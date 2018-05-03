@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public interface IDataStorage
+    public interface IDataStorage // Mock af database
     {
         List<Product> GetAllProducts();
         void UpdateProducts(List<Product> products);
