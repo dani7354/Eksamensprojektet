@@ -121,6 +121,7 @@ namespace ViewModels
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
             GrowthInPercent = _controller.GetGrowthInPercent();
             DaysInAdvance = 7;
+            CalcThreadRunning = true;
             StartBackgroundCalc();
         }
         public void Search()
