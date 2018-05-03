@@ -16,13 +16,26 @@ namespace ViewModels
         private bool _deaktivatedProductsShown = false;
         private string _searchText;
         private static Dictionary<Product, DateTime> _orderDates;
-        private bool running = true;
+        private bool _calcThreadRunning;
+
         private double _growthInPercent;
         private int _daysInAdvance;
-
-        private readonly CommandHandler _commandHandler;
-
-
+        public bool CalcThreadRunning
+        {
+            get
+            {
+                return _calcThreadRunning;
+            }
+            set
+            {
+                if (value)
+                {         
+                    StartBackgroundCalc();
+                }
+                _calcThreadRunning = value;
+                NotifyPropertyChanged("CalcThreadRunning");
+            }
+        }
         public Dictionary<Product, DateTime> OrderDates
         {
             get
@@ -143,16 +156,11 @@ namespace ViewModels
 
         private void BackgroundCalc()
         {
-            while (running)
+            while (_calcThreadRunning)
             {
                 OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(3000);
             }
-        }
-
-        public CommandHandler ButtonClickCommand
-        {
-            get{ return _commandHandler; }
         }
     }
 }
