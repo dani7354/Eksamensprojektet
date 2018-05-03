@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using ViewModels;
 using Controller;
 using System.IO;
+using System.Threading;
 namespace UnitTestProject1
 {
     [TestClass]
@@ -86,7 +87,7 @@ namespace UnitTestProject1
             Assert.IsFalse(result.ContainsKey(p4));
         }
         [TestMethod]
-        public void WriteAndReadTextFile_GrowthWithWholeNumber()
+        public void TxtAccess_GrowthWithWholeNumber()
         {
             MainController mainController = MainController.Instance;
 
@@ -100,7 +101,7 @@ namespace UnitTestProject1
             Assert.AreEqual(percent, readpercent);
         }
         [TestMethod]
-        public void WriteAndReadTextFile_GrowthWithDecimalNumber()
+        public void TxtAccess_GrowthWithDecimalNumber()
         {
             MainController mainController = MainController.Instance;
 
@@ -114,7 +115,7 @@ namespace UnitTestProject1
             Assert.AreEqual(percent, readpercent);
         }
         [TestMethod]
-        public void WriteAndReadTextFile_GrowthWithNegativeNumber()
+        public void TxtAccess_GrowthWithNegativeNumber()
         {
             MainController mainController = MainController.Instance;
 
