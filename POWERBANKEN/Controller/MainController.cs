@@ -17,7 +17,11 @@ namespace Controller
         private List<SalesStatistics> _productSales;
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
-        private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess(); }
+        private MainController()
+		{
+			_dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales();
+			_products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess();
+		}
         public static MainController Instance
         {
             get
@@ -26,7 +30,7 @@ namespace Controller
             }
         }
 
-        public void AddProduct(Product product)
+		public void AddProduct(Product product)
         {
             _dataStorage.InsertProduct(product);
             _products.Add(product);
@@ -50,12 +54,12 @@ namespace Controller
             return _productSales;
         }
 
-        public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
-        {
-            throw new NotImplementedException();
-        }
+		public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
+		{
+			throw new NotImplementedException(); //TO DO!!
+		}
 
-        public void UpdateProducts()
+		public void UpdateProducts()
         {
             _dataStorage.UpdateProducts(_products);
         }
