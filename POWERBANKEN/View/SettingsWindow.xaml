@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="450" Width="400">
+        Title="SettingsWindow" Height="325.102" Width="434.898">
     <Grid>
         <Label Content="Instillinger" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Ravie" />
-        <Label Content="Vækst (%)" HorizontalAlignment="Left" Margin="172,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Underret om bestillingsdatoer" HorizontalAlignment="Left" Margin="60,109,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,81,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="234,112,0,0" TextWrapping="Wrap" Text="{Binding DaysInAdvance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
-        <Button Content="Luk" HorizontalAlignment="Left" Margin="264,352,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Close"/>
-        <Label Content="dage forud" HorizontalAlignment="Left" Margin="281,112,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Baggrundsberegner aktiv" HorizontalAlignment="Left" Margin="234,146,0,0" VerticalAlignment="Top" IsChecked="{Binding CalcThreadRunning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Content="Vækst (%)" HorizontalAlignment="Left" Margin="124,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Underret om bestillingsdatoer" HorizontalAlignment="Left" Margin="12,107,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="186,79,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="186,110,0,0" TextWrapping="Wrap" Text="{Binding DaysInAdvance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
+        <Button Content="Luk" HorizontalAlignment="Left" Margin="264,205,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Close"/>
+        <Label Content="dage forud" HorizontalAlignment="Left" Margin="233,110,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Baggrundsberegner aktiv" HorizontalAlignment="Left" Margin="186,144,0,0" VerticalAlignment="Top" IsChecked="{Binding CalcThreadRunning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
     </Grid>
 </Window>
