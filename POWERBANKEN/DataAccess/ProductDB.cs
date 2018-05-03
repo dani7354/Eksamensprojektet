@@ -16,7 +16,6 @@ namespace DataAccess
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
-
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("See_Stock", con)
                 {
