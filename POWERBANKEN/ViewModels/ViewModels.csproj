@@ -70,9 +70,8 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="ForeCastViewModel.cs" />
     <Compile Include="ImportCSVViewModel.cs" />
-    <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StockViewModel.cs" />
+    <Compile Include="MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">

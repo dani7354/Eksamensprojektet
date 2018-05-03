@@ -8,13 +8,11 @@ namespace Domain
     public class OrderDateCalculator
     {
        
-        private DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
+        public DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
         {
             DateTime currentDate = DateTime.Today;
-            Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount,
-								product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
-
-			while (productCopy.StockAmount > productCopy.MinStock)
+            Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
+            while (productCopy.StockAmount > productCopy.MinStock)
             {
                 const int YEAR_LIMIT = 3000;
                 int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
@@ -29,22 +27,21 @@ namespace Domain
                 }
             }
             DateTime RunningDryOfProducts = currentDate;
-            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays); //-product.LeadTime tæller dage tilbage. Adddays 
-
-			return OrderDate;
+            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays); 
+            return OrderDate;
         }
 
         private int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
         {
-            int dailySaleForMonth = 0;
+            int dailySale = 0;
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
-            if (futureSalesForProduct.Exists(s => s.PeriodEnd.Month.Equals(currentDate.Month))) //Tjekker om futureSalesForProducts, klarer nullExceptions
+            if (futureSalesForProduct.Exists(s => s.PeriodEnd.Month.Equals(currentDate.Month)))
             {
-                SalesStatistics productSalesForMonth = futureSalesForProduct.Where(s => s.PeriodEnd.Month.Equals(currentDate.Month)).First(); 
-                dailySaleForMonth = productSalesForMonth.ExpectedSales / daysInMonth;
+                SalesStatistics productSalesForMonth = futureSalesForProduct.Where(s => s.PeriodEnd.Month.Equals(currentDate.Month)).First();
+                dailySale = productSalesForMonth.ExpectedSales / daysInMonth;
             }
             
-            return dailySaleForMonth;
+            return dailySale;
         }
 
         public Dictionary<Product, DateTime> GetOrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
@@ -54,7 +51,7 @@ namespace Domain
 
             foreach (Product product in allProducts.Where(p => p.IsActive == true))
             {
-                if (futureMonthlySales.Exists(s => s.Product.Equals(product))) //Klarer nullExceptions
+                if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
                 {
                     List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
                     DateTime orderDate = CalculateOrderDateForProduct(product, salesForProducts);
@@ -71,18 +68,18 @@ namespace Domain
         {
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();
-            foreach (var statistic in productSales)
+            foreach (var stat in productSales)
             {
-                if(products.Any(p => p.Equals(statistic.Product)))
+                if(products.Any(p => p.Equals(stat.Product)))
                 {
-                    int result = (int)Math.Ceiling(statistic.QuantitySold * GrowthInPercent); //Ceiling runder op til det nærmeste hele tal
+                    int result = (int)Math.Ceiling(stat.QuantitySold * GrowthInPercent);
                     ForecastList.Add(new SalesStatistics()
                     {
-                        QuantitySold = statistic.QuantitySold,
+                        QuantitySold = stat.QuantitySold,
                         ExpectedSales = result,
-                        PeriodStart = statistic.PeriodStart.AddYears(1),
-                        PeriodEnd = statistic.PeriodEnd.AddYears(1),
-                        Product = statistic.Product
+                        PeriodStart = stat.PeriodStart.AddYears(1),
+                        PeriodEnd = stat.PeriodEnd.AddYears(1),
+                        Product = stat.Product
                     });
                 }
             }

@@ -17,10 +17,10 @@ namespace View
 {
     public partial class StockWindow : Window
     {
-        StockViewModel _viewModel = null;
+        MainViewModel _viewModel = null;
         public StockWindow()
         {
-            _viewModel = new StockViewModel();
+            _viewModel = new MainViewModel();
             InitializeComponent();
             DataContext = _viewModel;
             this.Closing += StockWindow_Closing;
