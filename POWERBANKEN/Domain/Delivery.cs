@@ -8,12 +8,13 @@ namespace Domain
 {
     class Delivery
     {
-        public Delivery(string deliveryMethod, double deliveryTime)
+        public string DeliveryMethod { get; set; }
+        public double DeliveryTime { get; set; }
+
+		public Delivery(string deliveryMethod, double deliveryTime)
         {
             DeliveryMethod = deliveryMethod;
             DeliveryTime = deliveryTime;
         }
-        public string DeliveryMethod { get; set; }
-        public double DeliveryTime { get; set; }
     }
 }
