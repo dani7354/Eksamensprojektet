@@ -99,5 +99,11 @@ namespace View
             CSVImportWindow csvWindow = new CSVImportWindow();
             csvWindow.Show();
         }
+
+        private void btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            btn_SaveAndClose_Click(sender, e);
+            Close();
+        }
     }
 }

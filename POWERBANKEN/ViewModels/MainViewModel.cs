@@ -57,7 +57,7 @@ namespace ViewModels
         {
             get
             {
-                return _selectedProducts;
+                return _selectedProducts.Where(p => p.SKU != "" || p.SKU != null).ToList();
             }
             set
             {
