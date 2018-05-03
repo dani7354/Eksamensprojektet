@@ -36,21 +36,22 @@ namespace Domain
         {
             return string.Format($"{SKU};{Name}");
         }
+
         public override bool Equals(object obj)
         {
             if (obj != null && obj.GetType() == this.GetType())
             {
                 Product p = (Product)obj;
-                return this.SKU.Equals(p.SKU);
+                return this.SKU.Equals(p.SKU);	
             }
             else
             {
                 return false;
             }
         }
-        public override int GetHashCode()
-        {
-            return this.SKU.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			return this.SKU.GetHashCode();
+		}
     }
 }

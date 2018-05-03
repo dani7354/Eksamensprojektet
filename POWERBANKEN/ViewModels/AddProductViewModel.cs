@@ -11,7 +11,7 @@ namespace ViewModels
     public class AddProductViewModel : BaseViewModel
     {
 		
-		public ICommand Add
+		public ICommand AddProduct
 		{
 		get
 			{
@@ -202,18 +202,18 @@ namespace ViewModels
 
 			}
         }
-		
-        public void AddProduct()
-        {
-            if(Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
-            {
-                Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
-                controller.AddProduct(prod);
-            }
-            else
-            {
-                throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
-            }
-        }
-    }
+
+		//public void AddProducts()
+		//{
+		//	if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
+		//	{
+		//		Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+		//		controller.AddProduct(prod);
+		//	}
+		//	else
+		//	{
+		//		throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
+		//	}
+		//}
+	}
 }
