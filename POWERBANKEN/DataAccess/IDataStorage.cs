@@ -16,9 +16,5 @@ namespace DataAccess
         void InsertProduct(Product product);
         List<Brand> GetBrands();
         List<ProductType> GetProductTypes();
-
-
-
-
     }
 }

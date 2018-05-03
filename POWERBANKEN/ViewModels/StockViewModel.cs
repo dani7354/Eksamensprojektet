@@ -17,7 +17,6 @@ namespace ViewModels
         private string _searchText;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool running = true;
-
         private double _growthInPercent;
         private int _daysInAdvance;
 
