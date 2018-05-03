@@ -30,25 +30,6 @@ namespace ViewModels
             }
         }
 
-        //public List<DateTime> Months
-        //{
-        //    get
-        //    {
-        //        return _months;
-        //    }
-        //    set
-        //    {
-        //        _months = value;
-        //        NotifyPropertyChanged("Months");
-        //    }
-
-        //}
-
-        //public DateTime SelectedMonth
-        //{
-        //    get; set;
-        //}
-
         public Dictionary<Product, DateTime> ForeCast
         {
             get
@@ -64,23 +45,7 @@ namespace ViewModels
 
         public ForeCastViewModel()
         {
-
             _controller = MainController.Instance;
-            //Months = new List<DateTime>()
-            //{ new DateTime(DateTime.Now.Year, 1, 1),
-            //new DateTime(DateTime.Now.Year, 2, 1),
-            //new DateTime(DateTime.Now.Year, 3, 1),
-            //new DateTime(DateTime.Now.Year, 4, 1),
-            //new DateTime(DateTime.Now.Year, 5, 1),
-            //new DateTime(DateTime.Now.Year, 6, 1),
-            //new DateTime(DateTime.Now.Year, 7, 1),
-            //new DateTime(DateTime.Now.Year, 8, 1),
-            //new DateTime(DateTime.Now.Year, 9, 1),
-            //new DateTime(DateTime.Now.Year, 10, 1),
-            //new DateTime(DateTime.Now.Year, 11, 1),
-            //new DateTime(DateTime.Now.Year, 12, 1)
-            //}; 
-            
         }
 
         public void CalculateForeCast()
@@ -89,4 +54,3 @@ namespace ViewModels
         }
     }
 }
-//
