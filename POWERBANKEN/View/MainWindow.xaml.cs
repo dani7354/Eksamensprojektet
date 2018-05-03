@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class StockWindow : Window
+    public partial class MainWindow : Window
     {
         MainViewModel _viewModel = null;
-        public StockWindow()
+        public MainWindow()
         {
             _viewModel = new MainViewModel();
             InitializeComponent();
