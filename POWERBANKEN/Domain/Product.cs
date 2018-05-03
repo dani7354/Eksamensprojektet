@@ -30,7 +30,8 @@ namespace Domain
         public int LeadTimeDays { get; set; }
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
-        public bool IsActive { get; set; }
+		public bool IsActive { get; set; }
+
         public override string ToString()
         {
             return string.Format($"{SKU};{Name}");
