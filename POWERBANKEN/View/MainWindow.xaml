@@ -13,7 +13,7 @@
             <Menu Width="Auto" Height="20">
                 <MenuItem Header="_Filer">
                     <MenuItem x:Name="AppExit" Header="Gem og luk" HorizontalAlignment="Left" Width="170" Click="btn_SaveAndClose_Click"/>
-                    
+                    <MenuItem x:Name="CSVread" Header="Indlæs salgsdata" HorizontalAlignment="Left" Width="180" Click="btn_ImportProductSales"/>
                     <MenuItem x:Name="AddProduct" Header="Tilføj produkt" HorizontalAlignment="Left" Width="170" Click="AddProduct_Click"/>
                 </MenuItem>
                 <MenuItem Header="Instillinger">
