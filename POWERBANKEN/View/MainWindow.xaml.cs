@@ -93,5 +93,11 @@ namespace View
             SettingsWindow setwindow = new SettingsWindow(_viewModel);
             setwindow.Show();
         }
+
+        private void btn_ImportProductSales(object sender, RoutedEventArgs e)
+        {
+            CSVImportWindow csvWindow = new CSVImportWindow();
+            csvWindow.Show();
+        }
     }
 }
