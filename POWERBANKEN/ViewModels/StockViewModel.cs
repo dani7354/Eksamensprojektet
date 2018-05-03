@@ -21,9 +21,6 @@ namespace ViewModels
         private double _growthInPercent;
         private int _daysInAdvance;
 
-        private readonly CommandHandler _commandHandler;
-
-
         public Dictionary<Product, DateTime> OrderDates
         {
             get
@@ -149,11 +146,6 @@ namespace ViewModels
                 OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(3000);
             }
-        }
-
-        public CommandHandler ButtonClickCommand
-        {
-            get{ return _commandHandler; }
         }
     }
 }
