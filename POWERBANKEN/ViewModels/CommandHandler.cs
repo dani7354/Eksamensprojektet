@@ -13,7 +13,6 @@ namespace ViewModels
         private readonly Action _execute;
         public event EventHandler CanExecuteChanged;
 
-
         public CommandHandler(Action action, bool canExecute)
         {
             this._execute = action;

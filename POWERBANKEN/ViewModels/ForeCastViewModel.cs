@@ -50,7 +50,7 @@ namespace ViewModels
 
         public void CalculateForeCast()
         {
-            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent).OrderBy(d => d.Value).ToDictionary(d => d.Key, d => d.Value);
+            ForeCast = _controller.GetOrderDatesForProducts(GrowthInPercent).OrderBy(d => d.Value).ToDictionary(d => d.Key, d => d.Value); //2. lambda er nødvendig pga. dictionary
         }
     }
 }
