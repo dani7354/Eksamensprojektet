@@ -1,4 +1,4 @@
-﻿<Window x:Class="View.StockWindow"
+﻿<Window x:Class="View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="StockWindow" Height="700" Width="1500">
+        Title="Hovedvindue" Height="700" Width="1500">
 
     <Grid>
         <StackPanel VerticalAlignment="Top">
