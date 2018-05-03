@@ -56,7 +56,8 @@ namespace Controller
 
 		public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
 		{
-			throw new NotImplementedException(); //TO DO!!
+
+			throw new Exception();
 		}
 
 		public void UpdateProducts()
@@ -64,7 +65,7 @@ namespace Controller
             _dataStorage.UpdateProducts(_products);
         }
 
-		public double GetGrowthInPercent() 
+		public double GetGrowthInPercent()
 		{
 			if (double.TryParse(_txtAccess.ReadFile(), out double percent))
 			{
