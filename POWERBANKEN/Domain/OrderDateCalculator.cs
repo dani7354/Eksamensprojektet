@@ -31,7 +31,7 @@ namespace Domain
             return OrderDate;
         }
 
-        private int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
+        public int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
         {
             int dailySale = 0;
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
