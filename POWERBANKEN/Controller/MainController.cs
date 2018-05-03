@@ -56,8 +56,8 @@ namespace Controller
 
 		public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
 		{
-
-			throw new Exception();
+			CSVReader csv = new CSVReader();
+			return csv.ReadProductsSalesInfoFromCSV(filePath);		
 		}
 
 		public void UpdateProducts()
