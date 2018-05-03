@@ -8,9 +8,13 @@ namespace Domain
 {
     public class Brand
     {
-        public Brand()
-        {
-        }
+        public string Name { get; set; }
+        public int ID { get; set; }
+
+		public Brand()
+		{
+
+		}
 
         public Brand(string brandName)
         {
@@ -21,7 +25,5 @@ namespace Domain
         {
             ID = brandID;
         }
-        public string Name { get; set; }
-        public int ID { get; set; }
     }
 }
