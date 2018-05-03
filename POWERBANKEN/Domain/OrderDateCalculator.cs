@@ -27,7 +27,7 @@ namespace Domain
                 }
             }
             DateTime RunningDryOfProducts = currentDate;
-            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays);
+            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays); 
             return OrderDate;
         }
 

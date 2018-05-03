@@ -1,5 +1,4 @@
-﻿
-namespace Domain
+﻿namespace Domain
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +10,7 @@ namespace Domain
     {
         private int productTypeID;
 
-        public ProductType()
-        {
-        }
+        public ProductType(){}
 
         public ProductType(string typeName)
         {
@@ -37,11 +34,5 @@ namespace Domain
                 productTypeID = value;
             }
         }
-
-        //public override string ToString()
-        //{
-        //    return string.Format($"{Name}");
-        //}
-
     }
 }

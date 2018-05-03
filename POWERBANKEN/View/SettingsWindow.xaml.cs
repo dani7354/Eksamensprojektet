@@ -20,8 +20,8 @@ namespace View
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        private StockViewModel _viewModel;
-        public SettingsWindow(StockViewModel viewModel)
+        private MainViewModel _viewModel;
+        public SettingsWindow(MainViewModel viewModel)
         {
             _viewModel = viewModel;
             InitializeComponent();
