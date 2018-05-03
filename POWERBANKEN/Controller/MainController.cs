@@ -63,7 +63,20 @@ namespace Controller
         {
             _dataStorage.UpdateProducts(_products);
         }
-        public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
+
+		public double GetGrowthInPercent() 
+		{
+			if (double.TryParse(_txtAccess.ReadFile(), out double percent))
+			{
+				return percent;
+			}
+			else
+			{
+				throw new Exception("Den læste streng kunne ikke konverteres til den påkrævede type.");
+			}
+		}
+
+		public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
         {
             OrderDateCalculator orderCalc = new OrderDateCalculator();
             Dictionary<Product, DateTime> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
@@ -100,21 +113,10 @@ namespace Controller
             return _productTypes;
         }
 
-        public double GetGrowthInPercent()
-        {
-            if(double.TryParse(_txtAccess.ReadFile(), out double percent))
-            {
-                return percent;
-            }
-            else
-            {
-                throw new Exception("Den læste streng kunne ikke konverteres til den påkrævede type.");
-            }
-        }
+		public void WriteGrowthToFile(double percent)
+		{
+			_txtAccess.WriteToFile(percent.ToString());
+		}
 
-        public void WriteGrowthToFile(double percent)
-        {
-            _txtAccess.WriteToFile(percent.ToString());
-        }
-    }
+	}
 }
