@@ -23,6 +23,7 @@ namespace UnitTestProject1
         SalesStatistics[] p1stat = new SalesStatistics[12];
         SalesStatistics[] p2stat = new SalesStatistics[12];
         SalesStatistics[] p3stat = new SalesStatistics[12];
+        SalesStatistics[] p4stat = new SalesStatistics[12];
         [TestInitialize]
         public void Init()
         {
@@ -85,6 +86,27 @@ namespace UnitTestProject1
             double expGrowth = 20;
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.IsFalse(result.ContainsKey(p4));
+        }
+        [TestMethod]
+        public void OrderDateCalc_OnlyWithProductSalesDataForOneMonth()
+        {
+            // Ændring af testdata
+            p4stat = new SalesStatistics[1] ;
+            p4stat[0] = new SalesStatistics()
+            {
+                PeriodStart = new DateTime(2017, 1, 1),
+                PeriodEnd = new DateTime(2017, 1, 31),
+                QuantitySold = 32,
+                Product = p4
+            };
+            dataStorage.InsertProductSale(p4stat.ToList());
+
+
+            OrderDateCalculator calc = new OrderDateCalculator();
+            double expGrowth = 20;
+            var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
+            Assert.IsTrue(result.ContainsKey(p4stat[0].Product));
+
         }
         [TestMethod]
         public void TxtAccess_GrowthWithWholeNumber()
