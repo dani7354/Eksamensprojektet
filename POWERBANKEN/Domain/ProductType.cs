@@ -10,9 +10,7 @@
     {
         private int productTypeID;
 
-        public ProductType()
-        {
-        }
+        public ProductType(){}
 
         public ProductType(string typeName)
         {

@@ -15,7 +15,8 @@ namespace ViewModels
 		{
 		get
 			{
-				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
+				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock,
+				Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true); //ICommand klassen 
 			}
 		}
         public AddProductViewModel()
