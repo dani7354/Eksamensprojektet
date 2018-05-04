@@ -9,21 +9,26 @@
         Title="SalesChart" Height="400" Width="500">
     <Grid>
 
-        <syncfusion:SfChart Header="Chart Header" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" >
+        <syncfusion:SfChart Header="Chart Header" HorizontalAlignment="Center" Margin="32,35,10,10" VerticalAlignment="Center" Height="324" Width="450" >
             <syncfusion:SfChart.PrimaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="Primary Axis" Maximum="10" Minimum="0" ShowGridLines="False"/>
+                <syncfusion:NumericalAxis FontSize="10" Header="TID" Maximum="10" Minimum="0" ShowGridLines="False"/>
             </syncfusion:SfChart.PrimaryAxis>
             <syncfusion:SfChart.SecondaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="Secondary Axis" Maximum="100" Minimum="0"/>
+                <syncfusion:NumericalAxis FontSize="10" Header="Antal" Maximum="100" Minimum="0"/>
             </syncfusion:SfChart.SecondaryAxis>
+            <syncfusion:SfChart.Legend>
+                <syncfusion:ChartLegend Header="Produkt" Visibility="Visible" CheckBoxVisibility="Visible" DockPosition="Left"/>
+            </syncfusion:SfChart.Legend>
 
-            <syncfusion:LineSeries Label="YOLO" ItemsSource="{Binding StatistikPDB}" XBindingPath="PeriodStart.Month" YBindingPath="QuantitySold" ShowTooltip="True">
+
+            <syncfusion:LineSeries Label="" ItemsSource="{Binding StatistikPDB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" XBindingPath="PeriodStart.Month" YBindingPath="QuantitySold" ShowTooltip="True">
 
                 <syncfusion:LineSeries.AdornmentsInfo>
                     <syncfusion:ChartAdornmentInfo ShowLabel="True" />
                 </syncfusion:LineSeries.AdornmentsInfo>
             </syncfusion:LineSeries>
         </syncfusion:SfChart>
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,13,0,0" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Brands}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBrand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
     </Grid>
 </Window>
