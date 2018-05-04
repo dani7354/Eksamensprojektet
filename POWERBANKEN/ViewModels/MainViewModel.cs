@@ -20,6 +20,24 @@ namespace ViewModels
 
         private double _growthInPercent;
         private int _daysInAdvance;
+        private int _calcInterval;
+
+        public int CalcInterval
+        {
+            get
+            {
+                return _calcInterval;
+            }
+            set
+            {
+                if(value != _calcInterval)
+                {
+                    _calcInterval = value;
+                    NotifyPropertyChanged("CalcInterval");
+                }
+                
+            }
+        }
         public bool CalcThreadRunning
         {
             get
@@ -52,7 +70,6 @@ namespace ViewModels
                 }
             }
         }
-
         public List<Product> SelectedProducts
         {
             get
@@ -121,6 +138,7 @@ namespace ViewModels
             SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
             GrowthInPercent = _controller.GetGrowthInPercent();
             DaysInAdvance = 7;
+            CalcInterval = 3;
             CalcThreadRunning = true;
             StartBackgroundCalc();
         }
@@ -160,7 +178,7 @@ namespace ViewModels
             while (_calcThreadRunning)
             {
                 OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
-                Thread.Sleep(3000);
+                Thread.Sleep(CalcInterval * 1000);
             }
         }
     }
