@@ -10,28 +10,30 @@ namespace Domain
        
         public DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
         {
+            const int YEAR_LIMIT = 3000;
             DateTime currentDate = DateTime.Today;
+            int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
             Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
             while (productCopy.StockAmount > productCopy.MinStock)
             {
-                const int YEAR_LIMIT = 3000;
-                int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
-                productCopy.StockAmount -= dailySale;
-                if(currentDate.Year < YEAR_LIMIT)
+                if (!currentDate.Month.Equals(currentDate.AddDays(-1).Month)) // hvis måneden er skiftet.
                 {
-                    currentDate = currentDate.AddDays(1);
+                dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
                 }
+                productCopy.StockAmount -= dailySale; // fratrækker det daglige antal salg fra lagerbeholdningen. 
+                if(currentDate.Year < YEAR_LIMIT) currentDate = currentDate.AddDays(1); // vi tæller frem med én dag.
+                
                 else
                 {
                     break;
                 }
             }
             DateTime RunningDryOfProducts = currentDate;
-            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays);
+            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays); 
             return OrderDate;
         }
 
-        private int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
+        public int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
         {
             int dailySale = 0;
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);

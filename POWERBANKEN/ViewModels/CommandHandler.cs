@@ -13,31 +13,20 @@ namespace ViewModels
         private readonly Action _execute;
         public event EventHandler CanExecuteChanged;
 
-		public CommandHandler()
-		{
-
-		}
-		public CommandHandler(Action action, bool canExecute)
-		{
-			this._execute = action;
-			this._canExecute = canExecute;
-		}
-
-		public bool CanExecute(object parameter)
-		{
-			return _canExecute;
-		}
-
-		public void Execute(object parameter)
+        public CommandHandler(Action action, bool canExecute)
         {
-			_execute();
+            this._execute = action;
+            this._canExecute = canExecute;
         }
-        public void RaiseCanExecuteChanged()
+
+        public bool CanExecute(object parameter)
         {
-            if(CanExecuteChanged != null)
-            {
-                CanExecuteChanged(this, EventArgs.Empty);
-            }
+            return _canExecute;
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute();
         }
     }
 }

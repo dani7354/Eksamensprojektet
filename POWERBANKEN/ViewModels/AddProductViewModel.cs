@@ -11,11 +11,12 @@ namespace ViewModels
     public class AddProductViewModel : BaseViewModel
     {
 		
-		public ICommand Add
+		public ICommand AddProduct
 		{
 		get
 			{
-				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
+				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock,
+				Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true); //ICommand klassen 
 			}
 		}
         public AddProductViewModel()
@@ -201,18 +202,18 @@ namespace ViewModels
 
 			}
         }
-		
-        public void AddProduct()
-        {
-            if(Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
-            {
-                Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
-                controller.AddProduct(prod);
-            }
-            else
-            {
-                throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
-            }
-        }
-    }
+
+		public void AddProducts()
+		{
+			if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
+			{
+				Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+				controller.AddProduct(prod);
+			}
+			else
+			{
+				throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
+			}
+		}
+	}
 }

@@ -16,11 +16,10 @@ namespace DataAccess
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {
-
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("See_Stock", con)
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
+                    CommandType = CommandType.StoredProcedure
                 };
 
                 SqlDataReader reader = cmd1.ExecuteReader();
@@ -53,7 +52,7 @@ namespace DataAccess
                 {
                     SqlCommand cmd1 = new SqlCommand("POWERBANKEN.UPDATE_PRODUCT", con)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
+                        CommandType = CommandType.StoredProcedure
                     };
                     cmd1.Parameters.Add(new SqlParameter("@name", p.Name));
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.SKU));
@@ -75,7 +74,7 @@ namespace DataAccess
                 {
                     SqlCommand cmd1 = new SqlCommand("POWERBANKEN.Insert_ProductSales", con)
                     {
-                        CommandType = System.Data.CommandType.StoredProcedure
+                        CommandType = CommandType.StoredProcedure
                     };
                     cmd1.Parameters.Add(new SqlParameter("@sku", p.Product.SKU));
                     cmd1.Parameters.Add(new SqlParameter("@quantity", p.QuantitySold));
@@ -94,7 +93,7 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("PRODUCT_SALES", con)
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
+                    CommandType = CommandType.StoredProcedure
                 };
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
@@ -130,7 +129,7 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("POWERBANKEN.INSERT_PRODUCT", con)
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
+                    CommandType = CommandType.StoredProcedure
                 };
                 cmd1.Parameters.Add(new SqlParameter("@sku", product.SKU));
                 cmd1.Parameters.Add(new SqlParameter("@name", product.Name));
@@ -153,7 +152,7 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_PRODUCT_TYPES", con)
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
+                    CommandType = CommandType.StoredProcedure
                 };
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())
@@ -178,7 +177,7 @@ namespace DataAccess
                 con.Open();
                 SqlCommand cmd1 = new SqlCommand("POWERBANKEN.GET_BRANDS", con)
                 {
-                    CommandType = System.Data.CommandType.StoredProcedure
+                    CommandType = CommandType.StoredProcedure
                 };
                 SqlDataReader reader = cmd1.ExecuteReader();
                 while (reader.Read())

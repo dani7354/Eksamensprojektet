@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class StockWindow : Window
+    public partial class MainWindow : Window
     {
-        StockViewModel _viewModel = null;
-        public StockWindow()
+        MainViewModel _viewModel = null;
+        public MainWindow()
         {
-            _viewModel = new StockViewModel();
+            _viewModel = new MainViewModel();
             InitializeComponent();
             DataContext = _viewModel;
             this.Closing += StockWindow_Closing;
@@ -92,6 +92,18 @@ namespace View
         {
             SettingsWindow setwindow = new SettingsWindow(_viewModel);
             setwindow.Show();
+        }
+
+        private void btn_ImportProductSales(object sender, RoutedEventArgs e)
+        {
+            CSVImportWindow csvWindow = new CSVImportWindow();
+            csvWindow.Show();
+        }
+
+        private void btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            btn_SaveAndClose_Click(sender, e);
+            Close();
         }
     }
 }
