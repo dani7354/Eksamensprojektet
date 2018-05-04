@@ -77,11 +77,17 @@ namespace View
 
         }
 
+        private void Btn_Graph_Click(object sender, RoutedEventArgs e)
+        {
+			SalesChart sta = new SalesChart();
+			sta.Show();
+		}
+
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
-			OrderDatesWindow odw = new OrderDatesWindow();
-			odw.Show();
-		}
+            OrderDatesWindow odw = new OrderDatesWindow();
+            odw.Show();
+        }
 
         private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
         {

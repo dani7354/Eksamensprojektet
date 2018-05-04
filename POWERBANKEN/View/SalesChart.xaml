@@ -1,0 +1,29 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="View.SalesChart"
+        mc:Ignorable="d"
+        Title="SalesChart" Height="400" Width="500">
+    <Grid>
+
+        <syncfusion:SfChart Header="Chart Header" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" >
+            <syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:NumericalAxis FontSize="10" Header="Primary Axis" Maximum="10" Minimum="0" ShowGridLines="False"/>
+            </syncfusion:SfChart.PrimaryAxis>
+            <syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:NumericalAxis FontSize="10" Header="Secondary Axis" Maximum="100" Minimum="0"/>
+            </syncfusion:SfChart.SecondaryAxis>
+
+            <syncfusion:LineSeries Label="YOLO" ItemsSource="{Binding StatistikPDB}" XBindingPath="PeriodStart.Month" YBindingPath="QuantitySold" ShowTooltip="True">
+
+                <syncfusion:LineSeries.AdornmentsInfo>
+                    <syncfusion:ChartAdornmentInfo ShowLabel="True" />
+                </syncfusion:LineSeries.AdornmentsInfo>
+            </syncfusion:LineSeries>
+        </syncfusion:SfChart>
+
+    </Grid>
+</Window>
