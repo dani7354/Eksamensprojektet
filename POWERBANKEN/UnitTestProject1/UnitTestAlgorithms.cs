@@ -140,7 +140,7 @@ namespace UnitTestProject1
         public void TxtAccess_GrowthWithNegativeNumber()
         {
             MainController mainController = MainController.Instance;
-
+            
             // skrivning
             string filePath = "growth.txt";
             double percent = -54.342568431;
@@ -149,6 +149,20 @@ namespace UnitTestProject1
             double readpercent = mainController.GetGrowthInPercent();
             Assert.AreEqual(true, File.Exists(filePath));
             Assert.AreEqual(percent, readpercent);
+        }
+        [TestMethod]
+        public void MainController_Singleton()
+        {
+
+            // singleton
+            MainController ctl2 = MainController.Instance;
+            MainController ctl1 = MainController.Instance;
+            Assert.ReferenceEquals(ctl1, ctl2);
+
+            // ikke singleton
+            AddProductViewModel vm1 = new AddProductViewModel();
+            AddProductViewModel vm2 = new AddProductViewModel();
+            Assert.IsFalse(ReferenceEquals(vm1, vm2));
         }
     }
 }
