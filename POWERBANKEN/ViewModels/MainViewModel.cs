@@ -15,6 +15,7 @@ namespace ViewModels
         private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
         private string _searchText;
+        private Thread _calculatorThread;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool _calcThreadRunning;
 
@@ -33,6 +34,7 @@ namespace ViewModels
                 if(value != _calcInterval)
                 {
                     _calcInterval = value;
+                    StartBackgroundCalc();
                     NotifyPropertyChanged("CalcInterval");
                 }
                 
@@ -169,8 +171,9 @@ namespace ViewModels
         }
         private void StartBackgroundCalc()
         {
-            Thread calcThread = new Thread(BackgroundCalc);
-            calcThread.Start();
+            _calculatorThread = new Thread(BackgroundCalc);
+            _calculatorThread.Start();
+
         }
 
         private void BackgroundCalc()
