@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain
 {
-    public class OrderDateCalculator
+    public class Order
     {
        
         public DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)

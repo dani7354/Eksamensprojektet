@@ -71,7 +71,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void OrderDateCalc_WorksWithSalesForEveryMonth()
         {
-            OrderDateCalculator calc = new OrderDateCalculator();
+            Order calc = new Order();
             double expGrowth = 30.00;
             Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.AreEqual(3, result.Count);
@@ -82,7 +82,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void OrderDateCalc_IgnoreProductsWithNoSalesData()
         {
-            OrderDateCalculator calc = new OrderDateCalculator();
+            Order calc = new Order();
             double expGrowth = 20;
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.IsFalse(result.ContainsKey(p4));
@@ -102,7 +102,7 @@ namespace UnitTestProject1
             dataStorage.InsertProductSale(p4stat.ToList());
 
 
-            OrderDateCalculator calc = new OrderDateCalculator();
+            Order calc = new Order();
             double expGrowth = 20;
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.IsTrue(result.ContainsKey(p4stat[0].Product));
