@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:View"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="View.SalesChart"
         mc:Ignorable="d"
-        Title="SalesChart" Height="400" Width="500">
+        Title="SalesChart" Height="400" Width="800">
     <Grid>
 
-        <syncfusion:SfChart Header="Chart Header" HorizontalAlignment="Center" Margin="32,35,10,10" VerticalAlignment="Center" Height="324" Width="450" >
+        <syncfusion:SfChart Header="Chart Header" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" >
             <syncfusion:SfChart.PrimaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="TID" Maximum="10" Minimum="0" ShowGridLines="False"/>
+                <syncfusion:NumericalAxis FontSize="10" Header="TID" Maximum="12" Minimum="1" ShowGridLines="False" LabelRotationAngle="90"/>
             </syncfusion:SfChart.PrimaryAxis>
             <syncfusion:SfChart.SecondaryAxis>
                 <syncfusion:NumericalAxis FontSize="10" Header="Antal" Maximum="100" Minimum="0"/>
