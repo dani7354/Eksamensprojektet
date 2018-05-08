@@ -43,7 +43,7 @@ namespace ViewModels
         
         public Brand SelectedBrand {
             get { return _selectedBrand; }
-            set { _selectedBrand = value;SetStat(); NotifyPropertyChanged("SelectedBrand"); }
+            set { _selectedBrand = value; NotifyPropertyChanged("SelectedBrand"); }
 
         }
         public void SetStat() { StatistikPDB = mc.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
