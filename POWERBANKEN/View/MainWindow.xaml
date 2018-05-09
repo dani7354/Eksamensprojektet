@@ -24,7 +24,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" MaxWidth="900" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" CanUserAddRows="False" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" MaxWidth="900" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>

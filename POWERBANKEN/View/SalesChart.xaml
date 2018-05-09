@@ -9,26 +9,20 @@
         Title="SalesChart" Height="400" Width="800">
     <Grid>
 
-        <syncfusion:SfChart Header="Chart Header" x:Name="Chartseries" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
+        <syncfusion:SfChart  x:Name="Chartseries" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
             <syncfusion:SfChart.PrimaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="TID" Maximum="12" Minimum="1" ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit"/>
+                <syncfusion:DateTimeAxis FontSize="10" Header="Måned" LabelFormat="MMM"  Interval="1" IntervalType="Months"  ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.PrimaryAxis>
             <syncfusion:SfChart.SecondaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="Antal" Maximum="100" Minimum="0" EdgeLabelsDrawingMode="Fit"/>
+                <syncfusion:NumericalAxis FontSize="10" Header="Antal"  EdgeLabelsDrawingMode="Fit" Minimum="0"/>
             </syncfusion:SfChart.SecondaryAxis>
-            <syncfusion:SfChart.Legend>
-                <syncfusion:ChartLegend Header="Produkt" Visibility="Visible" CheckBoxVisibility="Visible" ToggleSeriesVisibility="True" DockPosition="Left"/>
-            </syncfusion:SfChart.Legend>
 
 
-            <syncfusion:LineSeries >
 
-                <syncfusion:LineSeries.AdornmentsInfo>
-                    <syncfusion:ChartAdornmentInfo ShowLabel="True" />
-                </syncfusion:LineSeries.AdornmentsInfo>
-            </syncfusion:LineSeries>
+
         </syncfusion:SfChart>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,13,0,0" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Brands}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBrand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Sammenlign Brands" HorizontalAlignment="Left" Margin="150,13,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
 
     </Grid>
 </Window>
