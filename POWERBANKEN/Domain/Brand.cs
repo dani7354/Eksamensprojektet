@@ -25,5 +25,11 @@ namespace Domain
         {
             ID = brandID;
         }
+
+
+        public override int GetHashCode()
+        {
+            return this.Name.GetHashCode();
+        }
     }
 }

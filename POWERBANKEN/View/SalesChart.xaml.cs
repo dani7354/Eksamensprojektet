@@ -67,6 +67,7 @@ namespace View
         }
         private void StartBrandChar()
         {
+           
             foreach (var item in Salesview.Brands)
             {
                 Chartseries.Legend = new ChartLegend()
@@ -82,7 +83,7 @@ namespace View
                     XBindingPath = "PeriodStart",
                     YBindingPath = "QuantitySold",
                     ShowTooltip = true,
-                   // ShowEmptyPoints = true
+                   ShowEmptyPoints = false
 
 
                 };

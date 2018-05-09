@@ -49,6 +49,7 @@ namespace ViewModels
         public List<SalesStatistics> BrandSaleList => _BrandSale;
         public void CalulateBrandSale()
         {
+            _BrandSale.Clear();
             foreach (var item in Brands)
             {
                 for (int i = 0; i < 12; i++)
@@ -58,7 +59,7 @@ namespace ViewModels
                     s.Product = new Product();
                     s.PeriodStart = new DateTime(2017,i+1,1);
                     s.Product.Brand = item;
-                    s.QuantitySold = StatistikPDB.Where(x => x.Product.Brand == s.Product.Brand && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
+                    s.QuantitySold = StatistikPDB.Where(x => x.Product.Brand != null&& x.Product.Brand.Name ==item.Name && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
                     _BrandSale.Add(s);
                 }
             }

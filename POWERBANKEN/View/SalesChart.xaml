@@ -14,7 +14,7 @@
                 <syncfusion:DateTimeAxis FontSize="10" Header="Måned" LabelFormat="MMM"  Interval="1" IntervalType="Months"  ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.PrimaryAxis>
             <syncfusion:SfChart.SecondaryAxis>
-                <syncfusion:NumericalAxis FontSize="10" Header="Antal"  EdgeLabelsDrawingMode="Fit" Minimum="0"/>
+                <syncfusion:NumericalAxis FontSize="10" Header="Antal"  EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.SecondaryAxis>
 
 
