@@ -56,6 +56,7 @@ namespace ViewModels
 
                     var s = new SalesStatistics();
                     s.Product = new Product();
+                    s.PeriodStart = new DateTime(2017,i+1,1);
                     s.Product.Brand = item;
                     s.QuantitySold = StatistikPDB.Where(x => x.Product.Brand == s.Product.Brand && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
                     _BrandSale.Add(s);
