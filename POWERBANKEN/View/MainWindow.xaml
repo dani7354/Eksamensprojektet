@@ -34,7 +34,6 @@
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime"  Width="auto"/>
-
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
