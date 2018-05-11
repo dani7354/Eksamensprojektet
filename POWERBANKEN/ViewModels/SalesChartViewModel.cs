@@ -46,10 +46,11 @@ namespace ViewModels
             set { _selectedBrand = value; NotifyPropertyChanged("SelectedBrand"); }
            
         }
-        public List<SalesStatistics> BrandSaleList => _BrandSale;
+        public List<SalesStatistics> BrandSaleList { get; } = new List<SalesStatistics>();
+
         public void CalulateBrandSale()
         {
-            _BrandSale.Clear();
+            BrandSaleList.Clear();
             foreach (var item in Brands)
             {
                 for (int i = 0; i < 12; i++)
@@ -60,7 +61,7 @@ namespace ViewModels
                     s.PeriodStart = new DateTime(2017,i+1,1);
                     s.Product.Brand = item;
                     s.QuantitySold = StatistikPDB.Where(x => x.Product.Brand != null&& x.Product.Brand.Name ==item.Name && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
-                    _BrandSale.Add(s);
+                    BrandSaleList.Add(s);
                 }
             }
         }
@@ -69,7 +70,6 @@ namespace ViewModels
         public MainController mc = MainController.Instance;
         private Brand _selectedBrand;
         private List<SalesStatistics> _statistikPDB;
-        private List<SalesStatistics> _BrandSale = new List<SalesStatistics>();
     }
 
 

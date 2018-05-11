@@ -26,7 +26,15 @@ namespace Domain
             ID = brandID;
         }
 
-
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != typeof(Brand)) return false;
+            else
+            {
+                var b = (Brand)obj;
+                return this.Name.Equals(b.Name);
+            }
+        }
         public override int GetHashCode()
         {
             return this.Name.GetHashCode();
