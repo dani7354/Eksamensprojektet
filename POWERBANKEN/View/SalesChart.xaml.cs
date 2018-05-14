@@ -33,7 +33,7 @@ namespace View
         }
         private void StartupChar()
         {
-            foreach (var item in Salesview.PDName.Where(p=>p.Brand.Name==Salesview.SelectedBrand.Name))
+            foreach (var item in Salesview.ProductName.Where(p=>p.Brand.Name==Salesview.SelectedBrand.Name))
             {
                 Chartseries.Legend = new ChartLegend()
                 {
@@ -44,7 +44,7 @@ namespace View
                 SplineSeries spline = new SplineSeries()
                 {
                     Label = item.Name,
-                    ItemsSource = Salesview.StatistikPDB.Where(s=>s.Product.Equals(item)).ToList(),
+                    ItemsSource = Salesview.ProductStatistics.Where(s=>s.Product.Equals(item)).ToList(),
                     XBindingPath = "PeriodStart",
                     YBindingPath = "QuantitySold",
                     ShowTooltip=true,
