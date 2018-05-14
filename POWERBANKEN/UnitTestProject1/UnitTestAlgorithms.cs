@@ -5,7 +5,9 @@ using Domain;
 using System.Linq;
 using System.Collections.Generic;
 using ViewModels;
-
+using Controller;
+using System.IO;
+using System.Threading;
 namespace UnitTestProject1
 {
     [TestClass]
@@ -21,6 +23,7 @@ namespace UnitTestProject1
         SalesStatistics[] p1stat = new SalesStatistics[12];
         SalesStatistics[] p2stat = new SalesStatistics[12];
         SalesStatistics[] p3stat = new SalesStatistics[12];
+        SalesStatistics[] p4stat = new SalesStatistics[12];
         [TestInitialize]
         public void Init()
         {
@@ -68,23 +71,98 @@ namespace UnitTestProject1
         [TestMethod]
         public void OrderDateCalc_WorksWithSalesForEveryMonth()
         {
-            OrderDateCalculator calc = new OrderDateCalculator();
+            Order calc = new Order();
             double expGrowth = 30.00;
             Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.AreEqual(3, result.Count);
             // Forventede resultater udregnet på forhånd. 
-            Assert.AreEqual(DateTime.Today.AddDays(17), result.First().Value); 
-            Assert.AreEqual(DateTime.Today.AddDays(89), result.Last().Value);
+            Assert.AreEqual(DateTime.Today.AddDays(16), result.First().Value); 
+            Assert.AreEqual(DateTime.Today.AddDays(88), result.Last().Value);
         }
         [TestMethod]
         public void OrderDateCalc_IgnoreProductsWithNoSalesData()
         {
-            OrderDateCalculator calc = new OrderDateCalculator();
+            Order calc = new Order();
             double expGrowth = 20;
             var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
             Assert.IsFalse(result.ContainsKey(p4));
         }
-     
+        [TestMethod]
+        public void OrderDateCalc_OnlyWithProductSalesDataForOneMonth()
+        {
+            // Ændring af testdata
+            p4stat = new SalesStatistics[1] ;
+            p4stat[0] = new SalesStatistics()
+            {
+                PeriodStart = new DateTime(2017, 1, 1),
+                PeriodEnd = new DateTime(2017, 1, 31),
+                QuantitySold = 32,
+                Product = p4
+            };
+            dataStorage.InsertProductSale(p4stat.ToList());
 
+
+            Order calc = new Order();
+            double expGrowth = 20;
+            var result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
+            Assert.IsTrue(result.ContainsKey(p4stat[0].Product));
+
+        }
+        [TestMethod]
+        public void TxtAccess_GrowthWithWholeNumber()
+        {
+            MainController mainController = MainController.Instance;
+
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = 20;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            double readpercent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(percent, readpercent);
+        }
+        [TestMethod]
+        public void TxtAccess_GrowthWithDecimalNumber()
+        {
+            MainController mainController = MainController.Instance;
+
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = 54.342568431;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            double readpercent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(percent, readpercent);
+        }
+        [TestMethod]
+        public void TxtAccess_GrowthWithNegativeNumber()
+        {
+            MainController mainController = MainController.Instance;
+            
+            // skrivning
+            string filePath = "growth.txt";
+            double percent = -54.342568431;
+            mainController.WriteGrowthToFile(percent);
+            // læsning
+            double readpercent = mainController.GetGrowthInPercent();
+            Assert.AreEqual(true, File.Exists(filePath));
+            Assert.AreEqual(percent, readpercent);
+        }
+        [TestMethod]
+        public void MainController_Singleton()
+        {
+
+            // singleton
+            MainController ctl2 = MainController.Instance;
+            MainController ctl1 = MainController.Instance;
+            Assert.ReferenceEquals(ctl1, ctl2);
+
+            // ikke singleton
+            AddProductViewModel vm1 = new AddProductViewModel();
+            AddProductViewModel vm2 = new AddProductViewModel();
+            Assert.IsFalse(ReferenceEquals(vm1, vm2));
+        }
     }
 }

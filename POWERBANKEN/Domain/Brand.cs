@@ -8,9 +8,13 @@ namespace Domain
 {
     public class Brand
     {
-        public Brand()
-        {
-        }
+        public string Name { get; set; }
+        public int ID { get; set; }
+
+		public Brand()
+		{
+
+		}
 
         public Brand(string brandName)
         {
@@ -21,7 +25,19 @@ namespace Domain
         {
             ID = brandID;
         }
-        public string Name { get; set; }
-        public int ID { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != typeof(Brand)) return false;
+            else
+            {
+                var b = (Brand)obj;
+                return this.Name.Equals(b.Name);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return this.Name.GetHashCode();
+        }
     }
 }

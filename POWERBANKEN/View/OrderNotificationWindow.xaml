@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="OrderNotificationWindow" Height="450" Width="441.385">
-    <Grid>
-        <ListView HorizontalAlignment="Left" Height="339" Margin="10,70,0,0" VerticalAlignment="Top" Width="413" ItemsSource="{Binding OrderDates,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+    <Grid Margin="0,0,-8,0">
+        <ListView HorizontalAlignment="Left" Height="339" Margin="0,70,0,0" VerticalAlignment="Top" Width="433" ItemsSource="{Binding OrderDates,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding Key.SKU}" Width="auto"/>
@@ -16,7 +16,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Bestillinger de næste 30 dage" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="398" FontSize="20"/>
+        <Label Content="Bestillinger de næste" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="37" Width="197" FontSize="20"/>
+        <Label Content="{Binding DaysInAdvance, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="212,10,0,0" VerticalAlignment="Top" FontSize="20" Height="37" Width="53"/>
+        <Label Content="dage" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" FontSize="20"/>
 
     </Grid>
 </Window>

@@ -16,21 +16,20 @@ using ViewModels;
 namespace View
 {
     /// <summary>
-    /// Interaction logic for OrderNotificationWindow.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class OrderNotificationWindow : Window
+    public partial class SettingsWindow : Window
     {
         private MainViewModel _viewModel;
-        public OrderNotificationWindow(MainViewModel viewModel)
+        public SettingsWindow(MainViewModel viewModel)
         {
             _viewModel = viewModel;
-            DataContext = _viewModel;
             InitializeComponent();
+            DataContext = _viewModel;
         }
-
-		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-	}
+        private void Btn_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

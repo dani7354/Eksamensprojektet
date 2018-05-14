@@ -15,14 +15,15 @@ using System.Windows.Shapes;
 
 namespace View
 {
-    public partial class StockWindow : Window
+    public partial class MainWindow : Window
     {
-        StockViewModel _viewModel = null;
-        public StockWindow()
+        MainViewModel _viewModel = null;
+        public MainWindow()
         {
-            _viewModel = new StockViewModel();
+            _viewModel = new MainViewModel();
             InitializeComponent();
             DataContext = _viewModel;
+            _viewModel.OrderDatesAdded += (OrderDatesAdded, e) => MessageBox.Show($"{OrderDatesAdded} nye varer skal bestilles inden for de næste {_viewModel.DaysInAdvance} dage - se vinduet med bestillingsdatoer.");
             this.Closing += StockWindow_Closing;
         }
 
@@ -33,6 +34,7 @@ namespace View
             try
             {
                 _viewModel.UpdateProducts();
+                MessageBox.Show("Ændringer gemt!");
               
             }
             catch (Exception ex)
@@ -77,16 +79,39 @@ namespace View
 
         }
 
+        private void Btn_Graph_Click(object sender, RoutedEventArgs e)
+        {
+			SalesChart sta = new SalesChart();
+			sta.Show();
+		}
+
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
-			OrderDatesWindow odw = new OrderDatesWindow();
-			odw.Show();
-		}
+            OrderDatesWindow odw = new OrderDatesWindow();
+            odw.Show();
+        }
 
         private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
         {
             OrderNotificationWindow ordernotificationwindow = new OrderNotificationWindow(_viewModel);
             ordernotificationwindow.Show();
+        }
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow setwindow = new SettingsWindow(_viewModel);
+            setwindow.Show();
+        }
+
+        private void btn_ImportProductSales(object sender, RoutedEventArgs e)
+        {
+            CSVImportWindow csvWindow = new CSVImportWindow();
+            csvWindow.Show();
+        }
+
+        private void btn_Close_Click(object sender, RoutedEventArgs e)
+        {
+            btn_SaveAndClose_Click(sender, e);
+            Close();
         }
     }
 }
