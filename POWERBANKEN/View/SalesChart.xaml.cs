@@ -16,6 +16,7 @@ using Domain;
 using Syncfusion.UI.Xaml.Charts;
 
 
+
 namespace View
 {
     /// <summary>

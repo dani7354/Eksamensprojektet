@@ -52,11 +52,14 @@
     <Reference Include="Microsoft.Expression.Prototyping.SketchControls, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\Microsoft.Expression.Prototyping.SketchControls.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Microsoft.SDK.Expression.Blend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\Microsoft.SDK.Expression.Blend.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
-    <Reference Include="Syncfusion.SfChart.WPF, Version=15.4450.0.20, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfChart.WPF, Version=16.1451.0.24, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Printing" />
@@ -170,6 +173,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{b28e73ec-b109-4d8d-bce5-e87e24c1bf8b}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{c3975f01-b345-495d-bb7d-14ae09e830bb}</Project>
       <Name>Domain</Name>
@@ -178,6 +185,17 @@
       <Project>{337f89d3-bce4-4fff-bd5b-e656b3fdb2bf}</Project>
       <Name>ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="FileSyncLibrary">
+      <Guid>{909A6CCD-6810-46C4-89DF-05BE7EB61E6C}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
