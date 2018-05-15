@@ -23,6 +23,8 @@ namespace ViewModels
         {
             ProductTypes = controller.GetProductTypes();
             Brands = controller.GetBrands();
+            _brand = Brands[0];
+            _type = ProductTypes[0];
         }
 
         Controller.MainController controller = Controller.MainController.Instance;
