@@ -23,6 +23,7 @@ namespace View
             _viewModel = new MainViewModel();
             InitializeComponent();
             DataContext = _viewModel;
+            _viewModel.OrderDatesAdded += (OrderDatesAdded, e) => MessageBox.Show($"{OrderDatesAdded} nye varer skal bestilles inden for de næste {_viewModel.DaysInAdvance} dage - se vinduet med bestillingsdatoer.");
             this.Closing += StockWindow_Closing;
         }
 
@@ -33,6 +34,7 @@ namespace View
             try
             {
                 _viewModel.UpdateProducts();
+                MessageBox.Show("Ændringer gemt!");
               
             }
             catch (Exception ex)
@@ -77,11 +79,17 @@ namespace View
 
         }
 
+        private void Btn_Graph_Click(object sender, RoutedEventArgs e)
+        {
+			SalesChart sta = new SalesChart();
+			sta.Show();
+		}
+
         private void Btn_VareStatistic_Click(object sender, RoutedEventArgs e)
         {
-			OrderDatesWindow odw = new OrderDatesWindow();
-			odw.Show();
-		}
+            OrderDatesWindow odw = new OrderDatesWindow();
+            odw.Show();
+        }
 
         private void Btn_Notifications_Click(object sender, RoutedEventArgs e)
         {

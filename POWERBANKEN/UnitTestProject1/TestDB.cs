@@ -14,15 +14,9 @@ namespace UnitTestProject1
         private List<SalesStatistics> _productSales = new List<SalesStatistics>();
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
-        private static readonly TestDB _instance = new TestDB();
-        public static TestDB Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
-        private TestDB(){}
+		public static TestDB Instance { get; } = new TestDB();
+
+		private TestDB(){}
 
         public List<Product> GetAllProducts() => _products;
 

@@ -72,7 +72,7 @@ namespace Controller
 
 		public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
         {
-            OrderDateCalculator orderCalc = new OrderDateCalculator();
+            Order orderCalc = new Order();
             Dictionary<Product, DateTime> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
             if(orderDates.Count > 0)
             {

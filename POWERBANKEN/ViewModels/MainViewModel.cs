@@ -15,6 +15,7 @@ namespace ViewModels
         private List<Product> _selectedProducts;
         private bool _deaktivatedProductsShown = false;
         private string _searchText;
+        private Thread _calculatorThread;
         private static Dictionary<Product, DateTime> _orderDates;
         private bool _calcThreadRunning;
 
@@ -33,6 +34,7 @@ namespace ViewModels
                 if(value != _calcInterval)
                 {
                     _calcInterval = value;
+                    StartBackgroundCalc();
                     NotifyPropertyChanged("CalcInterval");
                 }
                 
@@ -62,12 +64,23 @@ namespace ViewModels
             }
             set
             {
+                int oldOrderDateAmount = 0;
+                if (_orderDates != null)
+                {
+                    oldOrderDateAmount = _orderDates.Count;
+                }
                 if (value.Count > 0)
                 {
                     _orderDates = value.Where(o => o.Value < DateTime.Now.AddDays(DaysInAdvance)).ToDictionary(d => d.Key, d => d.Value);
                     _orderDates.OrderBy(o => o.Value).ToDictionary(d => d.Key, d => d.Value);
                     NotifyPropertyChanged("OrderDates");
+
+                    if (_orderDates.Count > oldOrderDateAmount && OrderDatesAdded != null)
+                    {
+                        OrderDatesAdded.Invoke((_orderDates.Count - oldOrderDateAmount), null);
+                    }
                 }
+               
             }
         }
         public List<Product> SelectedProducts
@@ -169,8 +182,9 @@ namespace ViewModels
         }
         private void StartBackgroundCalc()
         {
-            Thread calcThread = new Thread(BackgroundCalc);
-            calcThread.Start();
+            _calculatorThread = new Thread(BackgroundCalc);
+            _calculatorThread.Start();
+
         }
 
         private void BackgroundCalc()
@@ -181,5 +195,6 @@ namespace ViewModels
                 Thread.Sleep(CalcInterval * 1000);
             }
         }
+        public event EventHandler OrderDatesAdded;
     }
 }

@@ -9,6 +9,17 @@
     public class ProductType
     {
         private int productTypeID;
+        public int TypeID
+        {
+            get
+            {
+                return productTypeID;
+            }
+            set
+            {
+                productTypeID = value;
+            }
+        }
 
         public ProductType(){}
 
@@ -23,16 +34,5 @@
         }
 
         public string Name { get; set; }
-        public int TypeID
-        {
-            get
-            {
-                return productTypeID;
-            }
-            set
-            {
-                productTypeID = value;
-            }
-        }
     }
 }
