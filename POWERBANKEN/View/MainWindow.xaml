@@ -24,7 +24,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" CanUserAddRows="False" HorizontalAlignment="Left" Height="500" Margin="10,31,0,0" VerticalAlignment="Top" Width="auto" MaxWidth="900" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="4" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" CanUserAddRows="False" HorizontalAlignment="Left" Height="500" Margin="10,66,0,0" VerticalAlignment="Top" MaxWidth="900" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
@@ -37,10 +37,10 @@
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_SaveAndClose" Content="Gem"  HorizontalAlignment="Left" Margin="306,612,0,0" VerticalAlignment="Top" Width="109" Click="btn_SaveAndClose_Click" Height="21"   />
-        <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="74,608,0,0" VerticalAlignment="Top" Width="225" Height="26" Click="btn_ChangeGridSource_Click"   />
-        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="25" Margin="184,570,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="231" TextChanged="Tb_SearchBox_TextChanged" />
-        <Label Content="Søg:" HorizontalAlignment="Left" Margin="131,570,0,0" VerticalAlignment="Top" Width="46" Height="28"/>
+        <Button x:Name="btn_SaveAndClose" Content="Gem ændringer"  HorizontalAlignment="Left" Margin="10,616,0,0" VerticalAlignment="Top" Width="154" Click="btn_SaveAndClose_Click" Height="21"   />
+        <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="10,591,0,0" VerticalAlignment="Top" Width="154" Height="26" Click="btn_ChangeGridSource_Click"   />
+        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
+        <Label Content="Søg:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="46" Height="28"/>
         <Button x:Name="Btn_VareStatistic" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
         <Label x:Name="lbl_Statistic" Content="Varestatistik" HorizontalAlignment="Left" Margin="921,84,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
         <Label x:Name="lbl_Statistic_Copy" Content="Statistik" HorizontalAlignment="Left" Margin="944,202,0,0" VerticalAlignment="Top" Height="51" Width="168" FontSize="20"/>
