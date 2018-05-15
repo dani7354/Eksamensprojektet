@@ -15,6 +15,7 @@
                 <DataGridTextColumn Binding="{Binding Key.Name}" Header="Varenavn"  Width="auto"  IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Key.StockAmount}" Header="Nuværende lagerbeholdning"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Value, StringFormat={}{0:dd/MM/yyyy}}" Header="Bestillings dato"  Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding}" Header="Forventet dagligt salg"  Width="auto" IsReadOnly="True"/>
 
             </DataGrid.Columns>
 
