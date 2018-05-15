@@ -21,17 +21,17 @@ namespace View
     /// <summary>
     /// Interaction logic for SalesChart.xaml
     /// </summary>
-    public partial class SalesChart : Window
+    public partial class SalesChartView : Window
     {
         private SalesChartViewModel Salesview;
-        public SalesChart()
+        public SalesChartView()
         {
             InitializeComponent();
 
             Salesview = new SalesChartViewModel();
             DataContext = Salesview;
         }
-        private void StartupChar()
+        private void StartupChart()
         {
             foreach (var item in Salesview.ProductName.Where(p=>p.Brand.Name==Salesview.SelectedBrand.Name))
             {
@@ -65,7 +65,7 @@ namespace View
             }
             //    
         }
-        private void StartBrandChar()
+        private void StartBrandChart()
         {
            
             foreach (var item in Salesview.Brands)
@@ -96,14 +96,14 @@ namespace View
                 private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Chartseries.Series.Clear();
-            StartupChar();
+            StartupChart();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Chartseries.Series.Clear();
             Salesview.CalulateBrandSale();
-            StartBrandChar();
+            StartBrandChart();
         }
     }
 }

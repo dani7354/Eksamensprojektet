@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="View.SalesChart"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="View.SalesChartView"
         mc:Ignorable="d"
         Title="SalesChart" Height="400" Width="800">
     <Grid>
