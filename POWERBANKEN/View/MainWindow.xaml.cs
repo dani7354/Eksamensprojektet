@@ -81,7 +81,7 @@ namespace View
 
         private void Btn_Graph_Click(object sender, RoutedEventArgs e)
         {
-			SalesChart sta = new SalesChart();
+			SalesChartView sta = new SalesChartView();
 			sta.Show();
 		}
 
