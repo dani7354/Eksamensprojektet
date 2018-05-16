@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\POWERBANKEN",
-    "\\POWERBANKEN\\View"
+    "\\POWERBANKEN\\Domain",
+    "\\POWERBANKEN\\Domain\\obj",
+    "\\POWERBANKEN\\Domain\\obj\\Debug"
   ],
   "SelectedNode": "\\POWERBANKEN\\POWERBANKEN.sln",
   "PreviewInSolutionExplorer": false

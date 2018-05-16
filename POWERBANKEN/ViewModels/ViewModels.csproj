@@ -64,9 +64,6 @@
     <Reference Include="Syncfusion.Chart.Mvc, Version=11.124.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Essential.Studio.for.ASP.NET.MVC.2.11.1.0.21\lib\net40\Syncfusion.Chart.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Chart.Wpf, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Essential.Studio.for.ASP.NET.MVC.2.11.1.0.21\lib\net40\Syncfusion.Chart.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.Compression.Base, Version=11.104.0.21, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Essential.Studio.for.ASP.NET.MVC.2.11.1.0.21\lib\net40\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>

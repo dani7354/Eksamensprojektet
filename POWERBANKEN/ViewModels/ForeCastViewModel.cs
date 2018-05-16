@@ -46,6 +46,7 @@ namespace ViewModels
         public ForeCastViewModel()
         {
             _controller = MainController.Instance;
+            GrowthInPercent = _controller.GetGrowthInPercent();
         }
 
         public void CalculateForeCast()
