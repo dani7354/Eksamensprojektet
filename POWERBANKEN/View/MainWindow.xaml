@@ -37,7 +37,7 @@
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_SaveAndClose" FontSize="20" Background="DeepSkyBlue" Content="Gem ændringer"  HorizontalAlignment="Center" Margin="674,616,584,0" VerticalAlignment="Top" Width="auto" Click="btn_SaveAndClose_Click" Height="43"   />
+        <Button x:Name="btn_SaveAndClose" FontSize="20" Background="DeepSkyBlue" Content="Gem ændringer"  HorizontalAlignment="Center" Margin="686,622,596,0" VerticalAlignment="Top" Width="210" Click="btn_SaveAndClose_Click" Height="37"   />
         <Button x:Name="btn_ChangeGridSource" Background="DeepSkyBlue" FontSize="20" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Center" Margin="674,589,584,0" VerticalAlignment="Top" Width="auto" Height="28" Click="btn_ChangeGridSource_Click"   />
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Center" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Center" Margin="573,37,873,0" VerticalAlignment="Top" Width="46" Height="28"/>
