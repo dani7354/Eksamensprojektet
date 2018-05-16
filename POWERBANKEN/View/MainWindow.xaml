@@ -42,7 +42,7 @@
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="46" Height="28"/>
         <Button x:Name="Btn_VareStatistic" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
-        <Label x:Name="lbl_Statistic" Content="Varestatistik" HorizontalAlignment="Left" Margin="921,84,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
+        <Label x:Name="lbl_Statistic" Content="Bestillingsdatoer" HorizontalAlignment="Left" Margin="921,84,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
         <Label x:Name="lbl_Statistic_Copy" Content="Statistik" HorizontalAlignment="Left" Margin="944,202,0,0" VerticalAlignment="Top" Height="51" Width="168" FontSize="20"/>
         <Button x:Name="Btn_Graph" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,205,0,0" Height="30" FontSize="20" Click="Btn_Graph_Click"/>
         <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Left" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
