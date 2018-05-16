@@ -24,12 +24,12 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" CanUserAddRows="False" HorizontalAlignment="Left" Height="500" Margin="10,66,0,0" VerticalAlignment="Top" MaxWidth="900" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" CanUserAddRows="False" HorizontalAlignment="Center" Height="500" Margin="10,66,0,0" VerticalAlignment="Top" MaxWidth="900" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto"/>
-                <!--<DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>-->
+                <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
@@ -37,17 +37,14 @@
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_SaveAndClose" Content="Gem ændringer"  HorizontalAlignment="Left" Margin="10,616,0,0" VerticalAlignment="Top" Width="154" Click="btn_SaveAndClose_Click" Height="21"   />
-        <Button x:Name="btn_ChangeGridSource" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Left" Margin="10,591,0,0" VerticalAlignment="Top" Width="154" Height="26" Click="btn_ChangeGridSource_Click"   />
-        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Left" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
-        <Label Content="Søg:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="46" Height="28"/>
-        <Button x:Name="Btn_VareStatistic" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
-        <Label x:Name="lbl_Statistic" Content="Varestatistik" HorizontalAlignment="Left" Margin="921,84,0,0" VerticalAlignment="Top" Height="65" Width="168" FontSize="20"/>
-        <Label x:Name="lbl_Statistic_Copy" Content="Statistik" HorizontalAlignment="Left" Margin="944,202,0,0" VerticalAlignment="Top" Height="51" Width="168" FontSize="20"/>
-        <Button x:Name="Btn_Graph" Content="'vis'" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Margin="1112,205,0,0" Height="30" FontSize="20" Click="Btn_Graph_Click"/>
-        <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Left" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
-        <Label Content="Kommende bestillinger" HorizontalAlignment="Left" Margin="921,22,0,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
-        <!--<WebBrowser HorizontalAlignment="Left" Height="341" Margin="921,272,0,0" VerticalAlignment="Top" Width="561" Source="http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?by=5000" />-->
+        <Button x:Name="btn_SaveAndClose" FontSize="20" Content="Gem ændringer"  HorizontalAlignment="Center" Margin="674,616,584,0" VerticalAlignment="Top" Width="234" Click="btn_SaveAndClose_Click" Height="43"   />
+        <Button x:Name="btn_ChangeGridSource" FontSize="20" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Center" Margin="674,589,584,0" VerticalAlignment="Top" Width="234" Height="28" Click="btn_ChangeGridSource_Click"   />
+        <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Center" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
+        <Label Content="Søg:" HorizontalAlignment="Center" Margin="573,37,873,0" VerticalAlignment="Top" Width="46" Height="28"/>
+        <Button x:Name="Btn_VareStatistic" Content="Bestillingsdatoer" HorizontalAlignment="Right" VerticalAlignment="Top" Width="225" Margin="1257,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
+        <Button x:Name="Btn_Graph" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="225" Margin="1257,125,0,0" Height="30" FontSize="20" Click="Btn_Graph_Click"/>
+        <Button Content="{Binding OrderDates.Count}" FontSize="20"  HorizontalAlignment="Right" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
+        <Label Content="Kommende bestillinger" HorizontalAlignment="Right" Margin="0,28,75,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
     </Grid>
 
 </Window>
