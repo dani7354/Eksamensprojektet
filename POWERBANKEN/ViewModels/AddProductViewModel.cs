@@ -189,7 +189,7 @@ namespace ViewModels
                 NotifyPropertyChanged("Brand");
             }
         }
-        public bool IsActive { get; private set; } = true; // Kan ikke ændres i UI.
+        public bool IsActive { get; private set; } = true; 
 
 		
         public void AddAProduct(string sku, string name, double purchasePrice, int amount, int minAmount, int productTypeID, int brandID, int leadTime, bool isActive)
