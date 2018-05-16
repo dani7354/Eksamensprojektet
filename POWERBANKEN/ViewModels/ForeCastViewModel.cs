@@ -42,7 +42,6 @@ namespace ViewModels
                 NotifyPropertyChanged("ForeCast");
             }
         }
-
         public ForeCastViewModel()
         {
             _controller = MainController.Instance;
