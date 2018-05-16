@@ -29,7 +29,7 @@
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto"/>
-                <!--<DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>-->
+                <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
