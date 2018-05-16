@@ -54,7 +54,7 @@ namespace ViewModels
             OpenFileDialog _openFileDialog = new OpenFileDialog
             {
                 Multiselect = false,
-                Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*"
+                Filter = "CVS filer (*.csv)|*.csv"
             };
             if (_openFileDialog.ShowDialog() == true)
             {

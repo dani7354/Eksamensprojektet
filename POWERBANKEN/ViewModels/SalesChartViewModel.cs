@@ -35,6 +35,7 @@ namespace ViewModels
             ProductStatistics = Controller.GetProductSales();
             ProductName = Controller.GetProducts().Where(p=>p.IsActive ==true).ToList();
             Brands = Controller.GetBrands();
+            SelectedBrand = Brands[0];
             Setproduct();
         }
             

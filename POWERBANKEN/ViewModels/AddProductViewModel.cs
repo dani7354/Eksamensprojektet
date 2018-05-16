@@ -23,6 +23,8 @@ namespace ViewModels
         {
             ProductTypes = controller.GetProductTypes();
             Brands = controller.GetBrands();
+            _brand = Brands[0];
+            _type = ProductTypes[0];
         }
 
         Controller.MainController controller = Controller.MainController.Instance;
@@ -187,7 +189,7 @@ namespace ViewModels
                 NotifyPropertyChanged("Brand");
             }
         }
-        public bool IsActive { get; private set; } = true; // Kan ikke ændres i UI.
+        public bool IsActive { get; private set; } = true; 
 
 		
         public void AddAProduct(string sku, string name, double purchasePrice, int amount, int minAmount, int productTypeID, int brandID, int leadTime, bool isActive)

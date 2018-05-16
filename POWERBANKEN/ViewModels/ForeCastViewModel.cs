@@ -42,10 +42,10 @@ namespace ViewModels
                 NotifyPropertyChanged("ForeCast");
             }
         }
-
         public ForeCastViewModel()
         {
             _controller = MainController.Instance;
+            GrowthInPercent = _controller.GetGrowthInPercent();
         }
 
         public void CalculateForeCast()
