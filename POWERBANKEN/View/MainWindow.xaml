@@ -7,7 +7,6 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="Hovedvindue" Height="700" Width="1500">
-
     <Grid>
         <StackPanel VerticalAlignment="Top">
             <Menu Width="Auto" Height="20">
@@ -41,7 +40,7 @@
         <Button x:Name="btn_ChangeGridSource" Background="BlanchedAlmond" FontSize="20" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Center" Margin="674,589,584,0" VerticalAlignment="Top" Width="234" Height="28" Click="btn_ChangeGridSource_Click"   />
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Center" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Center" Margin="573,37,873,0" VerticalAlignment="Top" Width="46" Height="28"/>
-        <Button x:Name="Btn_VareStatistic" Background="BlanchedAlmond" Content="Bestillingsdatoer" HorizontalAlignment="Right" VerticalAlignment="Top" Width="225" Margin="1257,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
+        <Button x:Name="Btn_VareStatistic" Style="{DynamicResource RoundCorner}" Background="BlanchedAlmond" Content="Bestillingsdatoer" HorizontalAlignment="Right" VerticalAlignment="Top" Width="225" Margin="1257,87,0,0" Height="30" FontSize="20" Click="Btn_VareStatistic_Click"/>
         <Button x:Name="Btn_Graph" Background="BlanchedAlmond" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="225" Margin="1257,125,0,0" Height="30" FontSize="20" Click="Btn_Graph_Click"/>
         <Button Content="{Binding OrderDates.Count}" Background="BlanchedAlmond" FontSize="20"  HorizontalAlignment="Right" Margin="1182,25,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Right" Margin="0,28,75,0" VerticalAlignment="Top" Height="33" Width="234" FontSize="20"/>
