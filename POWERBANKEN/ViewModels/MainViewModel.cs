@@ -77,7 +77,7 @@ namespace ViewModels
 
                     if (_orderDates.Count > oldOrderDateAmount && OrderDatesAdded != null)
                     {
-                        OrderDatesAdded.Invoke((_orderDates.Count - oldOrderDateAmount), null);
+                        OrderDatesAdded?.Invoke((_orderDates.Count - oldOrderDateAmount), null);
                     }
                 }
                
@@ -148,7 +148,7 @@ namespace ViewModels
         {
             _controller = Controller.MainController.Instance;
             _allProducts = _controller.GetProducts();
-            SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+            SelectedProducts = _allProducts.Where(p => p.IsActive == activatedProductsShown).ToList<Product>();
             GrowthInPercent = _controller.GetGrowthInPercent();
             DaysInAdvance = 7;
             CalcInterval = 3;
