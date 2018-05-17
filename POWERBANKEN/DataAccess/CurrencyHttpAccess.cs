@@ -1,0 +1,86 @@
+﻿using Domain;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Linq;
+namespace DataAccess
+{
+    public class CurrencyHttpAccess
+    {
+        private List<string> _currencyNames;
+        private const string FILE_ADDRESS = "http://borsen.dk/kurser/valuta/dkk.html";
+        private const string FILE_NAME = "currencyData.html";
+        public List<Currency> Currencies { get; private set; }
+        public CurrencyHttpAccess()
+        {
+            _currencyNames = new List<string>()
+            {
+                "AUD - Australske dollar",
+                "BGN - Bulgarske lev",
+                "BRL - Brasilianske real",
+                "CAD - Canadiske dollar",
+                "EUR - Euro",
+                "GBP - Britiske pund",
+                "INR - Indiske rupee",
+                "RUB - Russiske rubel",
+                "USD - US-dollar"
+            };
+            Currencies = new List<Currency>()
+            {
+                new Currency("DKK - Danske kroner", 1.00)
+            };
+
+            ReadCurrenciesFromFile();
+           
+        }
+
+        private void DownloadFile()
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.DownloadFile(FILE_ADDRESS, FILE_NAME);
+            }
+        }
+
+        public void ReadCurrenciesFromFile()
+        {
+            DownloadFile();
+            Encoding encoding = Encoding.GetEncoding("UTF-8");
+            using (StreamReader reader = new StreamReader(FILE_NAME, encoding))
+            {
+                string temp;
+                while (reader.EndOfStream == false)
+                {
+                    temp = reader.ReadLine();
+
+                    if (_currencyNames.Any(z => temp.Trim().Contains(z)))
+                    {
+                        const string STRING_IN_FRONT_OF_PRICE = "PRICE&quot;:&quot;";
+                        const string STRING_BEHIND_PRICE = "&quot;,&quot;BID";
+
+                        string name = _currencyNames.Find(c => temp.Trim().Contains(c));
+                        string price = "";
+
+                        while (!temp.Contains(STRING_IN_FRONT_OF_PRICE))
+                        {
+                            temp = reader.ReadLine();
+                        }
+                        int priceStartIndex = temp.Trim().IndexOf(STRING_IN_FRONT_OF_PRICE) + STRING_IN_FRONT_OF_PRICE.Length ;
+                        int priceEndIndex = temp.Trim().IndexOf(STRING_BEHIND_PRICE);
+
+
+                        price = temp.Trim().Substring(priceStartIndex, priceEndIndex - priceStartIndex);
+                        double.TryParse(price, out double newPrice);
+
+                        Currencies.Add(new Currency(name, newPrice));
+                       _currencyNames.Remove(name);
+                    }
+                }
+            }
+        }
+        
+
+        
+    }
+}

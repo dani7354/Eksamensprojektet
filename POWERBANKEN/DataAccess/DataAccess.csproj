@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSVReader.cs" />
-    <Compile Include="CurrencyApiAccess.cs" />
+    <Compile Include="CurrencyHttpAccess.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="IDataStorage.cs" />
     <Compile Include="ProductDB.cs" />
