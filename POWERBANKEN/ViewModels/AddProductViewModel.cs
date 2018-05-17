@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-using System.Windows.Input; 
+using System.Windows.Input;
+using System.ComponentModel;
 
 namespace ViewModels
 {
@@ -15,8 +16,7 @@ namespace ViewModels
 		{
 		get
 			{
-				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock,
-				Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true); //ICommand klassen 
+				return new CommandHandler(() => AddProducts(), true); //ICommand klassen 
 			}
 		}
         public AddProductViewModel()
@@ -25,6 +25,14 @@ namespace ViewModels
             Brands = controller.GetBrands();
             _brand = Brands[0];
             _type = ProductTypes[0];
+            Currencies = controller.GetCurrencies();
+            SelectedCurrency = Currencies?.First();
+            PropertyChanged += UpdatePrice;
+        }
+
+        private void UpdatePrice(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "SelectedCurrency")  PurchasePriceDKK = _purchasePrice * (SelectedCurrency.ExchangeRateDKK / 100); 
         }
 
         Controller.MainController controller = Controller.MainController.Instance;
@@ -33,11 +41,15 @@ namespace ViewModels
         private string _sku;
         private string _name;
         private double _purchasePrice;
+
+        public double PurchasePriceDKK { get; private set; }
+
         private int _stockAmount;
         private int _minStock;
         private int _leadTimeDays;
         private ProductType _type;
         private Brand _brand;
+        private Currency _selectedCurrency;
 
         public List<ProductType> ProductTypes
         {
@@ -103,8 +115,23 @@ namespace ViewModels
                 else
                 {
                     _purchasePrice = value;
+                    PurchasePriceDKK = _purchasePrice * (SelectedCurrency.ExchangeRateDKK / 100);
                 }
                 NotifyPropertyChanged("PurchasePrice");
+            }
+        }
+        public List<Currency> Currencies { get; private set; }
+
+        public Currency SelectedCurrency
+        {
+            get
+            {
+                return _selectedCurrency;
+            }
+            set
+            {
+                _selectedCurrency = value;
+                NotifyPropertyChanged("SelectedCurrency");
             }
         }
         public int StockAmount
@@ -210,7 +237,7 @@ namespace ViewModels
 		{
 			if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
 			{
-				Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+				Product prod = new Product(Name, SKU, PurchasePriceDKK, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
 				controller.AddProduct(prod);
 			}
 			else

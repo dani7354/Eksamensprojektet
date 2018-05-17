@@ -164,5 +164,25 @@ namespace UnitTestProject1
             AddProductViewModel vm2 = new AddProductViewModel();
             Assert.IsFalse(ReferenceEquals(vm1, vm2));
         }
+        [TestMethod]
+        public void AddProductViewModel_CurrencyConverterSimpleConvert()
+        {
+            AddProductViewModel vm = new AddProductViewModel();
+            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "USD").First();
+            vm.PurchasePrice = 100;
+            Assert.AreEqual(vm.Currencies?.Where(c => c.Name == "USD").First().ExchangeRateDKK, vm.PurchasePriceDKK);
+        }
+        [TestMethod]
+        public void AddProductViewModel_CurrencyConverterCurrencySwitch()
+        {
+            AddProductViewModel vm = new AddProductViewModel();
+            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "USD").First();
+            vm.PurchasePrice = 100;
+            Assert.AreEqual(vm.Currencies?.Where(c => c.Name == "USD").First().ExchangeRateDKK, vm.PurchasePriceDKK);
+
+            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "DKK").First();
+            Assert.AreEqual(100, vm.PurchasePriceDKK);
+
+        }
     }
 }
