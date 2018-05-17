@@ -112,7 +112,10 @@ namespace Controller
 			_txtAccess.WriteToFile(percent.ToString());
 		}
 
-        public List<Currency> GetCurrencies() => new CurrencyHttpAccess().Currencies;
-
+        public List<Currency> GetCurrencies()
+        {
+            CurrencyHttpAccess currencyHttpAccess = new CurrencyHttpAccess();
+            return currencyHttpAccess.GetCurrencies();
+        }
 	}
 }

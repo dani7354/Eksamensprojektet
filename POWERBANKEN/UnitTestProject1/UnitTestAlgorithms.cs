@@ -194,7 +194,7 @@ namespace UnitTestProject1
         {
             int currentAmountOfCurrencies = 10;
             CurrencyHttpAccess cur = new CurrencyHttpAccess();
-            Assert.AreEqual(currentAmountOfCurrencies, cur.Currencies.Count);
+            Assert.AreEqual(currentAmountOfCurrencies, cur.GetCurrencies().Count);
         }
     }
 }

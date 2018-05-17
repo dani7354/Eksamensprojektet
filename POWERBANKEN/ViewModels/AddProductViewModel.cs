@@ -27,6 +27,7 @@ namespace ViewModels
             _type = ProductTypes[0];
             Currencies = controller.GetCurrencies();
             SelectedCurrency = Currencies?.First();
+            PurchasePrice = 0;
             PropertyChanged += UpdatePrice;
         }
 

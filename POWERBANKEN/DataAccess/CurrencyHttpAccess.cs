@@ -9,10 +9,25 @@ namespace DataAccess
     public class CurrencyHttpAccess
     {
         private List<string> _currencyNames;
+        private List<Currency> _currency;
         private const string FILE_ADDRESS = "http://borsen.dk/kurser/valuta/dkk.html";
         private const string FILE_NAME = "currencyData.html";
-        public List<Currency> Currencies { get; private set; }
-        public CurrencyHttpAccess()
+      
+        public CurrencyHttpAccess(){}
+        public List<Currency> GetCurrencies()
+        {
+            ReadCurrenciesFromFile();
+            return _currency;
+        }
+
+        private void DownloadFile()
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.DownloadFile(FILE_ADDRESS, FILE_NAME);
+            }
+        }
+        private void InitLists()
         {
             _currencyNames = new List<string>()
             {
@@ -26,26 +41,16 @@ namespace DataAccess
                 "RUB - Russiske rubel",
                 "USD - US-dollar"
             };
-            Currencies = new List<Currency>()
+            _currency = new List<Currency>()
             {
                 new Currency("DKK - Danske kroner", 1.00)
             };
-
-            ReadCurrenciesFromFile();
-           
         }
 
-        private void DownloadFile()
-        {
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.DownloadFile(FILE_ADDRESS, FILE_NAME);
-            }
-        }
-
-        public void ReadCurrenciesFromFile()
+        private void ReadCurrenciesFromFile()
         {
             DownloadFile();
+            InitLists();
             Encoding encoding = Encoding.GetEncoding("UTF-8");
             using (StreamReader reader = new StreamReader(FILE_NAME, encoding))
             {
@@ -60,7 +65,6 @@ namespace DataAccess
                         const string STRING_BEHIND_PRICE = "&quot;,&quot;BID";
 
                         string name = _currencyNames.Find(c => temp.Trim().Contains(c));
-                        string price = "";
 
                         while (!temp.Contains(STRING_IN_FRONT_OF_PRICE))
                         {
@@ -68,12 +72,11 @@ namespace DataAccess
                         }
                         int priceStartIndex = temp.Trim().IndexOf(STRING_IN_FRONT_OF_PRICE) + STRING_IN_FRONT_OF_PRICE.Length ;
                         int priceEndIndex = temp.Trim().IndexOf(STRING_BEHIND_PRICE);
-
-
-                        price = temp.Trim().Substring(priceStartIndex, priceEndIndex - priceStartIndex);
+                 
+                        string price = temp.Trim().Substring(priceStartIndex, priceEndIndex - priceStartIndex);
                         double.TryParse(price, out double newPrice);
 
-                        Currencies.Add(new Currency(name, newPrice));
+                        _currency.Add(new Currency(name, newPrice));
                        _currencyNames.Remove(name);
                     }
                 }
