@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
-
 using Microsoft.Win32;
 
 namespace ViewModels
@@ -54,7 +53,7 @@ namespace ViewModels
             OpenFileDialog _openFileDialog = new OpenFileDialog
             {
                 Multiselect = false,
-                Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*"
+                Filter = "CVS filer (*.csv)|*.csv"
             };
             if (_openFileDialog.ShowDialog() == true)
             {

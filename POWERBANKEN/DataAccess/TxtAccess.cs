@@ -9,7 +9,7 @@ namespace DataAccess
 {
     public class TxtAccess
     {
-        private const string FILE_PATH = "growth.txt";
+        private const string FILE_PATH = "growth.txt"; 
         public TxtAccess()
         {
             if (!File.Exists(FILE_PATH))
@@ -20,7 +20,7 @@ namespace DataAccess
        
         public string ReadFile()
         {
-            string text = string.Empty;
+           
             if (File.Exists(FILE_PATH))
             {
                 return File.ReadAllText(FILE_PATH);

@@ -19,8 +19,9 @@ namespace DataAccess
         {
             List<SalesStatistics> productSalesStaticstic = new List<SalesStatistics>();
             DateTime periodstart = FindStartDateInFileName(pFilePath);
-            DateTime periodEnd = periodstart.AddDays(DateTime.DaysInMonth(periodstart.Year, periodstart.Month) - 1);
-            using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
+            DateTime periodEnd = periodstart.AddDays(DateTime.DaysInMonth(periodstart.Year, periodstart.Month) - 1); // Magic number for at få den nuværende dag
+
+			using (StreamReader reader = new StreamReader(pFilePath, _readerEncoding))
             {
                 reader.ReadLine(); // Skipping the first line. 
                 while (reader.EndOfStream == false)

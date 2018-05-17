@@ -11,18 +11,22 @@ namespace ViewModels
     public class AddProductViewModel : BaseViewModel
     {
 		
-		public ICommand Add
+		public ICommand AddProduct
 		{
 		get
 			{
-				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock, Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true);
+				return new CommandHandler(() => AddAProduct(SKU, Name, PurchasePrice, StockAmount, MinStock,
+				Type.TypeID, Brand.ID, LeadTimeDays, IsActive), true); //ICommand klassen 
 			}
 		}
         public AddProductViewModel()
         {
             ProductTypes = controller.GetProductTypes();
             Brands = controller.GetBrands();
+            _brand = Brands[0];
+            _type = ProductTypes[0];
         }
+
         Controller.MainController controller = Controller.MainController.Instance;
         private List<ProductType> _productTypes;
         private List<Brand> _brands;
@@ -185,7 +189,7 @@ namespace ViewModels
                 NotifyPropertyChanged("Brand");
             }
         }
-        public bool IsActive { get; private set; } = true; // Kan ikke ændres i UI.
+        public bool IsActive { get; private set; } = true; 
 
 		
         public void AddAProduct(string sku, string name, double purchasePrice, int amount, int minAmount, int productTypeID, int brandID, int leadTime, bool isActive)
@@ -201,18 +205,18 @@ namespace ViewModels
 
 			}
         }
-		
-        public void AddProduct()
-        {
-            if(Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
-            {
-                Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
-                controller.AddProduct(prod);
-            }
-            else
-            {
-                throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
-            }
-        }
-    }
+
+		public void AddProducts()
+		{
+			if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
+			{
+				Product prod = new Product(Name, SKU, PurchasePrice, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+				controller.AddProduct(prod);
+			}
+			else
+			{
+				throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
+			}
+		}
+	}
 }

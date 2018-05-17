@@ -12,14 +12,17 @@ namespace Domain
         private int _actualSale;
         public int ExpectedSale
         {
-            get { return _expectedSale; }
-            set { _expectedSale = value; }
+            get { return ExpectedSale1; }
+            set { ExpectedSale1 = value; }
         }
         public int ActualSale
         {
             get { return _actualSale; }
             set { _actualSale = value; }
         }
+
+        public int ExpectedSale1 { get => _expectedSale; set => _expectedSale = value; }
+
         public double DifferantialInPercent(int expectedSale, int actualSale)
         {
             ExpectedSale = expectedSale;

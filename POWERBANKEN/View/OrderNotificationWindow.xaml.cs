@@ -20,12 +20,17 @@ namespace View
     /// </summary>
     public partial class OrderNotificationWindow : Window
     {
-        private StockViewModel _viewModel;
-        public OrderNotificationWindow(StockViewModel viewModel)
+        private MainViewModel _viewModel;
+        public OrderNotificationWindow(MainViewModel viewModel)
         {
             _viewModel = viewModel;
             DataContext = _viewModel;
             InitializeComponent();
         }
-    }
+
+		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+	}
 }

@@ -30,26 +30,28 @@ namespace Domain
         public int LeadTimeDays { get; set; }
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
-        public bool IsActive { get; set; }
+		public bool IsActive { get; set; }
+
         public override string ToString()
         {
-            return string.Format($"{SKU};{Name}");
+            return string.Format($"{SKU};{Name};{Type?.Name};{Brand?.Name}");
         }
+
         public override bool Equals(object obj)
         {
             if (obj != null && obj.GetType() == this.GetType())
             {
                 Product p = (Product)obj;
-                return this.SKU.Equals(p.SKU);
+                return this.SKU.Equals(p.SKU);	
             }
             else
             {
                 return false;
             }
         }
-        public override int GetHashCode()
-        {
-            return this.SKU.GetHashCode();
-        }
+		public override int GetHashCode()
+		{
+			return this.SKU.GetHashCode();
+		}
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace Domain
+﻿namespace Domain
 {
     using System;
     using System.Collections.Generic;
@@ -10,22 +9,6 @@ namespace Domain
     public class ProductType
     {
         private int productTypeID;
-
-        public ProductType()
-        {
-        }
-
-        public ProductType(string typeName)
-        {
-            this.Name = typeName;
-        }
-
-        public ProductType(int productTypeID)
-        {
-            this.productTypeID = productTypeID;
-        }
-
-        public string Name { get; set; }
         public int TypeID
         {
             get
@@ -38,10 +21,18 @@ namespace Domain
             }
         }
 
-        //public override string ToString()
-        //{
-        //    return string.Format($"{Name}");
-        //}
+        public ProductType(){}
 
+        public ProductType(string typeName)
+        {
+            this.Name = typeName;
+        }
+
+        public ProductType(int productTypeID)
+        {
+            this.productTypeID = productTypeID;
+        }
+
+        public string Name { get; set; }
     }
 }

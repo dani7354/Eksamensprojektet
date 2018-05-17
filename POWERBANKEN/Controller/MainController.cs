@@ -10,21 +10,18 @@ namespace Controller
 {
     public class MainController
     {
-        private static readonly MainController _instance = new MainController();
         private IDataStorage _dataStorage;
         private TxtAccess _txtAccess;
         private List<Product> _products;
         private List<SalesStatistics> _productSales;
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
-        private MainController() { _dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales(); _products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess(); }
-        public static MainController Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
+        private MainController()
+		{
+			_dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales();
+			_products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess();
+		}
+        public static MainController Instance { get; } = new MainController();
 
         public void AddProduct(Product product)
         {
@@ -50,18 +47,32 @@ namespace Controller
             return _productSales;
         }
 
-        public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
-        {
-            throw new NotImplementedException();
-        }
+		public List<SalesStatistics> ReadProductsSalesInfoFromCSV(string filePath)
+		{
+			CSVReader csv = new CSVReader();
+			return csv.ReadProductsSalesInfoFromCSV(filePath);		
+		}
 
-        public void UpdateProducts()
+		public void UpdateProducts()
         {
             _dataStorage.UpdateProducts(_products);
         }
-        public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
+
+		public double GetGrowthInPercent()
+		{
+			if (double.TryParse(_txtAccess.ReadFile(), out double percent))
+			{
+				return percent;
+			}
+			else
+			{
+				throw new Exception("Den læste streng kunne ikke konverteres til den påkrævede type.");
+			}
+		}
+
+		public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
         {
-            OrderDateCalculator orderCalc = new OrderDateCalculator();
+            Order orderCalc = new Order();
             Dictionary<Product, DateTime> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
             if(orderDates.Count > 0)
             {
@@ -96,21 +107,10 @@ namespace Controller
             return _productTypes;
         }
 
-        public double GetGrowthInPercent()
-        {
-            if(double.TryParse(_txtAccess.ReadFile(), out double percent))
-            {
-                return percent;
-            }
-            else
-            {
-                throw new Exception("Den læste streng kunne ikke konverteres til den påkrævede type.");
-            }
-        }
+		public void WriteGrowthToFile(double percent)
+		{
+			_txtAccess.WriteToFile(percent.ToString());
+		}
 
-        public void WriteGrowthToFile(double percent)
-        {
-            _txtAccess.WriteToFile(percent.ToString());
-        }
-    }
+	}
 }
