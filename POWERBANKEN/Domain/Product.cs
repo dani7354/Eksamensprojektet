@@ -34,7 +34,7 @@ namespace Domain
 
         public override string ToString()
         {
-            return string.Format($"{SKU};{Name}");
+            return string.Format($"{SKU};{Name};{Type?.Name};{Brand?.Name}");
         }
 
         public override bool Equals(object obj)

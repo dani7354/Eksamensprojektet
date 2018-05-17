@@ -13,7 +13,7 @@ namespace ViewModels
         private Controller.MainController _controller;
         private List<Product> _allProducts;
         private List<Product> _selectedProducts;
-        private bool _deaktivatedProductsShown = false;
+        private bool activatedProductsShown = true;
         private string _searchText;
         private Thread _calculatorThread;
         private static Dictionary<Product, DateTime> _orderDates;
@@ -157,7 +157,7 @@ namespace ViewModels
         }
         public void Search()
         {
-            SelectedProducts = _allProducts.Where(p => p.ToString().ToLower().Contains(_searchText.ToLower())).ToList();
+            SelectedProducts = _allProducts.Where(p => p.ToString().ToLower().Contains(_searchText.ToLower()) && p.IsActive == activatedProductsShown).ToList();
         }
         public void UpdateProducts()
         {
@@ -165,20 +165,20 @@ namespace ViewModels
         }
         public void ShowDeactivatedProducts()
         {
-            if (!_deaktivatedProductsShown)
+            if (!activatedProductsShown)
             {
-                SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
-                _deaktivatedProductsShown = true;
+                SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+                activatedProductsShown = true;
             }
             else
             {
-                SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
-                _deaktivatedProductsShown = false;
+                SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
+                activatedProductsShown = false;
             }
         }
         public void GetProducts()
         {
-            SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
+            SelectedProducts = _allProducts.Where(p => p.IsActive == activatedProductsShown).ToList<Product>();
         }
         private void StartBackgroundCalc()
         {
