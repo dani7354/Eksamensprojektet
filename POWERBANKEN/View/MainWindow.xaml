@@ -28,7 +28,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris (DKK)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
@@ -63,7 +63,7 @@
         <Button x:Name="Btn_Graph" Background="DeepSkyBlue" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,122,10,0" Height="35" FontSize="20" Click="Btn_Graph_Click"/>
         <Button Content="{Binding OrderDates.Count}" Background="DeepSkyBlue" FontSize="20"  HorizontalAlignment="Right" Margin="0,32,10,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Right" Margin="0,28,90,0" VerticalAlignment="Top" Height="37" Width="215" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="186" Margin="10,37,0,0" VerticalAlignment="Top" Width="232" Source="https://3h6bf1zntoc8dalh2chi8gvf-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/logo.png"  />
+        <Image HorizontalAlignment="Left"  Margin="10,37,0,0" VerticalAlignment="Top" Width="143" Source="https://3h6bf1zntoc8dalh2chi8gvf-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/logo.png" Height="201"  />
     </Grid>
 
 </Window>
