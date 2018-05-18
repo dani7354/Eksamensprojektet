@@ -33,12 +33,11 @@ namespace DataAccess
             {
                 "AUD - Australske dollar",
                 "BGN - Bulgarske lev",
-                "BRL - Brasilianske real",
-                "CAD - Canadiske dollar",
+
                 "EUR - Euro",
                 "GBP - Britiske pund",
-                "INR - Indiske rupee",
-                "RUB - Russiske rubel",
+             
+       
                 "USD - US-dollar",
                 "CNY - Kinesiske Yuan Renminbi"
             };
