@@ -84,7 +84,7 @@ namespace View
 
         private void dGrid_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void Btn_Graph_Click(object sender, RoutedEventArgs e)

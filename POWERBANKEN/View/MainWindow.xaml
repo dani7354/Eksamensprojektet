@@ -24,17 +24,18 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" Background="AliceBlue" CanUserAddRows="False" HorizontalAlignment="Center" Height="485" Margin="231,66,335,0" VerticalAlignment="Top"  Width="926" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" Background="AliceBlue" CanUserAddRows="False" HorizontalAlignment="Center" Height="485" Margin="158,66,221,0" VerticalAlignment="Top"  Width="1113" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn" MaxWidth="100"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris (DKK)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime"  Width="auto"/>
-                <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" Width="auto" />
+                <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime i dage"  Width="auto"/>
+                <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" MaxWidth="50" />
+
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_SaveAndClose" FontSize="20" Background="DeepSkyBlue" Content="Gem ændringer"   Margin="0,626,604,12"  Click="btn_SaveAndClose_Click" Height="31"  Width="220" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right"   >
