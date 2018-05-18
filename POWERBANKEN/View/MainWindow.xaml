@@ -24,7 +24,7 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <DataGrid x:Name="dGrid_products" Background="AliceBlue" CanUserAddRows="False" HorizontalAlignment="Center" Height="500" Margin="10,66,0,0" VerticalAlignment="Top"  Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
+        <DataGrid x:Name="dGrid_products" Background="AliceBlue" CanUserAddRows="False" HorizontalAlignment="Center" Height="485" Margin="231,66,335,0" VerticalAlignment="Top"  Width="926" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn"  Width="auto"/>
@@ -47,7 +47,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btn_ChangeGridSource" Background="DeepSkyBlue" FontSize="20" Content="Vis (de)aktiverede varer"  HorizontalAlignment="Right" Margin="0,592,604,0" VerticalAlignment="Top"  Width="220" Height="33" Click="btn_ChangeGridSource_Click" RenderTransformOrigin="0.5,0.5"   >
+        <Button x:Name="btn_ChangeGridSource" Background="DeepSkyBlue" FontSize="20" Content="Vis deaktiverede varer"  HorizontalAlignment="Right" Margin="0,592,604,0" VerticalAlignment="Top"  Width="220" Height="33" Click="btn_ChangeGridSource_Click" RenderTransformOrigin="0.5,0.5"   >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

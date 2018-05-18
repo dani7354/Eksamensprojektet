@@ -24,8 +24,10 @@ namespace View
             InitializeComponent();
             _viewModel = new AddProductViewModel();
             DataContext = _viewModel;
+            
 
         }
+
 
     }
 }
