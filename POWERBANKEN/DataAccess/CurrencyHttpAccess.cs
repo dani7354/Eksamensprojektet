@@ -39,7 +39,8 @@ namespace DataAccess
                 "GBP - Britiske pund",
                 "INR - Indiske rupee",
                 "RUB - Russiske rubel",
-                "USD - US-dollar"
+                "USD - US-dollar",
+                "CNY - Kinesiske Yuan Renminbi"
             };
             _currency = new List<Currency>()
             {
