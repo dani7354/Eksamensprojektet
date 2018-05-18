@@ -22,7 +22,20 @@ namespace ViewModels
         private double _growthInPercent;
         private int _daysInAdvance;
         private int _calcInterval;
+        private string _showButtonText = "Vis inaktive varer";
 
+        public string ShowButtonText
+        {
+            get
+            {
+                return _showButtonText;
+            }
+            private set
+            {
+                _showButtonText = value;
+                NotifyPropertyChanged("ShowButtonText");
+            }
+        }
         public int CalcInterval
         {
             get
@@ -169,11 +182,13 @@ namespace ViewModels
             {
                 SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
                 activatedProductsShown = true;
+                ShowButtonText = "Vis inaktive varer";
             }
             else
             {
                 SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
                 activatedProductsShown = false;
+                ShowButtonText = "Vis aktive varer";
             }
         }
         public void GetProducts()
