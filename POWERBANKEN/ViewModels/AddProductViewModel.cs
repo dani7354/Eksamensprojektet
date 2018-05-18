@@ -27,12 +27,13 @@ namespace ViewModels
             _type = ProductTypes[0];
             Currencies = controller.GetCurrencies();
             SelectedCurrency = Currencies?.First();
+            PurchasePrice = 0;
             PropertyChanged += UpdatePrice;
         }
 
         private void UpdatePrice(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "SelectedCurrency")  PurchasePriceDKK = _purchasePrice * (SelectedCurrency.ExchangeRateDKK / 100); 
+            if(e.PropertyName == "SelectedCurrency" || e.PropertyName == "PurchasePrice")  PurchasePriceDKK = _purchasePrice * SelectedCurrency.ExchangeRateDKK; 
         }
 
         Controller.MainController controller = Controller.MainController.Instance;
@@ -115,7 +116,6 @@ namespace ViewModels
                 else
                 {
                     _purchasePrice = value;
-                    PurchasePriceDKK = _purchasePrice * (SelectedCurrency.ExchangeRateDKK / 100);
                 }
                 NotifyPropertyChanged("PurchasePrice");
             }

@@ -168,21 +168,33 @@ namespace UnitTestProject1
         public void AddProductViewModel_CurrencyConverterSimpleConvert()
         {
             AddProductViewModel vm = new AddProductViewModel();
-            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "USD").First();
+            vm.SelectedCurrency = vm.Currencies?.First();
             vm.PurchasePrice = 100;
-            Assert.AreEqual(vm.Currencies?.Where(c => c.Name == "USD").First().ExchangeRateDKK, vm.PurchasePriceDKK);
+            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK * vm.PurchasePrice, vm.PurchasePriceDKK);
         }
         [TestMethod]
         public void AddProductViewModel_CurrencyConverterCurrencySwitch()
         {
             AddProductViewModel vm = new AddProductViewModel();
-            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "USD").First();
+            vm.SelectedCurrency = vm.Currencies?.First();
             vm.PurchasePrice = 100;
-            Assert.AreEqual(vm.Currencies?.Where(c => c.Name == "USD").First().ExchangeRateDKK, vm.PurchasePriceDKK);
+            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK * vm.PurchasePrice, vm.PurchasePriceDKK);
 
-            vm.SelectedCurrency = vm.Currencies?.Where(c => c.Name == "DKK").First();
-            Assert.AreEqual(100, vm.PurchasePriceDKK);
-
+            vm.SelectedCurrency = vm.Currencies?.Last();
+            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK *  vm.PurchasePrice, vm.PurchasePriceDKK);
+        }
+        [TestMethod]
+        public void Currency_CanDownloadFile()
+        {
+            CurrencyHttpAccess cur =  new CurrencyHttpAccess();
+           Assert.AreEqual(true, File.Exists("currencyData.html"));
+        }
+        [TestMethod]
+        public void Currency_CanReadCurrencies()
+        {
+            int currentAmountOfCurrencies = 10;
+            CurrencyHttpAccess cur = new CurrencyHttpAccess();
+            Assert.AreEqual(currentAmountOfCurrencies, cur.GetCurrencies().Count);
         }
     }
 }
