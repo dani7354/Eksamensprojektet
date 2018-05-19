@@ -45,6 +45,14 @@ namespace View
 
         private void btn_ChangeGridSource_Click(object sender, RoutedEventArgs e)
         {
+            if(btn_ChangeGridSource.Content.ToString() == "Vis deaktiverede varer")
+            {
+                btn_ChangeGridSource.Content = "Vis aktiverede varer";
+            }
+            else
+            {
+                btn_ChangeGridSource.Content = "Vis deaktiverede varer";
+            }
             try
             {
                 _viewModel.ShowDeactivatedProducts();
@@ -76,7 +84,7 @@ namespace View
 
         private void dGrid_products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void Btn_Graph_Click(object sender, RoutedEventArgs e)
