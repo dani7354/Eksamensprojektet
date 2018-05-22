@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="OrderNotificationWindow" Height="450" Width="441.385">
     <Grid Margin="0,0,-8,0">
-        <ListView HorizontalAlignment="Left" Height="339" Margin="0,70,0,0" VerticalAlignment="Top" Width="433" ItemsSource="{Binding OrderDates,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <ListView HorizontalAlignment="Left" Height="339" Margin="0,70,0,0" VerticalAlignment="Top" Width="433" ItemsSource="{Binding OrderDates, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding Key.SKU}" Width="auto"/>

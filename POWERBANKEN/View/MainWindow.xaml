@@ -27,13 +27,15 @@
         <DataGrid x:Name="dGrid_products" Background="AliceBlue" CanUserAddRows="False" HorizontalAlignment="Center" Height="480" Margin="158,66,221,0" VerticalAlignment="Top"  Width="auto" MaxWidth="1000" AutoGenerateColumns="False" ItemsSource="{Binding SelectedProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dGrid_products_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding SKU}" Header="SKU" Width="auto" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn" MaxWidth="100"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris (DKK)"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Varenavn" MaxWidth="70"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding PurchasePrice}" Header="Indkøbspris (DKK)" MaxWidth="70"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Type.Name}" Header="Produktkategori"  Width="auto" MaxWidth="100" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Brand.Name}" Header="Brand"  Width="auto" MaxWidth="80" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)" MaxWidth="80"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)" MaxWidth="80" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime i dage"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding ikkenoget}" IsReadOnly="True" Header="Bestillingsdato"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding ikkenoget}"  IsReadOnly="True" Header="Nul-dato"  Width="auto"/>
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" MaxWidth="50" />
 
             </DataGrid.Columns>
