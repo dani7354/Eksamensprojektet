@@ -76,7 +76,7 @@ namespace DataAccess
                     }
 
                 }
-                Clean();
+      
             }
         }
         
