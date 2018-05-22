@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using Domain;
 using System.Windows.Input;
-
 namespace ViewModels
 {
     public class MainViewModel : BaseViewModel
@@ -135,8 +134,6 @@ namespace ViewModels
                 NotifyPropertyChanged("GrowthInPercent");
                 _controller.WriteGrowthToFile(_growthInPercent);
             }
-
-        
         }
         public int DaysInAdvance
         {
