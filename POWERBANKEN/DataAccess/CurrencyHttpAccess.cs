@@ -41,7 +41,6 @@ namespace DataAccess
                 new Currency("DKK - Danske kroner", 1.00)
             };
         }
-
         private void ReadCurrenciesFromFile()
         {
             DownloadFile();
@@ -79,8 +78,5 @@ namespace DataAccess
       
             }
         }
-        
-
-        
     }
 }
