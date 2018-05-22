@@ -31,13 +31,8 @@ namespace DataAccess
         {
             _currencyNames = new List<string>()
             {
-                "AUD - Australske dollar",
-                "BGN - Bulgarske lev",
-
                 "EUR - Euro",
                 "GBP - Britiske pund",
-             
-       
                 "USD - US-dollar",
                 "CNY - Kinesiske Yuan Renminbi"
             };
@@ -79,7 +74,9 @@ namespace DataAccess
                         _currency.Add(new Currency(name, newPrice));
                        _currencyNames.Remove(name);
                     }
+
                 }
+                Clean();
             }
         }
         

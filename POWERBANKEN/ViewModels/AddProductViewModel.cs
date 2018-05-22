@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Domain;
 using System.Windows.Input;
 using System.ComponentModel;
+using System.Windows;
 
 namespace ViewModels
 {
@@ -235,15 +236,28 @@ namespace ViewModels
 
 		public void AddProducts()
 		{
-			if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
-			{
-				Product prod = new Product(Name, SKU, PurchasePriceDKK, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
-				controller.AddProduct(prod);
-			}
-			else
-			{
-				throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
-			}
+
+            try
+            {
+                if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
+                {
+                    Product prod = new Product(Name, SKU, PurchasePriceDKK, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+                    controller.AddProduct(prod);
+                    ProductAdded.Invoke(Name, null);
+
+                }
+                else
+                {
+                    throw new Exception("Produktet blev ikke gemt - tjek din indstatning");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+			
 		}
+        public event EventHandler ProductAdded;
 	}
 }
