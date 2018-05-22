@@ -93,9 +93,6 @@
     <Compile Include="CSVImportWindow.xaml.cs">
       <DependentUpon>CSVImportWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrderDatesWindow.xaml.cs">
-      <DependentUpon>OrderDatesWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -122,10 +119,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Orders.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="OrderDatesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
