@@ -9,7 +9,7 @@
         Title="SalesChart" Height="400" Width="800">
     <Grid>
 
-        <syncfusion:SfChart  x:Name="Chartseries" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
+        <syncfusion:SfChart x:Name="Chartseries" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
             <syncfusion:SfChart.PrimaryAxis>
                 <syncfusion:DateTimeAxis FontSize="10" Header="Måned" LabelFormat="MMM"  Interval="1" IntervalType="Months"  ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.PrimaryAxis>
