@@ -70,18 +70,20 @@ namespace Controller
 			}
 		}
 
-		public Dictionary<Product, DateTime> GetOrderDatesForProducts(double growthInPercent)
+		public List<Product> GetOrderDatesForProducts(double growthInPercent)
         {
-            Order orderCalc = new Order();
-            Dictionary<Product, DateTime> orderDates =  orderCalc.GetOrderDatesForAllProducts(_products, _productSales, growthInPercent);
-            if(orderDates.Count > 0)
+            List<SalesStatistics> futureMonthlySales = Order.CalculateProductSalesForMonth(growthInPercent, _products, _productSales);
+
+            foreach (Product product in _products.Where(p => p.IsActive == true))
             {
-                return orderDates;
+                if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
+                {
+                    List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
+                    product.OrderDates = new Order();
+                    product.OrderDates.CalculateOrderDateForProduct(product, salesForProducts);
+                }
             }
-            else
-            {
-                throw new Exception("Ingen ordredatoer kunne beregnes");
-            }
+            return _products;
         }
 
         public void InsertProductSale(List<SalesStatistics> sales)

@@ -11,11 +11,11 @@ namespace ViewModels
     {
         public OrderNotificationViewModel(MainViewModel viewModel)
         {
-            OrderDates = viewModel.OrderDates;
+            ProductOrderDates = viewModel.ProductNotifications;
             DaysInAdvance = viewModel.DaysInAdvance;
         }
 
-        public Dictionary<Product, DateTime> OrderDates { get;  private set; }
+        public List<Product> ProductOrderDates { get; private set; }
         public int DaysInAdvance { get; private set; }
 
     }

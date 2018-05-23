@@ -31,6 +31,7 @@ namespace Domain
         public ProductType Type { get; set; }
         public Brand Brand { get; set; }
 		public bool IsActive { get; set; }
+        public Order OrderDates { get; set; }
 
         public override string ToString()
         {

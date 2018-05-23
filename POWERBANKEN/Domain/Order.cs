@@ -7,33 +7,36 @@ namespace Domain
 {
     public class Order
     {
+
+        public DateTime OrderDate { get; private set; }
+        public DateTime SoldOutDate { get; private set; }
        
-        public DateTime CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
+        public void CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
         {
             const int YEAR_LIMIT = 3000;
             DateTime currentDate = DateTime.Today;
             int dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
             Product productCopy = new Product(product.Name, product.SKU, product.PurchasePrice, product.StockAmount, product.MinStock, product.Type, product.Brand,product.LeadTimeDays, product.IsActive);
-            while (productCopy.StockAmount > productCopy.MinStock)
+            while (productCopy.StockAmount > 0) //simulerer salg.
             {
                 if (!currentDate.Month.Equals(currentDate.AddDays(-1).Month)) // hvis måneden er skiftet.
                 {
                 dailySale = GetDailySaleForMonth(currentDate, futureSalesForProduct);
                 }
                 productCopy.StockAmount -= dailySale; // fratrækker det daglige antal salg fra lagerbeholdningen. 
-                if(currentDate.Year < YEAR_LIMIT) currentDate = currentDate.AddDays(1); // vi tæller frem med én dag.
-                
-                else
+
+                if(productCopy.StockAmount == productCopy.MinStock)
                 {
-                    break;
+                    this.OrderDate = currentDate.AddDays(-product.LeadTimeDays);
+                    if (this.OrderDate < DateTime.Now) this.OrderDate = DateTime.Now;
                 }
+                if(currentDate.Year < YEAR_LIMIT) currentDate = currentDate.AddDays(1); // vi tæller frem med én dag, hvis ikke tidsgrænsen er nået.
+                else break;                
             }
-            DateTime RunningDryOfProducts = currentDate;
-            DateTime OrderDate = RunningDryOfProducts.AddDays(-product.LeadTimeDays); 
-            return OrderDate;
+               this.SoldOutDate = currentDate;
         }
 
-        public int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
+        private int GetDailySaleForMonth(DateTime currentDate, List<SalesStatistics> futureSalesForProduct)
         {
             int dailySale = 0;
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
@@ -45,28 +48,7 @@ namespace Domain
             
             return dailySale;
         }
-
-        public Dictionary<Product, DateTime> GetOrderDatesForAllProducts(List<Product> allProducts, List<SalesStatistics> productSales, double growthInPercent)
-        {
-            Dictionary<Product, DateTime> AllOrderDatesForProducts = new Dictionary<Product, DateTime>();
-            List<SalesStatistics> futureMonthlySales = CalculateProductSalesForMonth(growthInPercent, allProducts, productSales);
-
-            foreach (Product product in allProducts.Where(p => p.IsActive == true))
-            {
-                if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
-                {
-                    List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
-                    DateTime orderDate = CalculateOrderDateForProduct(product, salesForProducts);
-                    if(orderDate < DateTime.Today)
-                    {
-                        orderDate = DateTime.Today;
-                    }
-                    AllOrderDatesForProducts.Add(product, orderDate);
-                }
-            }
-            return AllOrderDatesForProducts;
-        }
-        public List<SalesStatistics> CalculateProductSalesForMonth(double GrowthInPercent, List<Product> products, List<SalesStatistics> productSales)
+        public static List<SalesStatistics> CalculateProductSalesForMonth(double GrowthInPercent, List<Product> products, List<SalesStatistics> productSales)
         {
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();

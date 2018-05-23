@@ -15,7 +15,7 @@ namespace ViewModels
         private bool activatedProductsShown = true;
         private string _searchText;
         private Thread _calculatorThread;
-        private static Dictionary<Product, DateTime> _orderDates;
+        private static List<Product> _productNotifications;
         private bool _calcThreadRunning;
 
         private double _growthInPercent;
@@ -68,31 +68,30 @@ namespace ViewModels
                 NotifyPropertyChanged("CalcThreadRunning");
             }
         }
-        public Dictionary<Product, DateTime> OrderDates
+        public List<Product> ProductNotifications
         {
             get
             {
-                return _orderDates;
+                return _productNotifications;
             }
             set
             {
                 int oldOrderDateAmount = 0;
-                if (_orderDates != null)
+                if (_productNotifications != null)
                 {
-                    oldOrderDateAmount = _orderDates.Count;
+                    oldOrderDateAmount = _productNotifications.Count;
                 }
                 if (value.Count > 0)
                 {
-                    _orderDates = value.Where(o => o.Value < DateTime.Now.AddDays(DaysInAdvance)).ToDictionary(d => d.Key, d => d.Value);
-                    _orderDates.OrderBy(o => o.Value).ToDictionary(d => d.Key, d => d.Value);
-                    NotifyPropertyChanged("OrderDates");
+                    _productNotifications = value.Where(p => p.OrderDates?.OrderDate > new DateTime(1, 1, 1) && p.OrderDates?.OrderDate < DateTime.Now.AddDays(DaysInAdvance)).ToList();
+                    _productNotifications.OrderBy(o => o.OrderDates?.OrderDate).ToList();
+                    NotifyPropertyChanged("ProductNotifications");
 
-                    if (_orderDates.Count > oldOrderDateAmount && OrderDatesAdded != null)
+                    if (_productNotifications.Count > oldOrderDateAmount && OrderDatesAdded != null)
                     {
-                        OrderDatesAdded?.Invoke((_orderDates.Count - oldOrderDateAmount), null);
+                        OrderDatesAdded?.Invoke((_productNotifications.Count - oldOrderDateAmount), null);
                     }
                 }
-               
             }
         }
         public List<Product> SelectedProducts
@@ -157,7 +156,7 @@ namespace ViewModels
         public MainViewModel()
         {
             _controller = Controller.MainController.Instance;
-            _allProducts = _controller.GetProducts();
+            _allProducts = _controller.GetOrderDatesForProducts(GrowthInPercent);
             SelectedProducts = _allProducts.Where(p => p.IsActive == activatedProductsShown).ToList<Product>();
             GrowthInPercent = _controller.GetGrowthInPercent();
             DaysInAdvance = 7;
@@ -203,7 +202,7 @@ namespace ViewModels
         {
             while (_calcThreadRunning)
             {
-                OrderDates = _controller.GetOrderDatesForProducts(GrowthInPercent);
+                ProductNotifications = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(CalcInterval * 1000);
             }
         }
