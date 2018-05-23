@@ -28,7 +28,7 @@ namespace ViewModels
                 _growthInPercent = value;
                 NotifyPropertyChanged("GrowthInPercent");
             }
-        }
+        } 
 
         public Dictionary<Product, DateTime> ForeCast
         {
