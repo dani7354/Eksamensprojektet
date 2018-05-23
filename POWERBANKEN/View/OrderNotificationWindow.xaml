@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="OrderNotificationWindow" Height="450" Width="441.385">
+        Title="OrderNotificationWindow" Height="450" Width="600">
     <Grid Margin="0,0,-8,0">
-        <ListView HorizontalAlignment="Left" Height="339" Margin="0,70,0,0" VerticalAlignment="Top" Width="433" ItemsSource="{Binding OrderDates,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <ListView HorizontalAlignment="Center" Height="339" Margin="0,70,0,0" VerticalAlignment="Top" Width="auto" MaxWidth="500" ItemsSource="{Binding OrderDates, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="SKU" DisplayMemberBinding="{Binding Key.SKU}" Width="auto"/>

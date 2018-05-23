@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading;
 using Domain;
 using System.Windows.Input;
-
 namespace ViewModels
 {
     public class MainViewModel : BaseViewModel
@@ -22,17 +21,17 @@ namespace ViewModels
         private double _growthInPercent;
         private int _daysInAdvance;
         private int _calcInterval;
-        private string _showButtonText = "Vis inaktive varer";
+        private string _filterButtonText = "Vis inaktive varer";
 
-        public string ShowButtonText
+        public string FilterButtonText
         {
             get
             {
-                return _showButtonText;
+                return _filterButtonText;
             }
             private set
             {
-                _showButtonText = value;
+                _filterButtonText = value;
                 NotifyPropertyChanged("ShowButtonText");
             }
         }
@@ -135,8 +134,6 @@ namespace ViewModels
                 NotifyPropertyChanged("GrowthInPercent");
                 _controller.WriteGrowthToFile(_growthInPercent);
             }
-
-        
         }
         public int DaysInAdvance
         {
@@ -182,13 +179,13 @@ namespace ViewModels
             {
                 SelectedProducts = _allProducts.Where(p => p.IsActive == true).ToList<Product>();
                 activatedProductsShown = true;
-                ShowButtonText = "Vis inaktive varer";
+                FilterButtonText = "Vis inaktive varer";
             }
             else
             {
                 SelectedProducts = _allProducts.Where(p => p.IsActive == false).ToList<Product>();
                 activatedProductsShown = false;
-                ShowButtonText = "Vis aktive varer";
+                FilterButtonText = "Vis aktive varer";
             }
         }
         public void GetProducts()
