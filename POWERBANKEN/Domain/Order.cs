@@ -50,6 +50,7 @@ namespace Domain
         }
         public static List<SalesStatistics> CalculateProductSalesForMonth(double GrowthInPercent, List<Product> products, List<SalesStatistics> productSales)
         {
+           
             GrowthInPercent = (GrowthInPercent / 100) + 1;
             List<SalesStatistics> ForecastList = new List<SalesStatistics>();
             foreach (var stat in productSales)
