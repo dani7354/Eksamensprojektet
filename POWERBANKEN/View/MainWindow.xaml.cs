@@ -29,7 +29,7 @@ namespace View
 
         private void StockWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Environment.Exit(1); // Lukker alle øvrige vinduer, hvis Mainvinduet lukkes
        
-        private void btn_SaveAndClose_Click(object sender, RoutedEventArgs e)
+        private void Btn_SaveAndClose_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace View
             }
         }
 
-        private void btn_ChangeGridSource_Click(object sender, RoutedEventArgs e)
+        private void Btn_ChangeGridSource_Click(object sender, RoutedEventArgs e)
         {
             if(btn_ChangeGridSource.Content.ToString() == "Vis deaktiverede varer")
             {
@@ -112,7 +112,7 @@ namespace View
 
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
-            btn_SaveAndClose_Click(sender, e);
+            Btn_SaveAndClose_Click(sender, e);
             Close();
         }
     }

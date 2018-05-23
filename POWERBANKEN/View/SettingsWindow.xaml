@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="SettingsWindow" Height="325.102" Width="434.898">
     <Grid>
-        <Label Content="Instillinger" HorizontalAlignment="Left" Margin="113,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Ravie" />
+        <Label Content="Indstillinger" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Times new Roman" Height="33" Width="110" />
         <Label Content="Vækst (%)" HorizontalAlignment="Left" Margin="124,76,0,0" VerticalAlignment="Top"/>
         <Label Content="Underret om bestillingsdatoer" HorizontalAlignment="Left" Margin="12,107,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="186,79,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="186,79,0,0" TextWrapping="Wrap" Text="{Binding GrowthInPercent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="186,110,0,0" TextWrapping="Wrap" Text="{Binding DaysInAdvance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
         <Button Content="Luk" HorizontalAlignment="Left" Margin="293,243,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Close"/>
         <Label Content="dage forud" HorizontalAlignment="Left" Margin="233,110,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Baggrundsberegner aktiv" HorizontalAlignment="Left" Margin="178,159,0,0" VerticalAlignment="Top" IsChecked="{Binding CalcThreadRunning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="178,179,0,0" TextWrapping="Wrap" Text="{Binding CalcInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="65"/>
-        <Label Content="Opdateringsinterval (sek)" HorizontalAlignment="Left" Margin="31,179,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Baggrundsberegner aktiv" HorizontalAlignment="Left" Margin="215,177,0,0" VerticalAlignment="Top" IsChecked="{Binding CalcThreadRunning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="186,138,0,0" TextWrapping="Wrap" Text="{Binding CalcInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="42"/>
+        <Label Content="Opdateringsinterval (sek)" HorizontalAlignment="Left" Margin="27,138,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
