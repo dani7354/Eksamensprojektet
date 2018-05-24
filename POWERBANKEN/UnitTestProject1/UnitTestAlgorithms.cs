@@ -1,6 +1,6 @@
-﻿//using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using DataAccess;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DataAccess;
 //using Domain;
 //using System.Linq;
 //using System.Collections.Generic;
@@ -15,9 +15,9 @@
 //    {
 //        IDataStorage dataStorage;
 //        Random rnd = new Random();
-//        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
-//        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
-//        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"),20, true); // har tilhørende salgsdata.
+//        Product p1 = new Product("Anker 2000", "AS34LK", 230, 70, 10, new ProductType("PowerBank"), new Brand("Anker"), 20, true); // har tilhørende salgsdata.
+//        Product p2 = new Product("Anker 3000", "AS76LK", 400, 300, 30, new ProductType("PowerBank"), new Brand("Anker"), 20, true); // har tilhørende salgsdata.
+//        Product p3 = new Product("Anker 9000", "JKFGLK", 700, 100, 5, new ProductType("PowerBank"), new Brand("Anker"), 20, true); // har tilhørende salgsdata.
 //        Product p4 = new Product("Anker 10000", "FG34LK", 200, 40, 5, new ProductType("PowerBank"), new Brand("Anker"), 20, true); // uden tilhørende salgsdata.
 
 //        SalesStatistics[] p1stat = new SalesStatistics[12];
@@ -35,31 +35,31 @@
 
 //            for (int i = 0; i < p1stat.Length; i++)
 //            {
-//                int DaysInMonth = DateTime.DaysInMonth(2017, i+1);
+//                int DaysInMonth = DateTime.DaysInMonth(2017, i + 1);
 //                p1stat[i] = new SalesStatistics()
 //                {
-//                    PeriodStart = new DateTime(2017, i+1, 1),
-//                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+//                    PeriodStart = new DateTime(2017, i + 1, 1),
+//                    PeriodEnd = new DateTime(2017, i + 1, DaysInMonth - 1),
 //                    QuantitySold = 50,
 //                    Product = p1
 //                };
 //                p2stat[i] = new SalesStatistics()
 //                {
-//                    PeriodStart = new DateTime(2017, i+1, 1),
-//                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+//                    PeriodStart = new DateTime(2017, i + 1, 1),
+//                    PeriodEnd = new DateTime(2017, i + 1, DaysInMonth - 1),
 //                    QuantitySold = 20,
 //                    Product = p2
 //                };
 //                p3stat[i] = new SalesStatistics()
 //                {
-//                    PeriodStart = new DateTime(2017, i+1, 1),
-//                    PeriodEnd = new DateTime(2017, i+1, DaysInMonth - 1),
+//                    PeriodStart = new DateTime(2017, i + 1, 1),
+//                    PeriodEnd = new DateTime(2017, i + 1, DaysInMonth - 1),
 //                    QuantitySold = 30,
 //                    Product = p3
 //                };
 
 //            }
-//           // Gemmer testdata i databasen
+//            // Gemmer testdata i databasen
 //            dataStorage.InsertProductSale(p1stat.ToList());
 //            dataStorage.InsertProductSale(p2stat.ToList());
 //            dataStorage.InsertProductSale(p3stat.ToList());
@@ -73,10 +73,10 @@
 //        {
 //            Order calc = new Order();
 //            double expGrowth = 30.00;
-//            Dictionary<Product, DateTime> result  = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
+//            Dictionary<Product, DateTime> result = calc.GetOrderDatesForAllProducts(dataStorage.GetAllProducts(), dataStorage.GetProductSales(), expGrowth);
 //            Assert.AreEqual(3, result.Count);
 //            // Forventede resultater udregnet på forhånd. 
-//            Assert.AreEqual(DateTime.Today.AddDays(16), result.First().Value); 
+//            Assert.AreEqual(DateTime.Today.AddDays(16), result.First().Value);
 //            Assert.AreEqual(DateTime.Today.AddDays(88), result.Last().Value);
 //        }
 //        [TestMethod]
@@ -91,7 +91,7 @@
 //        public void OrderDateCalc_OnlyWithProductSalesDataForOneMonth()
 //        {
 //            // Ændring af testdata
-//            p4stat = new SalesStatistics[1] ;
+//            p4stat = new SalesStatistics[1];
 //            p4stat[0] = new SalesStatistics()
 //            {
 //                PeriodStart = new DateTime(2017, 1, 1),
@@ -140,7 +140,7 @@
 //        public void TxtAccess_GrowthWithNegativeNumber()
 //        {
 //            MainController mainController = MainController.Instance;
-            
+
 //            // skrivning
 //            string filePath = "growth.txt";
 //            double percent = -54.342568431;
@@ -181,13 +181,13 @@
 //            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK * vm.PurchasePrice, vm.PurchasePriceDKK);
 
 //            vm.SelectedCurrency = vm.Currencies?.Last();
-//            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK *  vm.PurchasePrice, vm.PurchasePriceDKK);
+//            Assert.AreEqual(vm.SelectedCurrency.ExchangeRateDKK * vm.PurchasePrice, vm.PurchasePriceDKK);
 //        }
 //        [TestMethod]
 //        public void Currency_CanDownloadFile()
 //        {
-//            CurrencyHttpAccess cur =  new CurrencyHttpAccess();
-//           Assert.AreEqual(true, File.Exists("currencyData.html"));
+//            CurrencyHttpAccess cur = new CurrencyHttpAccess();
+//            Assert.AreEqual(true, File.Exists("currencyData.html"));
 //        }
 //        [TestMethod]
 //        public void Currency_CanReadCurrencies()

@@ -22,6 +22,8 @@ namespace View
     /// </summary>
     public partial class SalesChartView : Window
     {
+        DateTime date { get; set; }
+
         private SalesChartViewModel Salesview;
         public SalesChartView()
         {
@@ -48,21 +50,11 @@ namespace View
                     YBindingPath = "QuantitySold",
                     ShowTooltip=true,
                     ShowEmptyPoints = true
-                
-
                 };
     
                 Chartseries.Series.Add(spline);
-
-                
-                //ChartAdornmentInfo adornmentInfo = new ChartAdornmentInfo()
-                //{
-                //    ShowLabel = true,
-
-                //};
-                //spline.AdornmentsInfo = adornmentInfo;
             }
-            //    
+             
         }
         private void StartBrandChart()
         {
@@ -92,7 +84,7 @@ namespace View
         }
 
 
-                private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Chartseries.Series.Clear();
             StartupChart();
@@ -103,6 +95,11 @@ namespace View
             Chartseries.Series.Clear();
             Salesview.CalulateBrandSale();
             StartBrandChart();
+        }
+
+        private void SfRangeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        { 
+        
         }
     }
 }
