@@ -192,7 +192,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Currency_CanReadCurrencies()
         {
-            int currentAmountOfCurrencies = 7;
+            int currentAmountOfCurrencies = 5;
             CurrencyHttpAccess cur = new CurrencyHttpAccess();
             Assert.AreEqual(currentAmountOfCurrencies, cur.GetCurrencies().Count);
         }
