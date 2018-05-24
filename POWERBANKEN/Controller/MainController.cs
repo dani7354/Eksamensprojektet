@@ -80,9 +80,9 @@ namespace Controller
             {
                 if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
                 {
-                    List<SalesStatistics> salesForProducts = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
+                    List<SalesStatistics> salesForProduct = futureMonthlySales.Where(s => s.Product.Equals(product)).ToList();
                     product.OrderDates = new Order();
-                    product.OrderDates.CalculateOrderDateForProduct(product, salesForProducts);
+                    product.OrderDates.CalculateOrderDateForProduct(product, salesForProduct);
                 }
             }
             return _products;
