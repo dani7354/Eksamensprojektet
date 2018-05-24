@@ -7,10 +7,8 @@ namespace Domain
 {
     public class Order
     {
-
         public DateTime OrderDate { get; private set; }
         public DateTime SoldOutDate { get; private set; }
-       
         public void CalculateOrderDateForProduct(Product product, List<SalesStatistics> futureSalesForProduct)
         {
             const int YEAR_LIMIT = 3000;
