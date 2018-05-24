@@ -16,10 +16,12 @@ namespace Controller
         private List<SalesStatistics> _productSales;
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
+        private List<Currency> _currencies;
         private MainController()
 		{
 			_dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales();
 			_products = _dataStorage.GetAllProducts(); _txtAccess = new TxtAccess();
+            _currencies = new CurrencyHttpAccess().GetCurrencies();
 		}
         public static MainController Instance { get; } = new MainController();
 
@@ -114,10 +116,7 @@ namespace Controller
 			_txtAccess.WriteToFile(percent.ToString());
 		}
 
-        public List<Currency> GetCurrencies()
-        {
-            CurrencyHttpAccess currencyHttpAccess = new CurrencyHttpAccess();
-            return currencyHttpAccess.GetCurrencies();
-        }
+        public List<Currency> GetCurrencies() => _currencies;
+       
 	}
 }
