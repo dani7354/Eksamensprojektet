@@ -34,8 +34,8 @@
                 <DataGridTextColumn Binding="{Binding StockAmount}" Header="Lagerbeholdning (stk)" MaxWidth="80"  Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MinStock}" Header="Min beholdning (stk)" MaxWidth="80" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding LeadTimeDays}" Header="Leadtime i dage"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding ikkenoget}" IsReadOnly="True" Header="Bestillingsdato"  Width="auto"/>
-                <DataGridTextColumn Binding="{Binding ikkenoget}"  IsReadOnly="True" Header="Nul-dato"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding OrderDates.OrderDate, StringFormat={}{0:dd/MM/yyyy}}" IsReadOnly="True" Header="Bestillingsdato"  Width="auto"/>
+                <DataGridTextColumn Binding="{Binding OrderDates.SoldOutDate, StringFormat={}{0:dd/MM/yyyy}}"  IsReadOnly="True" Header="Udsolgt dato"  Width="auto"/>
                 <DataGridCheckBoxColumn Binding="{Binding IsActive}"  Header="Aktiv" MaxWidth="50" />
 
             </DataGrid.Columns>
@@ -63,7 +63,7 @@
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Center" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Center" Margin="426,37,800,0" VerticalAlignment="Top" Width="46" Height="28"/>
         <Button x:Name="Btn_Graph" Background="DeepSkyBlue" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,122,10,0" Height="35" FontSize="20" Click="Btn_Graph_Click"/>
-        <Button Content="{Binding OrderDates.Count}" Background="DeepSkyBlue" FontSize="20"  HorizontalAlignment="Right" Margin="0,32,10,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
+        <Button Content="{Binding ProductNotifications.Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Background="DeepSkyBlue" FontSize="20"  HorizontalAlignment="Right" Margin="0,32,10,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Right" Margin="0,28,90,0" VerticalAlignment="Top" Height="37" Width="215" FontSize="20"/>
         <Image HorizontalAlignment="Left"  Margin="10,37,0,0" VerticalAlignment="Top" Width="143" Source="https://3h6bf1zntoc8dalh2chi8gvf-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/logo.png" Height="201"  />
     </Grid>
