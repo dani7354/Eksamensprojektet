@@ -16,7 +16,7 @@
                     <MenuItem x:Name="CSVread" Header="Indlæs salgsdata" HorizontalAlignment="Left" Width="180" Click="btn_ImportProductSales"/>
                     <MenuItem x:Name="AddProduct" Header="Tilføj produkt" HorizontalAlignment="Left" Width="170" Click="AddProduct_Click"/>
                 </MenuItem>
-                <MenuItem Header="Indstillinger">
+                <MenuItem Header="Indstillinger" Width="83">
                     <MenuItem x:Name="Settings" Header="Indstillinger" HorizontalAlignment="Left" Width="170" Click="Settings_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Hjælp">
