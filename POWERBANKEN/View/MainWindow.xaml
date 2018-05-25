@@ -40,7 +40,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_SaveAndClose" FontSize="20" Background="DeepSkyBlue" Content="Gem ændringer"   Margin="0,595,604,43"  Click="Btn_SaveAndClose_Click" Height="31"  Width="220" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right"   >
+        <Button x:Name="btn_SaveAndClose" FontSize="20" Background="WhiteSmoke" Content="Gem ændringer"   Margin="0,595,604,43"  Click="Btn_SaveAndClose_Click" Height="31"  Width="220" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right"   >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -50,7 +50,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btn_ChangeGridSource" Background="DeepSkyBlue" FontSize="20" Content="Vis deaktiverede varer"  HorizontalAlignment="Right" Margin="0,559,604,0" VerticalAlignment="Top"  Width="220" Height="33" Click="Btn_ChangeGridSource_Click" RenderTransformOrigin="0.5,0.5"   >
+        <Button x:Name="btn_ChangeGridSource" Background="WhiteSmoke" FontSize="20" Content="Vis deaktiverede varer"  HorizontalAlignment="Right" Margin="0,559,604,0" VerticalAlignment="Top"  Width="220" Height="33" Click="Btn_ChangeGridSource_Click" RenderTransformOrigin="0.5,0.5"   >
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -62,8 +62,8 @@
         </Button>
         <TextBox x:Name="Tb_SearchBox" HorizontalAlignment="Center" Height="25" Margin="40,37,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="284" TextChanged="Tb_SearchBox_TextChanged" />
         <Label Content="Søg:" HorizontalAlignment="Center" Margin="426,37,800,0" VerticalAlignment="Top" Width="46" Height="28"/>
-        <Button x:Name="Btn_Graph" Background="DeepSkyBlue" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,122,10,0" Height="35" FontSize="20" Click="Btn_Graph_Click"/>
-        <Button Content="{Binding ProductNotifications.Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Background="DeepSkyBlue" FontSize="20"  HorizontalAlignment="Right" Margin="0,32,10,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
+        <Button x:Name="Btn_Graph" Background="WhiteSmoke" Content="Statistik" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Margin="0,122,10,0" Height="35" FontSize="20" Click="Btn_Graph_Click"/>
+        <Button Content="{Binding ProductNotifications.Count, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Background="WhiteSmoke" FontSize="20"  HorizontalAlignment="Right" Margin="0,32,10,0" VerticalAlignment="Top" Width="75" Height="33" Click="Btn_Notifications_Click" />
         <Label Content="Kommende bestillinger" HorizontalAlignment="Right" Margin="0,28,90,0" VerticalAlignment="Top" Height="37" Width="215" FontSize="20"/>
         <Image HorizontalAlignment="Left"  Margin="10,37,0,0" VerticalAlignment="Top" Width="143" Source="https://3h6bf1zntoc8dalh2chi8gvf-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/logo.png" Height="201"  />
     </Grid>
