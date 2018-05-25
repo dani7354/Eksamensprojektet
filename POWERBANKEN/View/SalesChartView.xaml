@@ -23,7 +23,7 @@
         </syncfusion:SfChart>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,13,0,0" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Brands}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBrand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Sammenlign Brands" HorizontalAlignment="Left" Margin="150,13,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
-        <syncfusion:SfRangeSlider x:Name="Slider" Margin="399,405,74,0" ShowRange="True" Minimum="1" Maximum="12" MoveToPoint="MoveToTapPosition" SnapsTo="StepValues" RangeStart="1" RangeEnd="12" TickPlacement="TopLeft" TickFrequency="1" VerticalAlignment="Top" Height="47" ValueChanged="SfRangeSlider_ValueChanged"/>
+        <syncfusion:SfRangeSlider x:Name="Slider" Margin="316,373,55,0" ShowCustomLabels="True" SnapsTo="StepValues" StepFrequency="1" ShowRange="True" TickFrequency="1" TickPlacement="Outside" FontSize="8" CustomLabels="{Binding CustomCollection}" LabelPlacement="BottomRight"  Minimum="1" Maximum="12" RangeStart="1" RangeEnd="12" LabelOrientation="Vertical" VerticalAlignment="Top" Height="69" ValueChanged="SfRangeSlider_ValueChanged"/>
 
     </Grid>
 </Window>

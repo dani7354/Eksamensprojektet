@@ -3,11 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataAccess;
 using Domain;
 using System.Linq;
-using System.Collections.Generic;
 using ViewModels;
 using Controller;
 using System.IO;
-using System.Threading;
+
 namespace UnitTestProject1
 {
     [TestClass]
