@@ -13,5 +13,7 @@ namespace Domain
         public Product Product { get; set; }
         public DateTime PeriodStart { get; set; }
         public DateTime PeriodEnd { get; set; }
+        
     }
+   
 }

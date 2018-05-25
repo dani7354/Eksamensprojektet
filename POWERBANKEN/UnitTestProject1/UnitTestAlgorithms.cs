@@ -81,17 +81,17 @@ namespace UnitTestProject1
          //   Assert.AreEqual(DateTime.Today.AddDays(16), p1.OrderDates.OrderDate);
             Assert.AreEqual(DateTime.Today.AddDays(15), p1.OrderDates.OrderDate);
         }
-        [TestMethod]
-        public void OrderDateCalc_IgnoreProductsWithNoSalesData()
-        {
-            p4.OrderDates = new Order();
-            double expGrowth = 20;
-            var sales = Order.CalculateProductSalesForMonth(expGrowth, dataStorage.GetAllProducts(), dataStorage.GetProductSales());
-            p4.OrderDates.CalculateOrderDateForProduct(p4, sales);
+        //[TestMethod]
+        //public void OrderDateCalc_IgnoreProductsWithNoSalesData()
+        //{
+        //    p4.OrderDates = new Order();
+        //    double expGrowth = 20;
+        //    var sales = Order.CalculateProductSalesForMonth(expGrowth, dataStorage.GetAllProducts(), dataStorage.GetProductSales());
+        //    p4.OrderDates.CalculateOrderDateForProduct(p4, sales);
           
-            Assert.AreEqual(new DateTime(1, 1, 1), p4.OrderDates.OrderDate);
+        //    Assert.AreEqual(new DateTime(1, 1, 1), p4.OrderDates.OrderDate);
             
-        }
+        //}
       
         [TestMethod]
         public void TxtAccess_GrowthWithWholeNumber()

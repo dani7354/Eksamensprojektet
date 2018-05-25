@@ -46,7 +46,7 @@ namespace View
                 {
                     Label = item.Name,
                     ItemsSource = Salesview.ProductStatistics.Where(s=>s.Product.Equals(item)).ToList(),
-                    XBindingPath = "PeriodStart",
+                    XBindingPath = "PeriodStart.Month",
                     YBindingPath = "QuantitySold",
                     ShowTooltip=true,
                     ShowEmptyPoints = true
@@ -71,7 +71,7 @@ namespace View
                 {
                     Label = item.Name,
                     ItemsSource = Salesview.BrandSaleList.Where(x=>x.Product.Brand.Name==item.Name).ToList(),
-                    XBindingPath = "PeriodStart",
+                    XBindingPath = "PeriodStart.Month",
                     YBindingPath = "QuantitySold",
                     ShowTooltip = true,
                    ShowEmptyPoints = false
@@ -95,6 +95,13 @@ namespace View
             Chartseries.Series.Clear();
             Salesview.CalulateBrandSale();
             StartBrandChart();
+        }
+
+        private void SfRangeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            SalesStatistics salesStat = new SalesStatistics();
+          
+            
         }
     }
 }
