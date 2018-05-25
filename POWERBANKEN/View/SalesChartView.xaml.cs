@@ -34,6 +34,7 @@ namespace View
         {
             foreach (var item in Salesview.ProductName.Where(p=>p.Brand.Name==Salesview.SelectedBrand.Name))
             {
+                
                 Chartseries.Legend = new ChartLegend()
                 {
                     ToggleSeriesVisibility = true,
@@ -103,6 +104,7 @@ namespace View
             Chartseries.Series.Clear();
             Salesview.CalulateBrandSale();
             StartBrandChart();
+            
         }
     }
 }
