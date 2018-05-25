@@ -6,23 +6,20 @@
         xmlns:local="clr-namespace:View"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="View.SalesChartView"
         mc:Ignorable="d"
-        Title="SalesChart" Height="400" Width="800">
-    <Grid>
+        Title="SalesChart" Height="499.571" Width="983.691">
+    <Grid Margin="0,0,33,17">
 
-        <syncfusion:SfChart x:Name="Chartseries" HorizontalAlignment="Center" Margin="29,35,34,10" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
+        <syncfusion:SfChart x:Name="Chartseries" HorizontalAlignment="Center" Margin="187,71,27,57" VerticalAlignment="Center" Height="324" Width="729" Background="White" SideBySideSeriesPlacement="True" Palette="Metro" >
             <syncfusion:SfChart.PrimaryAxis>
-                <syncfusion:DateTimeAxis FontSize="10" Header="Måned" LabelFormat="MMM"  Interval="1" IntervalType="Months"  ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit" />
+                <syncfusion:DateTimeAxis FontSize="10" x:Name="Xaxis" Header="Måned" LabelFormat="MMM" Interval="1" IntervalType="Months" ShowGridLines="False" LabelRotationAngle="90" EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.PrimaryAxis>
             <syncfusion:SfChart.SecondaryAxis>
                 <syncfusion:NumericalAxis FontSize="10" Header="Antal"  EdgeLabelsDrawingMode="Fit" />
             </syncfusion:SfChart.SecondaryAxis>
-
-
-
-
         </syncfusion:SfChart>
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,13,0,0" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Brands}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBrand,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Sammenlign Brands" HorizontalAlignment="Left" Margin="150,13,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+        <syncfusion:SfRangeSlider x:Name="Slider" Value="{Binding ElementName=Xaxis, Mode=OneWay}" Margin="413,348,60,0" ShowRange="True" Minimum="1" Maximum="12" MoveToPoint="MoveToTapPosition" SnapsTo="StepValues" RangeStart="1" RangeEnd="12" TickPlacement="TopLeft" TickFrequency="1" VerticalAlignment="Top" Height="47" ValueChanged="SfRangeSlider_ValueChanged"/>
 
     </Grid>
 </Window>
