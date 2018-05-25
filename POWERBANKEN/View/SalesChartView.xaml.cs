@@ -1,12 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ViewModels;
-using Domain;
 using Syncfusion.UI.Xaml.Charts;
-using System.Collections.ObjectModel;
-using Syncfusion.Windows.Controls.Input;
 
 namespace View
 {
@@ -60,7 +56,7 @@ namespace View
                 {
                     Label = item.Name,
                     ItemsSource = Salesview.BrandSaleList.Where(x => x.Product.Brand.Name == item.Name && x.PeriodStart.Month <= Slider.RangeEnd && x.PeriodStart.Month >= Slider.RangeStart).ToList(),
-                    XBindingPath = Period(),
+                    XBindingPath = "PeriodStart",
                     YBindingPath = "QuantitySold",
                     ShowTooltip = true,
                    ShowEmptyPoints = true
@@ -68,11 +64,6 @@ namespace View
 
                 Chartseries.Series.Add(spline);
             }
-        }
-
-        public string Period()
-        {
-            return "PeriodStart";
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
