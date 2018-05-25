@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using Domain;
-using System.Windows.Input;
 namespace ViewModels
 {
     public class MainViewModel : BaseViewModel
@@ -17,6 +15,8 @@ namespace ViewModels
         private Thread _calculatorThread;
         private static List<Product> _productNotifications;
         private bool _calcThreadRunning;
+        public event EventHandler OrderDatesAdded;
+
 
         private double _growthInPercent;
         private int _daysInAdvance;
@@ -206,6 +206,5 @@ namespace ViewModels
                 Thread.Sleep(CalcInterval * 1000);
             }
         }
-        public event EventHandler OrderDatesAdded;
     }
 }

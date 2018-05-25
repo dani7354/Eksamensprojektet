@@ -15,7 +15,7 @@ namespace View
             InitializeComponent();
             DataContext = _viewModel;
             _viewModel.OrderDatesAdded += (OrderDatesAdded, e) => MessageBox.Show($"{OrderDatesAdded} nye varer skal bestilles inden for de næste {_viewModel.DaysInAdvance} dage - se vinduet med bestillingsdatoer.");
-            this.Closing += StockWindow_Closing;
+            Closing += StockWindow_Closing;
         }
 
         private void StockWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Environment.Exit(1); // Lukker alle øvrige vinduer, hvis Mainvinduet lukkes
@@ -64,7 +64,6 @@ namespace View
             AddProductWindow addprodWin = new AddProductWindow();
             addprodWin.Show();
             addprodWin.Closing += AddprodWin_Closing;
-
         }
 
         private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)

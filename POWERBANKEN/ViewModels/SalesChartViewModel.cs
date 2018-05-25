@@ -83,8 +83,6 @@ namespace ViewModels
            ProductStatistics = Controller.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
         }
 
-        private ObservableCollection<Items> customCollection = new ObservableCollection<Items>();
-
         public ObservableCollection<Items> CustomCollection
 
         {
