@@ -46,7 +46,7 @@ namespace View
                 {
                     Label = item.Name,
                     ItemsSource = Salesview.ProductStatistics.Where(s=>s.Product.Equals(item)).ToList(),
-                    XBindingPath = SfRangeSlider_ValueChanged(),
+                    XBindingPath = "PeriodStart.Month",
                     YBindingPath = "QuantitySold",
                     ShowTooltip=true,
                     ShowEmptyPoints = true
@@ -71,7 +71,7 @@ namespace View
                 {
                     Label = item.Name,
                     ItemsSource = Salesview.BrandSaleList.Where(x=>x.Product.Brand.Name==item.Name).ToList(),
-                    XBindingPath = SfRangeSlider_ValueChanged(),
+                    XBindingPath = "PeriodStart.Month",
                     YBindingPath = "QuantitySold",
                     ShowTooltip = true,
                    ShowEmptyPoints = false
