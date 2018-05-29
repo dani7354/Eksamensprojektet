@@ -5,31 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using Controller;
-
+using System.Collections.ObjectModel;
+using Syncfusion.Windows.Controls.Input;
 
 namespace ViewModels
 {
    public class SalesChartViewModel : BaseViewModel
     {
-        public List<SalesStatistics> ProductStatistics
-        {
-            get { return _productStatistics; }
-            set
-            {
-                _productStatistics = value; NotifyPropertyChanged("StatistikPDB");
-            }
-        }
-        public List<Product>ProductName { get; set; }
-        public List<Brand>Brands { get; set; }
-        public Brand SelectedBrand {
-            get { return _selectedBrand; }
-            set { _selectedBrand = value; NotifyPropertyChanged("SelectedBrand"); }
-           
-        }
-        public List<SalesStatistics> BrandSaleList { get; } = new List<SalesStatistics>();
-        public MainController Controller = MainController.Instance;
-        private Brand _selectedBrand;
-        private List<SalesStatistics> _productStatistics;
         public SalesChartViewModel()
         {
             ProductStatistics = Controller.GetProductSales();
@@ -37,7 +19,36 @@ namespace ViewModels
             Brands = Controller.GetBrands();
             SelectedBrand = Brands[0];
             Setproduct();
+            AddMonths();
         }
+
+        public MainController Controller = MainController.Instance;
+
+        private List<SalesStatistics> _productStatistics;
+        public List<SalesStatistics> ProductStatistics
+        {
+            get
+            {
+                return _productStatistics;
+            }
+            set
+            {
+                _productStatistics = value; NotifyPropertyChanged("StatistikPDB");
+            }
+        }
+
+        public List<Product>ProductName { get; set; }
+
+        public List<Brand>Brands { get; set; }
+
+        private Brand _selectedBrand;
+        public Brand SelectedBrand {
+            get { return _selectedBrand; }
+            set { _selectedBrand = value; NotifyPropertyChanged("SelectedBrand"); }
+           
+        }
+
+        public List<SalesStatistics> BrandSaleList { get; } = new List<SalesStatistics>();
             
 
         private void Setproduct()
@@ -49,10 +60,7 @@ namespace ViewModels
             }
         }
 
-
-        
-
-        public void CalulateBrandSale()
+        public void CalculateBrandSale()
         {
             BrandSaleList.Clear();
             foreach (var item in Brands)
@@ -60,17 +68,58 @@ namespace ViewModels
                 for (int i = 0; i < 12; i++)
                 {
 
-                    var s = new SalesStatistics();
+                    SalesStatistics s = new SalesStatistics();
                     s.Product = new Product();
-                    s.PeriodStart = new DateTime(2017,i+1,1);
+                    s.PeriodStart = new DateTime(2017,i+1 ,1);
                     s.Product.Brand = item;
-                    s.QuantitySold = ProductStatistics.Where(x => x.Product.Brand != null&& x.Product.Brand.Name ==item.Name && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
+                    s.QuantitySold = ProductStatistics.Where(x => x.Product.Brand != null && x.Product.Brand.Name ==item.Name && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
                     BrandSaleList.Add(s);
                 }
             }
         }
-        public void SetStatistics() { ProductStatistics = Controller.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
-    }
+        public void SetStatistics()
+        {
+
+           ProductStatistics = Controller.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
+        }
+
+        public ObservableCollection<Items> CustomCollection
+
+        {
+
+            get { return customCollection; }
+
+            set { customCollection = value; }
+
+        }
+        public void AddMonths()
+        {
+            customCollection.Add(new Items() { label = "Jan", value = 1 });
+
+            customCollection.Add(new Items() { label = "Feb", value = 2 });
+
+            customCollection.Add(new Items() { label = "Mar", value = 3 });
+
+            customCollection.Add(new Items() { label = "Apr", value = 4 });
+
+            customCollection.Add(new Items() { label = "Maj", value = 5 });
+
+            customCollection.Add(new Items() { label = "Jun", value = 6 });
+
+            customCollection.Add(new Items() { label = "Jul", value = 7 });
+
+            customCollection.Add(new Items() { label = "Aug", value = 8 });
+
+            customCollection.Add(new Items() { label = "Sep", value = 9 });
+
+            customCollection.Add(new Items() { label = "Okt", value = 10 });
+
+            customCollection.Add(new Items() { label = "Nov", value = 11 });
+
+            customCollection.Add(new Items() { label = "Dec", value = 12});
+
+
+        }
     }
 
 

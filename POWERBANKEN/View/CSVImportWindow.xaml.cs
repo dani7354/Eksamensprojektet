@@ -1,23 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 using ViewModels;
 
 namespace View
 {
-    /// <summary>
-    /// Vindue til at i importere månedlige salgstal for alle produkter fra CSV-fil.
-    /// </summary>
+
     public partial class CSVImportWindow : Window
     {
         private ImportCSVViewModel _viewModel;
@@ -48,7 +36,7 @@ namespace View
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Der er opstået en fejl, da filen allerede er blevet importeret" + ex.Message);
             }
         }
 

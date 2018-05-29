@@ -28,7 +28,7 @@ namespace UnitTestProject1
             int leadTime = 50;
             bool isActive = true;
 
-           ViewModels.AddProductViewModel apvm = new AddProductViewModel();
+            AddProductViewModel apvm = new AddProductViewModel();
             
             apvm.AddAProduct(sku, name, purchasePrice, amount, minAmount, productTypeID, brandID, leadTime, isActive);
 

@@ -1,34 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using ViewModels;
-using Domain;
 using Syncfusion.UI.Xaml.Charts;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for SalesChart.xaml
-    /// </summary>
+
     public partial class SalesChartView : Window
     {
-        DateTime date { get; set; }
 
         private SalesChartViewModel Salesview;
         public SalesChartView()
         {
             InitializeComponent();
-
             Salesview = new SalesChartViewModel();
             DataContext = Salesview;
         }
@@ -36,7 +21,6 @@ namespace View
         {
             foreach (var item in Salesview.ProductName.Where(p=>p.Brand.Name==Salesview.SelectedBrand.Name))
             {
-                
                 Chartseries.Legend = new ChartLegend()
                 {
                     ToggleSeriesVisibility = true,
@@ -46,7 +30,7 @@ namespace View
                 SplineSeries spline = new SplineSeries()
                 {
                     Label = item.Name,
-                    ItemsSource = Salesview.ProductStatistics.Where(s=>s.Product.Equals(item)).ToList(),
+                    ItemsSource = Salesview.ProductStatistics.Where(s=>s.Product.Equals(item) && s.PeriodStart.Month <= Slider.RangeEnd && s.PeriodEnd.Month >= Slider.RangeStart).ToList(),
                     XBindingPath = "PeriodStart",
                     YBindingPath = "QuantitySold",
                     ShowTooltip=true,
@@ -71,19 +55,16 @@ namespace View
                 SplineSeries spline = new SplineSeries()
                 {
                     Label = item.Name,
-                    ItemsSource = Salesview.BrandSaleList.Where(x=>x.Product.Brand.Name==item.Name).ToList(),
+                    ItemsSource = Salesview.BrandSaleList.Where(x => x.Product.Brand.Name == item.Name && x.PeriodStart.Month <= Slider.RangeEnd && x.PeriodStart.Month >= Slider.RangeStart).ToList(),
                     XBindingPath = "PeriodStart",
                     YBindingPath = "QuantitySold",
                     ShowTooltip = true,
-                   ShowEmptyPoints = false
-
-
+                   ShowEmptyPoints = true
                 };
 
                 Chartseries.Series.Add(spline);
             }
         }
-
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -94,9 +75,18 @@ namespace View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Chartseries.Series.Clear();
-            Salesview.CalulateBrandSale();
+            Salesview.CalculateBrandSale();
             StartBrandChart();
-            
         }
+
+        private void SfRangeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+        }
+
+
+
     }
+
+
 }
+
