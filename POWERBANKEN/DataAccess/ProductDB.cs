@@ -13,6 +13,7 @@ namespace DataAccess
     {
         public List<Product> GetAllProducts()
         {
+         
             List<Product> ProductList = new List<Product>();
             using (SqlConnection con = DBConnection.Connect)
             {

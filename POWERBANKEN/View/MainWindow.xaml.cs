@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace View
 {
@@ -24,7 +15,7 @@ namespace View
             InitializeComponent();
             DataContext = _viewModel;
             _viewModel.OrderDatesAdded += (OrderDatesAdded, e) => MessageBox.Show($"{OrderDatesAdded} nye varer skal bestilles inden for de næste {_viewModel.DaysInAdvance} dage - se vinduet med bestillingsdatoer.");
-            this.Closing += StockWindow_Closing;
+            Closing += StockWindow_Closing;
         }
 
         private void StockWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Environment.Exit(1); // Lukker alle øvrige vinduer, hvis Mainvinduet lukkes
@@ -73,7 +64,6 @@ namespace View
             AddProductWindow addprodWin = new AddProductWindow();
             addprodWin.Show();
             addprodWin.Closing += AddprodWin_Closing;
-
         }
 
         private void AddprodWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
