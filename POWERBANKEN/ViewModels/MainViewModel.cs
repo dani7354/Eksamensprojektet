@@ -16,7 +16,7 @@ namespace ViewModels
         private static List<Product> _productNotifications;
         private bool _calcThreadRunning;
         public event EventHandler OrderDatesAdded;
-        public Object myKey = new Object();
+  
 
         private double _growthInPercent;
         private int _daysInAdvance;
