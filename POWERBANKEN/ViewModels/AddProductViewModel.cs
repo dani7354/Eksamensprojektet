@@ -247,6 +247,7 @@ namespace ViewModels
             Brand = Brands[0];
             LeadTimeDays = 0;
             SelectedCurrency = Currencies[0];
+            MinStock = 0;
 
         }
 
