@@ -43,7 +43,7 @@ namespace ViewModels
         private string _sku;
         private string _name;
         private double _purchasePrice;
-        private object myLock = new object();
+      
 
 
         private int _stockAmount;
@@ -260,10 +260,9 @@ namespace ViewModels
                 if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
                 {
                     Product prod = new Product(Name, SKU, PurchasePriceDKK, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
-                    lock (myLock)
-                    {
+                 
                     controller.AddProduct(prod);
-                    }
+                    
                     ProductAdded.Invoke(Name, null);
                     ClearAddProductTable();
 

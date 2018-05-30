@@ -17,6 +17,7 @@ namespace Controller
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
         private List<Currency> _currencies;
+        private readonly object myLock = new object();
 
         private MainController()
 		{
@@ -29,8 +30,10 @@ namespace Controller
         public void AddProduct(Product product)
         {
             _dataStorage.InsertProduct(product);
-            _products.Add(product);
+            lock (myLock)
+            {
             _products = _dataStorage.GetAllProducts();
+            }
         }
 
         public List<Product> GetProducts()
