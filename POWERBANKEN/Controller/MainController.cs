@@ -17,7 +17,7 @@ namespace Controller
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
         private List<Currency> _currencies;
-        private Object myKey = new Object();
+
         private MainController()
 		{
 			_dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales();
@@ -77,8 +77,7 @@ namespace Controller
         {
             List<SalesStatistics> futureMonthlySales = Order.CalculateProductSalesForMonth(growthInPercent, _products, _productSales);
 
-            lock (myKey)
-            {
+     
             foreach (Product product in _products.Where(p => p.IsActive == true))
             {
                 if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
@@ -89,7 +88,7 @@ namespace Controller
                 }
             }
 
-            }
+            
             return _products;
         }
 
