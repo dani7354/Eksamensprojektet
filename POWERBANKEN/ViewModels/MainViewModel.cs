@@ -16,7 +16,7 @@ namespace ViewModels
         private static List<Product> _productNotifications;
         private bool _calcThreadRunning;
         public event EventHandler OrderDatesAdded;
-
+        public Object myKey = new Object();
 
         private double _growthInPercent;
         private int _daysInAdvance;
@@ -195,13 +195,13 @@ namespace ViewModels
         {
             _calculatorThread = new Thread(BackgroundCalc);
             _calculatorThread.Start();
-
         }
 
         private void BackgroundCalc()
         {
             while (_calcThreadRunning)
             {
+              
                 ProductNotifications = _controller.GetOrderDatesForProducts(GrowthInPercent);
                 Thread.Sleep(CalcInterval * 1000);
             }

@@ -88,6 +88,7 @@ namespace Controller
                     product.OrderDates.CalculateOrderDateForProduct(product, salesForProduct);
                 }
             }
+
             }
             return _products;
         }
