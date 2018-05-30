@@ -19,6 +19,7 @@ namespace ViewModels
             Brands = Controller.GetBrands();
             SelectedBrand = Brands[0];
             Setproduct();
+            CustomCollection = new ObservableCollection<Items>();
             AddMonths();
         }
 
@@ -82,43 +83,32 @@ namespace ViewModels
 
            ProductStatistics = Controller.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
         }
-
-        public ObservableCollection<Items> CustomCollection
-
-        {
-
-            get { return customCollection; }
-
-            set { customCollection = value; }
-
-        }
+        public ObservableCollection<Items> CustomCollection { get; set; }
         public void AddMonths()
         {
-            customCollection.Add(new Items() { label = "Jan", value = 1 });
+            CustomCollection.Add(new Items() { label = "Jan", value = 1 });
 
-            customCollection.Add(new Items() { label = "Feb", value = 2 });
+            CustomCollection.Add(new Items() { label = "Feb", value = 2 });
 
-            customCollection.Add(new Items() { label = "Mar", value = 3 });
+            CustomCollection.Add(new Items() { label = "Mar", value = 3 });
 
-            customCollection.Add(new Items() { label = "Apr", value = 4 });
+            CustomCollection.Add(new Items() { label = "Apr", value = 4 });
 
-            customCollection.Add(new Items() { label = "Maj", value = 5 });
+            CustomCollection.Add(new Items() { label = "Maj", value = 5 });
 
-            customCollection.Add(new Items() { label = "Jun", value = 6 });
+            CustomCollection.Add(new Items() { label = "Jun", value = 6 });
 
-            customCollection.Add(new Items() { label = "Jul", value = 7 });
+            CustomCollection.Add(new Items() { label = "Jul", value = 7 });
 
-            customCollection.Add(new Items() { label = "Aug", value = 8 });
+            CustomCollection.Add(new Items() { label = "Aug", value = 8 });
 
-            customCollection.Add(new Items() { label = "Sep", value = 9 });
+            CustomCollection.Add(new Items() { label = "Sep", value = 9 });
 
-            customCollection.Add(new Items() { label = "Okt", value = 10 });
+            CustomCollection.Add(new Items() { label = "Okt", value = 10 });
 
-            customCollection.Add(new Items() { label = "Nov", value = 11 });
+            CustomCollection.Add(new Items() { label = "Nov", value = 11 });
 
-            customCollection.Add(new Items() { label = "Dec", value = 12});
-
-
+            CustomCollection.Add(new Items() { label = "Dec", value = 12 });
         }
     }
 
