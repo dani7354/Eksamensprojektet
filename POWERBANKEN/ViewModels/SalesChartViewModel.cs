@@ -19,6 +19,7 @@ namespace ViewModels
             Brands = Controller.GetBrands();
             SelectedBrand = Brands[0];
             Setproduct();
+            CustomCollection = new ObservableCollection<Items>();
             AddMonths();
         }
 
@@ -42,7 +43,6 @@ namespace ViewModels
         public List<Brand>Brands { get; set; }
 
         private Brand _selectedBrand;
-
         public Brand SelectedBrand {
             get { return _selectedBrand; }
             set { _selectedBrand = value; NotifyPropertyChanged("SelectedBrand"); }
@@ -69,9 +69,11 @@ namespace ViewModels
                 for (int i = 0; i < 12; i++)
                 {
 
-                    SalesStatistics s = new SalesStatistics();
-                    s.Product = new Product();
-                    s.PeriodStart = new DateTime(2017,i+1 ,1);
+                    SalesStatistics s = new SalesStatistics
+                    {
+                        Product = new Product(),
+                        PeriodStart = new DateTime(2017, i + 1, 1)
+                    };
                     s.Product.Brand = item;
                     s.QuantitySold = ProductStatistics.Where(x => x.Product.Brand != null && x.Product.Brand.Name ==item.Name && x.PeriodStart.Month == i+1).Sum(x => x.QuantitySold);
                     BrandSaleList.Add(s);
@@ -83,7 +85,6 @@ namespace ViewModels
 
            ProductStatistics = Controller.GetProductSales().Where(S => S.Product.Brand != null && S.Product.Brand.Name == SelectedBrand.Name).ToList(); 
         }
-
         public ObservableCollection<Items> CustomCollection { get; set; }
         public void AddMonths()
         {
@@ -109,9 +110,7 @@ namespace ViewModels
 
             CustomCollection.Add(new Items() { label = "Nov", value = 11 });
 
-            CustomCollection.Add(new Items() { label = "Dec", value = 12});
-
-
+            CustomCollection.Add(new Items() { label = "Dec", value = 12 });
         }
     }
 

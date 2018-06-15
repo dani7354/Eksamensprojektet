@@ -17,6 +17,8 @@ namespace Controller
         private List<Brand> _brands;
         private List<ProductType> _productTypes;
         private List<Currency> _currencies;
+        private readonly object myLock = new object();
+
         private MainController()
 		{
 			_dataStorage = new ProductDB(); _productSales = _dataStorage.GetProductSales();
@@ -28,8 +30,10 @@ namespace Controller
         public void AddProduct(Product product)
         {
             _dataStorage.InsertProduct(product);
-            _products.Add(product);
+            lock (myLock)
+            {
             _products = _dataStorage.GetAllProducts();
+            }
         }
 
         public List<Product> GetProducts()
@@ -76,6 +80,7 @@ namespace Controller
         {
             List<SalesStatistics> futureMonthlySales = Order.CalculateProductSalesForMonth(growthInPercent, _products, _productSales);
 
+     
             foreach (Product product in _products.Where(p => p.IsActive == true))
             {
                 if (futureMonthlySales.Exists(s => s.Product.Equals(product)))
@@ -85,6 +90,8 @@ namespace Controller
                     product.OrderDates.CalculateOrderDateForProduct(product, salesForProduct);
                 }
             }
+
+            
             return _products;
         }
 

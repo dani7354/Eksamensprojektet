@@ -43,8 +43,8 @@ namespace ViewModels
         private string _sku;
         private string _name;
         private double _purchasePrice;
+      
 
-        public double PurchasePriceDKK { get; private set; }
 
         private int _stockAmount;
         private int _minStock;
@@ -52,6 +52,9 @@ namespace ViewModels
         private ProductType _type;
         private Brand _brand;
         private Currency _selectedCurrency;
+        public event EventHandler ProductAdded;
+
+        public double PurchasePriceDKK { get; private set; }
 
         public List<ProductType> ProductTypes
         {
@@ -234,16 +237,34 @@ namespace ViewModels
 			}
         }
 
+        public void ClearAddProductTable()
+        {
+            Type = ProductTypes[0];
+            SKU = "";
+            Name = "";
+            PurchasePrice = 0;
+            StockAmount = 0;
+            Brand = Brands[0];
+            LeadTimeDays = 0;
+            SelectedCurrency = Currencies[0];
+            MinStock = 0;
+
+        }
+
 		public void AddProducts()
 		{
 
             try
             {
+                
                 if (Name != string.Empty && SKU != string.Empty && Type != null && Brand != null)
                 {
                     Product prod = new Product(Name, SKU, PurchasePriceDKK, StockAmount, MinStock, Type, Brand, LeadTimeDays, IsActive);
+                 
                     controller.AddProduct(prod);
+                    
                     ProductAdded.Invoke(Name, null);
+                    ClearAddProductTable();
 
                 }
                 else
@@ -258,6 +279,5 @@ namespace ViewModels
             }
 			
 		}
-        public event EventHandler ProductAdded;
 	}
 }
